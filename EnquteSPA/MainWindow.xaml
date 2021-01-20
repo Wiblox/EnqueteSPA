@@ -14,14 +14,42 @@
         <TabControl>
             <TabItem Header="Enquêtes">
                 <Grid>
-                    <Button Margin="100px" Click="Button_Click">Message Erreur</Button>
+                    <Button
+                        Margin="100px"
+                        Click="Button_Click"
+                        Opacity="0.3">
+                        Message Erreur
+                    </Button>
                 </Grid>
             </TabItem>
             <TabItem Header="Délégués enquêteurs">
-                <Grid />
+                <Grid>
+                    <mah:ProgressRing
+                        Margin="119,79,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top" />
+                    <mah:RangeSlider
+                        Width="442"
+                        Margin="50,257,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top" />
+                    <mah:MetroProgressBar
+                        Width="100"
+                        Height="10"
+                        Margin="138,192,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top" />
+                </Grid>
             </TabItem>
             <TabItem Header="Nouvelle enquete">
-                <Grid />
+                <Grid>
+                    <mah:MetroAnimatedSingleRowTabControl>
+                        <TabItem Header="TabItem" />
+                        <TabItem Header="TabItem">
+                            <Grid Background="#FFE5E5E5" />
+                        </TabItem>
+                    </mah:MetroAnimatedSingleRowTabControl>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>
