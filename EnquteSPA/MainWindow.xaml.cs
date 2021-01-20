@@ -1,4 +1,5 @@
 ﻿using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,13 @@ namespace EnquteSPA
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+          
+                await this.ShowMessageAsync("This is the title", "Some message");
+            
         }
     }
 }

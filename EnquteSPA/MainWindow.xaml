@@ -13,9 +13,14 @@
     <Grid>
         <TabControl>
             <TabItem Header="Enquêtes">
-                <Grid />
+                <Grid>
+                    <Button Margin="100px" Click="Button_Click">Message Erreur</Button>
+                </Grid>
             </TabItem>
             <TabItem Header="Délégués enquêteurs">
+                <Grid />
+            </TabItem>
+            <TabItem Header="Nouvelle enquete">
                 <Grid />
             </TabItem>
         </TabControl>
