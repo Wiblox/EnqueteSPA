@@ -24,6 +24,8 @@ namespace EnquteSPA
     {
         public MainWindow()
         {
+            login frm = new login();
+            frm.ShowDialog();
             InitializeComponent();
         }
 
