@@ -12,11 +12,11 @@
     mc:Ignorable="d">
     <Grid>
         <TabControl>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5" />
+            <TabItem Header="Enquêtes">
+                <Grid />
             </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5" />
+            <TabItem Header="Délégués enquêteurs">
+                <Grid />
             </TabItem>
         </TabControl>
     </Grid>
