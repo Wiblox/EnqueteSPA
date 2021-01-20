@@ -20,46 +20,52 @@
             Grid.Column="0"
             Margin="20px"
             Source="https://www.la-spa.fr/sites/all/themes/bluemasters/logo.png" />
-        <Grid
+        <Border
             Grid.Column="1"
             Margin="60px"
-            Background="#eb651b">
-            <Grid HorizontalAlignment="Stretch">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30*" />
-                    <RowDefinition Height="30*" />
-                    <RowDefinition Height="30*" />
-                    <RowDefinition Height="30*" />
-                    <RowDefinition Height="30*" />
-                </Grid.RowDefinitions>
-                <WrapPanel
-                    Grid.Row="1"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center">
-                    <Label Width="90px">Identifiant :</Label>
-                    <TextBox Width="160px" />
-                </WrapPanel>
-                <WrapPanel
-                    Grid.Row="2"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center">
-                    <Label Width="90px">Mot de passe :</Label>
-                    <TextBox Width="160px" />
-                </WrapPanel>
-                <WrapPanel
-                    Grid.Row="3"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center">
-                    <Button
-                        Width="100px"
-                        Background="Green"
-                        Content="Validez" />
-                    <Button
-                        Width="100px"
-                        Background="Blue"
-                        Content="Crée un comtpe" />
-                </WrapPanel>
+            Background="#eb651b"
+            BorderBrush="#FF000000"
+            BorderThickness="1,1,1,1"
+            CornerRadius="8,8,8,8">
+            <Grid>
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30*" />
+                        <RowDefinition Height="30*" />
+                        <RowDefinition Height="30*" />
+                        <RowDefinition Height="30*" />
+                        <RowDefinition Height="30*" />
+                    </Grid.RowDefinitions>
+
+                    <WrapPanel
+                        Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                        <Label Width="90px" HorizontalContentAlignment="Right">Identifiant :</Label>
+                        <TextBox Width="160px" />
+                    </WrapPanel>
+                    <WrapPanel
+                        Grid.Row="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                        <Label Width="90px" HorizontalContentAlignment="Right">Mot de passe :</Label>
+                        <TextBox Width="160px" />
+                    </WrapPanel>
+                    <WrapPanel
+                        Grid.Row="3"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                        <Button
+                            Width="100px"
+                            Margin="10px"
+                            Content="Validez" />
+                        <Button
+                            Width="100px"
+                            Margin="10px"
+                            Content="Crée un comtpe" />
+                    </WrapPanel>
+                </Grid>
             </Grid>
-        </Grid>
+        </Border>
     </Grid>
 </mah:MetroWindow>
