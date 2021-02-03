@@ -35,5 +35,6 @@ namespace EnquteSPA
                 await this.ShowMessageAsync("This is the title", "Some message");
             
         }
+
     }
 }
