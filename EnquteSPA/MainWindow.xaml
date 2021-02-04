@@ -50,10 +50,7 @@
             <TabItem VerticalAlignment="Center" Header="Utilisateurs">
                 <Grid Background="#F1F3F4" />
             </TabItem>
-            <TabItem VerticalAlignment="Center">
-                <TabItem.Header>Déconnexion</TabItem.Header>
-                <Grid Background="#F1F3F4" />
-            </TabItem>
+
 
 
         </TabControl>
