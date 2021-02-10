@@ -14,5 +14,10 @@ namespace EnquteSPA
         public int IdEnqueteur { get; set; }
 
         public bool Etat { get; set; }
+
+        [ForeignKey("SpaPersonne")]
+        public int IdSpaPersonne { get; set; }
+
+        public virtual SpaPersonne SpaPersonne { get; set; }
     }
 }
