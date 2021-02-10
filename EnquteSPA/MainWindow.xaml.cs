@@ -57,8 +57,8 @@ namespace EnquteSPA
             person = new ObservableCollection<Enquete>()
          {
                  new Enquete("1", 57, DateTime.Now, 0, 0, "LE MOTIF", 0, 0),
-     new Enquete("2", 57, DateTime.Now, 0, 0, "LE MOTIF", 0, 0),
-            new Enquete("3", 57, DateTime.Now, 0, 0, "LE MOTIF", 0, 0)
+                 new Enquete("2", 57, DateTime.Now, 0, 0, "LE MOTIF", 0, 0),
+                 new Enquete("3", 57, DateTime.Now, 0, 0, "LE MOTIF", 0, 0)
         };
             data.ItemsSource = person;
       
