@@ -23,8 +23,8 @@ namespace EnquteSPA
 
         public virtual Fonction Fonction {get; set; }
         
-        public boolean DelegueEnqueteur { get; set; } 
+        public bool DelegueEnqueteur { get; set; } 
         
-        public boolean Etat { get; set; } 
+        public bool Etat { get; set; } 
     }
 }

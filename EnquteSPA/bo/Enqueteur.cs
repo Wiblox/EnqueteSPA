@@ -13,6 +13,6 @@ namespace EnquteSPA
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdEnqueteur { get; set; }
 
-        public boolean Etat { get; set; }
+        public bool Etat { get; set; }
     }
 }

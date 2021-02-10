@@ -20,6 +20,6 @@ namespace EnquteSPA
 
         public string Rapport { get; set; }
 
-        public Date DateVisite { get; set; }
+        public DateTime DateVisite { get; set; }
     }
 }
