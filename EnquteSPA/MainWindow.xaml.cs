@@ -2,6 +2,7 @@
 using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -23,13 +24,18 @@ namespace EnquteSPA
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        private ObservableCollection<Enquete> person;
+
         public MainWindow()
         {
-            //login frm = new login();
-            //frm.ShowDialog();
+            login frm = new login();
+            frm.ShowDialog();
             InitializeComponent();
         }
-        protected override async void OnClosing(System.ComponentModel.CancelEventArgs e)
+    
+
+
+    protected override async void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true;
             await this.ShowMessageAsync("Déconexion", "Vous allez bientôt quitter l'application.");
@@ -43,5 +49,20 @@ namespace EnquteSPA
             
         }
 
+        private void data_Initialized(object sender, EventArgs e)
+        {
+            Enquete e1 = new Enquete("1", 57, DateTime.Now, 0, 0, "LE MOTIF", 0, 0);
+            Enquete e2 = new Enquete("2", 57, DateTime.Now, 0, 0, "LE MOTIF", 0, 0);
+            Enquete e3 = new Enquete("3", 57, DateTime.Now, 0, 0, "LE MOTIF", 0, 0);
+            person = new ObservableCollection<Enquete>()
+         {
+                 new Enquete("1", 57, DateTime.Now, 0, 0, "LE MOTIF", 0, 0),
+     new Enquete("2", 57, DateTime.Now, 0, 0, "LE MOTIF", 0, 0),
+            new Enquete("3", 57, DateTime.Now, 0, 0, "LE MOTIF", 0, 0)
+        };
+            data.ItemsSource = person;
+      
+
+        }
     }
 }

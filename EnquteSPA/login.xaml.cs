@@ -20,7 +20,14 @@ namespace EnquteSPA
     {
         public login()
         {
+            MouseDown += Window_MouseDown;
+
             InitializeComponent();
+        }
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
     }
 }

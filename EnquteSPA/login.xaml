@@ -18,74 +18,75 @@
                 <VisualBrush.Visual>
                     <Image Source="https://www.fichemetier.fr/wp-content/uploads/2015/04/travailler-avec-animaux.jpg">
                         <Image.BitmapEffect>
-                            <BlurBitmapEffect KernelType="Gaussian" Radius="20" />
+                            <BlurBitmapEffect KernelType="Gaussian" Radius="15" />
                         </Image.BitmapEffect>
                     </Image>
                 </VisualBrush.Visual>
             </VisualBrush>
         </Grid.Background>
-
-        <Border
+        <Grid
             Width="300px"
             Height="300px"
-            Margin="60px"
-            Background="#69ffffff"
-            BorderBrush="#FF000000"
-            CornerRadius="2">
-            <Border.Effect>
-                <DropShadowEffect
-                    BlurRadius="30"
-                    Direction="0"
-                    ShadowDepth="0" />
-            </Border.Effect>
+            Margin="60px">
+            <Border
+                Background="#69ffffff"
+                BorderBrush="#FF000000"
+                CornerRadius="2">
+                <Border.Effect>
+                    <DropShadowEffect
+                        BlurRadius="30"
+                        Direction="0"
+                        ShadowDepth="0" />
+                </Border.Effect>
 
-            <Grid>
-                <Grid HorizontalAlignment="Stretch">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40*" />
-                        <RowDefinition Height="30*" />
-                        <RowDefinition Height="30*" />
-                        <RowDefinition Height="30*" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0" Source="https://www.la-spa.fr/sites/all/themes/bluemasters/logo.png" />
-                    <WrapPanel
-                        Grid.Row="1"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
-                        <Label
-                            Width="90px"
-                            HorizontalContentAlignment="Right"
-                            Foreground="White">
-                            Identifiant :
-                        </Label>
-                        <TextBox Width="160px" />
-                    </WrapPanel>
-                    <WrapPanel
-                        Grid.Row="2"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
-                        <Label
-                            Width="90px"
-                            HorizontalContentAlignment="Right"
-                            Foreground="White">
-                            Mot de passe :
-                        </Label>
-                        <TextBox Width="160px" />
-                    </WrapPanel>
-                    <WrapPanel
-                        Grid.Row="3"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Orientation="Vertical">
-                        <Button
-                            Width="230px"
-                            Background="#FFEB651B"
-                            Content="Login"
-                            Foreground="White" />
+                <Grid>
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40*" />
+                            <RowDefinition Height="30*" />
+                            <RowDefinition Height="30*" />
+                            <RowDefinition Height="30*" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0" Source="https://www.la-spa.fr/sites/all/themes/bluemasters/logo.png" />
+                        <WrapPanel
+                            Grid.Row="1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                            <Label
+                                Width="90px"
+                                HorizontalContentAlignment="Right"
+                                Foreground="White">
+                                Identifiant :
+                            </Label>
+                            <TextBox Width="160px" />
+                        </WrapPanel>
+                        <WrapPanel
+                            Grid.Row="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                            <Label
+                                Width="90px"
+                                HorizontalContentAlignment="Right"
+                                Foreground="White">
+                                Mot de passe :
+                            </Label>
+                            <TextBox Width="160px" />
+                        </WrapPanel>
+                        <WrapPanel
+                            Grid.Row="3"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Orientation="Vertical">
+                            <Button
+                                Width="230px"
+                                Background="#FFEB651B"
+                                Content="Login"
+                                Foreground="White" />
 
-                    </WrapPanel>
+                        </WrapPanel>
+                    </Grid>
                 </Grid>
-            </Grid>
-        </Border>
+            </Border>
+        </Grid>
     </Grid>
 </mah:MetroWindow>

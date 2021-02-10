@@ -17,7 +17,7 @@ namespace EnquteSPA
 
         public int Departement { get; set; }
 
-        public Date DateDepot { get; set; }
+        public DateTime DateDepot { get; set; }
         
         [ForeignKey("Personne")]
         public int IdInfracteur { get; set; }
