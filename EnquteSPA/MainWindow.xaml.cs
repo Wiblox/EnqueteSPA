@@ -16,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.Entity;
+using EnquteSPA.bo;
 
 namespace EnquteSPA
 {
@@ -24,13 +26,18 @@ namespace EnquteSPA
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        private ObservableCollection<Enquete> person;
 
         public MainWindow()
         {
             login frm = new login();
             frm.ShowDialog();
             InitializeComponent();
+            
+            using (var db = new context())
+            {
+                var personne = new Personne { Nom = "AAA", Prenom = "Quentin", Mail = "Pas gentil"};         
+                db.Personne.Add(personne);
+            }
         }
     
 
@@ -51,16 +58,14 @@ namespace EnquteSPA
 
         private void data_Initialized(object sender, EventArgs e)
         {
-            Enquete e1 = new Enquete("1", 57, DateTime.Now, 0, 0, "LE MOTIF", 0, 0);
-            Enquete e2 = new Enquete("2", 57, DateTime.Now, 0, 0, "LE MOTIF", 0, 0);
-            Enquete e3 = new Enquete("3", 57, DateTime.Now, 0, 0, "LE MOTIF", 0, 0);
-            person = new ObservableCollection<Enquete>()
-         {
-                 new Enquete("1", 57, DateTime.Now, 0, 0, "LE MOTIF", 0, 0),
-                 new Enquete("2", 57, DateTime.Now, 0, 0, "LE MOTIF", 0, 0),
-                 new Enquete("3", 57, DateTime.Now, 0, 0, "LE MOTIF", 0, 0)
-        };
-            data.ItemsSource = person;
+            using (var db = new context())
+            {
+                var personne = new Personne { Nom = "AAA", Prenom = "Quentin", Mail = "Pas gentil" };
+                db.Personne.Add(personne);
+                db.SaveChanges();
+
+                data.ItemsSource = db.Personne.ToList();
+            }
       
 
         }

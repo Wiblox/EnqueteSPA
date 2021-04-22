@@ -19,25 +19,25 @@ namespace EnquteSPA
 
         public DateTime DateDepot { get; set; }
         
-        [ForeignKey("Personne")]
-        public int IdInfracteur { get; set; }
+        [ForeignKey("Infracteur")]
+        public int? IdInfracteur { get; set; }
 
         public virtual Personne Infracteur {get; set; }
         
-        [ForeignKey("Personne")]
-        public int IdPlaignant { get; set; }
+        [ForeignKey("Plaignant")]
+        public int? IdPlaignant { get; set; }
 
         public virtual Personne Plaignant {get; set; }
 
         public string Motif { get; set; }
         
         [ForeignKey("Enqueteur")]
-        public int IdEnqueteur { get; set; }
+        public int? IdEnqueteur { get; set; }
 
         public virtual Enqueteur Enqueteur {get; set; }
 
         [ForeignKey("Statut")]
-        public int IdStatut { get; set; }
+        public int? IdStatut { get; set; }
 
         public virtual Statut Statut {get; set; }
     }

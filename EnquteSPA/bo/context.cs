@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EnquteSPA.bo
 {
-    class Context : DbContext
+    class context : DbContext
     {
         public DbSet<Document> Document { get; set; }
         public DbSet<TypeDocument> TypeDocument { get; set; }

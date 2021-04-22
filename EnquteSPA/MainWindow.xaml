@@ -36,7 +36,8 @@
                         Grid.Row="0"
                         Margin="60,30,60,0"
                         VerticalAlignment="Top"
-                        Initialized="data_Initialized" />
+                        Initialized="data_Initialized"
+                        IsReadOnly="True" />
 
                     <Grid Grid.Row="1">
                         <Button
