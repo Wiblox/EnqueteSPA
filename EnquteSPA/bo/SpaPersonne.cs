@@ -26,5 +26,7 @@ namespace EnquteSPA
         public bool DelegueEnqueteur { get; set; } 
         
         public bool Etat { get; set; } 
+
+    
     }
 }

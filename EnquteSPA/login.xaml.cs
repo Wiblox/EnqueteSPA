@@ -1,6 +1,7 @@
 ﻿using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,6 +21,11 @@ namespace EnquteSPA
     {
         public login()
         {
+
+            LoginUser test = new LoginUser("quentisn", "slave");
+
+
+            
             MouseDown += Window_MouseDown;
 
             InitializeComponent();
@@ -29,5 +35,18 @@ namespace EnquteSPA
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            LoginUser test = new LoginUser(this.user.Text, this.password.Text);
+            if (test.CheckUser())
+            {
+                DialogResult = true;
+                this.Close();
+            }
+
+        }
+
+
     }
 }

@@ -33,11 +33,7 @@ namespace EnquteSPA
             frm.ShowDialog();
             InitializeComponent();
             
-            using (var db = new context())
-            {
-                var personne = new Personne { Nom = "AAA", Prenom = "Quentin", Mail = "Pas gentil"};         
-                db.Personne.Add(personne);
-            }
+         
         }
     
 

@@ -17,5 +17,7 @@ namespace EnquteSPA
         public int IdSpaPersonne { get; set; }
 
         public virtual SpaPersonne SpaPersonne {get; set; }
+
+
     }
 }
