@@ -16,6 +16,5 @@ namespace EnquteSPA.bo
         public DbSet<Visite> Visite { get; set; }
         public DbSet<Enqueteur> Enqueteur { get; set; }
         public DbSet<Compte> Compte { get; set; }
-        public DbSet<Fonction> Fonction { get; set; }
     }
 }

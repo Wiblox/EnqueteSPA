@@ -17,11 +17,9 @@ namespace EnquteSPA
         public int IdPersonne { get; set; }
 
         public virtual Personne Personne {get; set; }
-
-        [ForeignKey("Fonction")]
         public int IdFonction { get; set; }
 
-        public virtual Fonction Fonction {get; set; }
+        public int Fonction {get; set; }
         
         public bool DelegueEnqueteur { get; set; } 
         
