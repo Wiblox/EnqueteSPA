@@ -22,7 +22,6 @@ namespace EnquteSPA
         public login()
         {
 
-            LoginUser test = new LoginUser("quentisn", "slave");
 
 
             
@@ -38,12 +37,7 @@ namespace EnquteSPA
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            LoginUser test = new LoginUser(this.user.Text, this.password.Text);
-            if (test.CheckUser())
-            {
-                DialogResult = true;
-                this.Close();
-            }
+        
 
         }
 

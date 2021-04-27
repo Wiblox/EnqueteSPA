@@ -31,6 +31,9 @@
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
 
+
+
+
                     <DataGrid
                         x:Name="data"
                         Grid.Row="0"

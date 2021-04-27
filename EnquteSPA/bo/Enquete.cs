@@ -36,9 +36,8 @@ namespace EnquteSPA
 
         public virtual Enqueteur Enqueteur {get; set; }
 
-        [ForeignKey("Statut")]
-        public int? IdStatut { get; set; }
 
-        public virtual Statut Statut {get; set; }
+
+        public  int Statut {get; set; }
     }
 }
