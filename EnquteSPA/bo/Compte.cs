@@ -12,11 +12,13 @@ namespace EnquteSPA
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdCompte { get; set; }
-        
+
         [ForeignKey("SpaPersonne")]
         public int IdSpaPersonne { get; set; }
 
-        public virtual SpaPersonne SpaPersonne {get; set; }
+        public string MotDePasse { get; set; }
+
+        public virtual SpaPersonne SpaPersonne { get; set; }
 
 
     }

@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.Entity;
 using EnquteSPA.bo;
+using EnquteSPA.Controller;
 
 namespace EnquteSPA
 {
@@ -59,6 +60,14 @@ namespace EnquteSPA
                 var personne = new Personne { Nom = "AAA", Prenom = "Quentin", Mail = "Pas gentil" };
                 db.Personne.Add(personne);
                 db.SaveChanges();
+
+                new User("beaupuy", "quentin", "bquentin@mail.com", true, "mdp123");
+                new User("avvvvv", "avvvvv", "avvvvv@mail.com", true, "avvvvv");
+                new User("bvvvvv", "bvvvvv", "bvvvvv@mail.com", true, "bvvvvv");
+                new User("cvvvvv", "cvvvvv", "cvvvvv@mail.com", true, "cvvvvv");
+                new User("dvvvvv", "dvvvvv", "dvvvvv@mail.com", true, "dvvvvv");
+                new User("evvvvv", "evvvvv", "evvvvv@mail.com", true, "evvvvv");
+
 
                 data.ItemsSource = db.Personne.ToList();
             }
