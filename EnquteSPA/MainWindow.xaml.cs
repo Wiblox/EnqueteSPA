@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.Entity;
 using EnquteSPA.bo;
+using EnquteSPA.Controller;
 
 namespace EnquteSPA
 {
