@@ -59,7 +59,7 @@ namespace EnquteSPA
                 var personne = new Personne { Nom = "AAA", Prenom = "Quentin", Mail = "Pas gentil" };
                 db.Personne.Add(personne);
                 db.SaveChanges();
-
+                
                 data.ItemsSource = db.Personne.ToList();
             }
       
