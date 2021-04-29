@@ -34,6 +34,7 @@
             BorderBrush="#FF70624F"
             BorderThickness="0,2,1,0"
             Style="{DynamicResource MahApps.Styles.TabControl.Animated}">
+
             <TabItem Width="130px" IsEnabled="False">
                 <TabItem.Header>
                     <Image Width="50" Source="/EnquteSPA;component/logo.png" />

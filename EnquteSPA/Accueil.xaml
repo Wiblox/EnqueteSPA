@@ -30,8 +30,8 @@
 
         <Grid Grid.Row="1">
             <Button
-                Width="100px"
                 Height="50px"
+                Margin="350,50,334,50"
                 Background="#EB651C"
                 Foreground="White">
                 Saisir un rapport

@@ -32,6 +32,7 @@ namespace EnquteSPA
         {
             login frm = new login();
             frm.ShowDialog();
+            
             InitializeComponent();
             
          
