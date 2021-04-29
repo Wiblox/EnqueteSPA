@@ -18,11 +18,7 @@ namespace EnquteSPA
             login frm = new login();
             frm.ShowDialog();
             InitializeComponent();
-            
-         
         }
-    
-
 
     protected override async void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
@@ -33,25 +29,7 @@ namespace EnquteSPA
         }
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-          
-                await this.ShowMessageAsync("This is the title", "Some message");
-            
-        }
-
-        private void data_Initialized(object sender, EventArgs e)
-        {
-            using (var db = new context())
-            {
-                var personne = new Personne { Nom = "AAA", Prenom = "Quentin", Mail = "Pas gentil" };
-                db.Personne.Add(personne);
-                db.SaveChanges();
-
-                new Compte("bquentin@mail.com", "mdp123", true);
-
-                data.ItemsSource = db.Personne.ToList();
-            }
-      
-
+            await this.ShowMessageAsync("This is the title", "Some message");
         }
     }
 }
