@@ -34,10 +34,8 @@ namespace EnquteSPA
         [ForeignKey("Enqueteur")]
         public int? IdEnqueteur { get; set; }
 
-        public virtual Enqueteur Enqueteur {get; set; }
+        public virtual SpaPersonne Enqueteur { get; set; }
 
-
-
-        public  int Statut {get; set; }
+        public int Statut {get; set; }
     }
 }

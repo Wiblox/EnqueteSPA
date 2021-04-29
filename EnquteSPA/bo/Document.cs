@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EnquteSPA.modele;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -18,10 +19,7 @@ namespace EnquteSPA
 
         public virtual Enquete Enquete {get; set; }
 
-        [ForeignKey("TypeDocument")]
-        public int IdTypeDocument { get; set; }
-
-        public virtual TypeDocument TypeDocument {get; set; }
+        public TypeDocument typeDocument { get; set; }
         
         public string Libelle { get; set; } 
     }

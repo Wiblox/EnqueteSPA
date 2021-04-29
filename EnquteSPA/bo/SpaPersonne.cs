@@ -1,3 +1,4 @@
+using EnquteSPA.modele;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,18 +14,18 @@ namespace EnquteSPA
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdSpaPersonne { get; set; }
 
-        [ForeignKey("Personne")]
-        public int IdPersonne { get; set; }
+        public string Nom { get; set; }
 
-        public virtual Personne Personne {get; set; }
+        public string Prenom { get; set; }
+
+        public string Mail { get; set; }
+
         public int IdFonction { get; set; }
 
-        public int Fonction {get; set; }
+        public Fonction Fonction {get; set; }
         
-        public bool DelegueEnqueteur { get; set; } 
+        public bool? DelegueEnqueteur { get; set; }
         
-        public bool Etat { get; set; } 
-
-    
+        public bool Etat { get; set; }
     }
 }
