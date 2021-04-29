@@ -14,6 +14,22 @@
     <mah:MetroWindow.Resources />
 
     <Grid>
+        <Grid
+            Height="56"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top">
+
+            <TextBlock
+                x:Name="LoginName"
+                Height="30"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Bottom"
+                FontSize="25"
+                Foreground="Gray">
+                Vivien KORPYS
+            </TextBlock>
+        </Grid>
+
         <TabControl
             BorderBrush="#FF70624F"
             BorderThickness="0,2,1,0"
@@ -22,12 +38,21 @@
                 <TabItem.Header>
                     <Image Width="50" Source="/EnquteSPA;component/logo.png" />
                 </TabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
             </TabItem>
             <TabItem VerticalAlignment="Center" Header="Accueil">
                 <Grid Background="#F1F3F4" />
+
             </TabItem>
             <TabItem VerticalAlignment="Center" Header="Rapports">
-                <Grid Background="#F1F3F4" />
+                <Grid Background="#F1F3F4">
+                    <local:Rapport />
+                </Grid>
             </TabItem>
             <TabItem VerticalAlignment="Center" Header="Utilisateurs">
                 <Grid Background="#F1F3F4">

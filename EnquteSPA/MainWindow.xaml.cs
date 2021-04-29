@@ -53,18 +53,5 @@ namespace EnquteSPA
             
         }
 
-        private void data_Initialized(object sender, EventArgs e)
-        {
-            using (var db = new context())
-            {
-                var personne = new Personne { Nom = "AAA", Prenom = "Quentin", Mail = "Pas gentil" };
-                db.Personne.Add(personne);
-                db.SaveChanges();
-                
-                data.ItemsSource = db.Personne.ToList();
-            }
-      
-
-        }
     }
 }

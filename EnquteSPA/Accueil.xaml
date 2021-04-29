@@ -9,34 +9,34 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
 
-    <Grid>
-
-        <Grid Background="#F1F3F4">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="2*" />
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
 
 
+    <Grid Background="#F1F3F4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
 
 
-            <DataGrid
-                x:Name="data"
-                Grid.Row="0"
-                Margin="60,30,60,0"
-                VerticalAlignment="Top"
-                Initialized="data_Initialized"
-                IsReadOnly="True" />
 
-            <Grid Grid.Row="1">
-                <Button
-                    Width="100px"
-                    Height="50px"
-                    Background="#EB651C"
-                    Foreground="White">
-                    Saisir un rapport
-                </Button>
-            </Grid>
+
+        <DataGrid
+            x:Name="data"
+            Grid.Row="0"
+            Margin="60,30,60,0"
+            VerticalAlignment="Top"
+            Initialized="data_Initialized"
+            IsReadOnly="True" />
+
+        <Grid Grid.Row="1">
+            <Button
+                Width="100px"
+                Height="50px"
+                Background="#EB651C"
+                Foreground="White">
+                Saisir un rapport
+            </Button>
         </Grid>
     </Grid>
+
 </UserControl>
