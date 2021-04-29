@@ -14,7 +14,7 @@ namespace EnquteSPA
     {
 
         bool close;
-
+        Compte user;
         public MainWindow()
         {
             init();
@@ -22,6 +22,8 @@ namespace EnquteSPA
             frm.ShowDialog();
             if (frm.DialogResult != true) { close = true; Close(); }
             InitializeComponent();
+            LoginName.Text = frm.usser.Mail;
+
         }
 
         private void init()

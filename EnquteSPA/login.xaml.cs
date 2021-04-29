@@ -20,10 +20,15 @@ namespace EnquteSPA
     /// </summary>
     public partial class login : MetroWindow
     {
-        public login()
+         public Compte usser;
+
+   
+
+
+        public login( )
         {
 
-
+            
 
             
             MouseDown += Window_MouseDown;
@@ -40,9 +45,10 @@ namespace EnquteSPA
         {
             using (var db = new context())
             {
-                Compte loogin = Compte.CheckCompte(user.Text,password.Text);
+                Compte loogin = Compte.CheckCompte(user.Text,password.Password);
                 if (loogin != null)
                 {
+                    usser = loogin;
                     this.DialogResult = true;
                     Close();
                 }

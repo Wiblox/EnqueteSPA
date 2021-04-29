@@ -7,7 +7,7 @@ using System.Linq;
 namespace EnquteSPA
 {
     [Table("Compte")]
-    class Compte
+    public class Compte
     {
 
 

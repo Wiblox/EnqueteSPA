@@ -70,7 +70,7 @@
                                 Foreground="White">
                                 Mot de passe :
                             </Label>
-                            <TextBox x:Name="password" Width="160px" />
+                            <PasswordBox x:Name="password" Width="160px" />
                         </WrapPanel>
                         <WrapPanel
                             Grid.Row="3"

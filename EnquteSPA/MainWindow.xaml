@@ -25,9 +25,7 @@
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Bottom"
                 FontSize="25"
-                Foreground="Gray">
-                Vivien KORPYS
-            </TextBlock>
+                Foreground="Gray" />
         </Grid>
 
         <TabControl
