@@ -9,6 +9,10 @@ namespace EnquteSPA
     [Table("Compte")]
     class Compte
     {
+
+
+        public Compte() { }
+
         public Compte(string mail, string motDePasse, bool admin)
         {
             Mail = mail;
@@ -17,6 +21,8 @@ namespace EnquteSPA
 
             using var db = new context();
             db.Compte.Add(this);
+            db.SaveChanges();
+
         }
 
         [Key]

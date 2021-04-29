@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls;
+﻿using EnquteSPA.bo;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -37,7 +38,16 @@ namespace EnquteSPA
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-        
+            using (var db = new context())
+            {
+                Compte loogin = Compte.CheckCompte(user.Text,password.Text);
+                if (loogin != null)
+                {
+                    this.DialogResult = true;
+                    Close();
+                }
+            }
+
 
         }
 
