@@ -1,6 +1,9 @@
+using EnquteSPA.bo;
+using EnquteSPA.modele;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace EnquteSPA
 {
@@ -35,5 +38,18 @@ namespace EnquteSPA
         public virtual SpaPersonne Enqueteur { get; set; }
 
         public int Statut {get; set; }
+
+        public void AddDocument(TypeDocument td, string path)
+        {
+            using var db = new context();
+            db.Document.Add(new Document(this, td, path));
+            db.SaveChanges();
+        }
+
+        public IQueryable<Document> getAllDocuments()
+        {
+            using var db = new context();
+            return db.Document.Where(v => v.IdEnquete == this.IdEnquete);
+        }
     }
 }

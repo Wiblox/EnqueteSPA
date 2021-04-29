@@ -7,6 +7,14 @@ namespace EnquteSPA
     [Table("Document")]
     class Document
     {
+        public Document() { }
+        public Document(Enquete enquete, TypeDocument typeDocument, string pathDoc)
+        {
+            Enquete = enquete;
+            this.typeDocument = typeDocument;
+            PathDoc = pathDoc;
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdDocument { get; set; }
@@ -18,6 +26,6 @@ namespace EnquteSPA
 
         public TypeDocument typeDocument { get; set; }
         
-        public string Libelle { get; set; } 
+        public string PathDoc { get; set; } 
     }
 }
