@@ -46,7 +46,7 @@ namespace EnquteSPA
             db.SaveChanges();
         }
 
-        public IQueryable<Document> getAllDocuments()
+        public IQueryable<Document> GetAllDocuments()
         {
             using var db = new context();
             return db.Document.Where(v => v.IdEnquete == this.IdEnquete);
