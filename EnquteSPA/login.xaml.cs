@@ -24,6 +24,7 @@ namespace EnquteSPA
 
         public login( )
         {
+            Static.utilisateur = false;
 
             MouseDown += Window_MouseDown;
 
@@ -43,6 +44,7 @@ namespace EnquteSPA
                 Compte loogin = Compte.CheckCompte(user.Text,password.Password);
                 if (loogin != null)
                 {
+                    Static.utilisateur = true;
                     usser = loogin;
                     this.DialogResult = true;
                     Close();

@@ -6,6 +6,8 @@ namespace EnquteSPA
 {
     public static class Static
     {
+
+        public static bool utilisateur;
         public static Compte utilisateurCourant;
     }
 }

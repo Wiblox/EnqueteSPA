@@ -35,10 +35,12 @@ namespace EnquteSPA
 
         private void Button_Initialized(object sender, EventArgs e)
         {
-            if (Static.utilisateurCourant.Admin==false)
+            if(Static.utilisateur == true) { 
+            if ( Static.utilisateurCourant.Admin==false)
             {
                 AddUser.IsEnabled = false;
 
+            }
             }
         }
 
