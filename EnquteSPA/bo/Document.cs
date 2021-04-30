@@ -11,7 +11,7 @@ namespace EnquteSPA
         public Document(string enquete, TypeDocument typeDocument, string pathDoc)
         {
 
-            Enquete = enquete;
+            NoEnquete = enquete;
             this.typeDocument = typeDocument;
             PathDoc = pathDoc;
         }
@@ -20,7 +20,7 @@ namespace EnquteSPA
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdDocument { get; set; }
       
-        public string  Enquete {get; set; }
+        public string  NoEnquete {get; set; }
 
         public TypeDocument typeDocument { get; set; }
         
