@@ -35,13 +35,15 @@ namespace EnquteSPA
 
         private void init()
         {
-            using var db = new context();
-            //On initialise un admin
-            if (db.Compte.ToList().Count == 0)
+            using (var db = new context()) { 
+
+                //On initialise un admin
+                if (db.Compte.ToList().Count == 0)
             {
                 new Compte("admin@gmail.com", "azerty123", true);
             }
         }
+    }
 
         protected override async void OnClosing(System.ComponentModel.CancelEventArgs e)
         {

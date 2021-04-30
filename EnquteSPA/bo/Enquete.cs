@@ -39,17 +39,11 @@ namespace EnquteSPA
 
         public int Statut {get; set; }
 
-        public void AddDocument(TypeDocument td, string path)
-        {
-            using var db = new context();
-            db.Document.Add(new Document(this, td, path));
-            db.SaveChanges();
-        }
-
+    
         public IQueryable<Document> GetAllDocuments()
         {
             using var db = new context();
-            return db.Document.Where(v => v.IdEnquete == this.IdEnquete);
+            return db.Document.Where(v => v.Enquete == this.NoEnquete);
         }
     }
 }
