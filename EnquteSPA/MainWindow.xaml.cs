@@ -20,9 +20,16 @@ namespace EnquteSPA
             init();
             login frm = new login();
             frm.ShowDialog();
-            if (frm.DialogResult != true) { close = true; Close(); }
-            InitializeComponent();
-            LoginName.Text = frm.usser.Mail;
+            if (!(bool)frm.DialogResult)
+            { 
+                close = true; 
+                Close(); 
+            }
+            else
+            {
+                InitializeComponent();
+                LoginName.Text = frm.usser.Mail;
+            }
 
         }
 
