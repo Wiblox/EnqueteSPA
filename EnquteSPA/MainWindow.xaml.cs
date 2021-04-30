@@ -12,47 +12,43 @@ namespace EnquteSPA
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-
         bool close;
         public MainWindow()
         {
             init();
             login frm = new login();
             frm.ShowDialog();
-            if (!(bool)frm.DialogResult)
-            { 
-                close = true; 
-                Close(); 
-            }
-            else
+            if ((bool)frm.DialogResult)
             {
                 Static.utilisateurCourant = frm.usser;
                 InitializeComponent();
                 LoginName.Text = Static.utilisateurCourant.Mail;
             }
-
+            else
+            {
+                close = true;
+                Close();
+            }
         }
 
         private void init()
         {
-            using (var db = new context())
+            using var db = new context();
+            //On initialise un admin
+            if (db.Compte.ToList().Count == 0)
             {
-                //On initialise un admin
-                if (db.Compte.ToList().Count == 0)
-                {
-                    Compte admin = new Compte("admin@gmail.com", "azerty123", true);
-                }
-
+                new Compte("admin@gmail.com", "azerty123", true);
             }
         }
 
-    protected override async void OnClosing(System.ComponentModel.CancelEventArgs e)
+        protected override async void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
-            if (close == false) { 
-            e.Cancel = true;
-            await this.ShowMessageAsync("Déconexion", "Vous allez bientôt quitter l'application.");
-            e.Cancel = false;
-            System.Windows.Application.Current.Shutdown();
+            if (!close)
+            {
+                e.Cancel = true;
+                await this.ShowMessageAsync("Déconexion", "Vous allez bientôt quitter l'application.");
+                e.Cancel = false;
+                System.Windows.Application.Current.Shutdown();
             }
         }
         private async void Button_Click(object sender, RoutedEventArgs e)
