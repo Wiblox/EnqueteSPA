@@ -56,7 +56,7 @@
                                 Width="90px"
                                 HorizontalContentAlignment="Right"
                                 Foreground="White">
-                                Identifiant2 :
+                                Email :
                             </Label>
                             <TextBox x:Name="user" Width="160px" />
                         </WrapPanel>
