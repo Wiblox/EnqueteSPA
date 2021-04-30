@@ -18,9 +18,9 @@ namespace EnquteSPA
     /// <summary>
     /// Interaction logic for Accueil.xaml
     /// </summary>
-    public partial class Rapport : UserControl
+    public partial class EcranEnquete : UserControl
     {
-        public Rapport()
+        public EcranEnquete()
         {
             InitializeComponent();
         }

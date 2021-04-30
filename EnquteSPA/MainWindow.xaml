@@ -48,9 +48,9 @@
                 <Grid Background="#F1F3F4" />
 
             </TabItem>
-            <TabItem VerticalAlignment="Center" Header="Rapports">
+            <TabItem VerticalAlignment="Center" Header="Enquêtes">
                 <Grid Background="#F1F3F4">
-                    <local:Rapport />
+                    <local:EcranEnquete />
                 </Grid>
             </TabItem>
             <TabItem VerticalAlignment="Center" Header="Utilisateurs">
