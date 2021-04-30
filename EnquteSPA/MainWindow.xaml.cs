@@ -15,6 +15,8 @@ namespace EnquteSPA
         bool close;
         public MainWindow()
         {
+            AddDocument doc = new AddDocument("ds");
+            doc.ShowDialog();
             init();
             login frm = new login();
             frm.ShowDialog();

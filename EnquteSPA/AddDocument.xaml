@@ -1,0 +1,48 @@
+﻿<mah:MetroWindow
+    x:Class="EnquteSPA.AddDocument"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:EnquteSPA"
+    xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Ajout document à l'enquete"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Grid AllowDrop="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <Grid
+            Grid.Row="0"
+            AllowDrop="True"
+            Background="AntiqueWhite"
+            DragEnter="dragEnter"
+            Drop="dragDrop">
+
+            <TextBlock />
+
+        </Grid>
+        <Grid
+            Grid.Row="1"
+            AllowDrop="True"
+            DragEnter="dragEnter"
+            Drop="dragDrop">
+            <TextBox
+                x:Name="Info"
+                Width="700"
+                Height="80"
+                AllowDrop="True"
+                Background="Transparent"
+                BorderThickness="0"
+                FontFamily="Bahnschrift SemiBold"
+                FontSize="48"
+                Foreground="Gray"
+                TextAlignment="Center">
+                Drag And Drop
+            </TextBox>
+        </Grid>
+    </Grid>
+</mah:MetroWindow>
