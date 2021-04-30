@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="EnquteSPA.Accueil"
+    x:Class="EnquteSPA.Users"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -25,17 +25,19 @@
             Grid.Row="0"
             Margin="60,30,60,0"
             VerticalAlignment="Top"
+            GotFocus="data_Initialized"
             Initialized="data_Initialized"
             IsReadOnly="True" />
 
         <Grid Grid.Row="1">
             <Button
+                x:Name="AddUser"
+                Width="150px"
                 Height="50px"
-                Margin="350,50,334,50"
-                Background="#EB651C"
-                Foreground="White">
-                Saisir un rapport
-            </Button>
+                Click="AddUser_Click"
+                Content="Ajouter un utilisateur"
+                Initialized="Button_Initialized"
+                Style="{StaticResource MahApps.Styles.Button.Square.Accent}" />
         </Grid>
     </Grid>
 

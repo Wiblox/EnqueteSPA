@@ -14,7 +14,6 @@ namespace EnquteSPA
     {
 
         bool close;
-        Compte user;
         public MainWindow()
         {
             init();
@@ -27,8 +26,9 @@ namespace EnquteSPA
             }
             else
             {
+                Static.utilisateurCourant = frm.usser;
                 InitializeComponent();
-                LoginName.Text = frm.usser.Mail;
+                LoginName.Text = Static.utilisateurCourant.Mail;
             }
 
         }
