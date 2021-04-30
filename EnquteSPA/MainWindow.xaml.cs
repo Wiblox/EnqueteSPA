@@ -14,15 +14,15 @@ namespace EnquteSPA
     {
 
         bool close;
-        Compte user;
         public MainWindow()
         {
             init();
             login frm = new login();
             frm.ShowDialog();
             if (frm.DialogResult != true) { close = true; Close(); }
+            Static.utilisateurCourant = frm.usser; 
             InitializeComponent();
-            LoginName.Text = frm.usser.Mail;
+            LoginName.Text = Static.utilisateurCourant.Mail;
 
         }
 

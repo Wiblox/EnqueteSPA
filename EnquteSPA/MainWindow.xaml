@@ -55,7 +55,7 @@
             </TabItem>
             <TabItem VerticalAlignment="Center" Header="Utilisateurs">
                 <Grid Background="#F1F3F4">
-                    <local:Accueil />
+                    <local:Users />
                 </Grid>
             </TabItem>
 
