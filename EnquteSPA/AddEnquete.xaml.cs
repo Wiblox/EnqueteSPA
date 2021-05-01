@@ -42,14 +42,18 @@ namespace EnquteSPA
 
         private void ClickBtnValider(object sender, RoutedEventArgs e)
         {
-            using var db = new context();
-            Personne plaignant = new Personne(XPlaignantNom.Text, XPlaignantPrenom.Text, XPlaignantMail.Text, XPlaignantVille.Text, XPlaignantRue.Text, XPlaignantNumero.Text);
-            Personne infracteur = new Personne(XInfracteurNom.Text, XInfracteurPrenom.Text, XInfracteurMail.Text, XInfracteurVille.Text, XInfracteurRue.Text, XInfracteurNumero.Text);
-            plaignant = db.Personne.Add(plaignant);
-            infracteur = db.Personne.Add(infracteur);
-            Enquete enquete = new Enquete(XNumEnquete.Text, Int32.Parse(XDepartement.Text), (DateTime)XDateDepot.SelectedDate, infracteur.IdPersonne, plaignant.IdPersonne, XMotif.Text, 1, 1);
-            db.Enquete.Add(enquete);
-            db.SaveChanges();
+            using (var db = new context())
+            {
+
+                
+                Personne plaignant = new Personne(XPlaignantNom.Text, XPlaignantPrenom.Text, XPlaignantMail.Text, XPlaignantVille.Text, XPlaignantRue.Text, XPlaignantNumero.Text);
+                db.Personne.Add(plaignant);
+                Personne infracteur = new Personne(XInfracteurNom.Text, XInfracteurPrenom.Text, XInfracteurMail.Text, XInfracteurVille.Text, XInfracteurRue.Text, XInfracteurNumero.Text);
+                db.Personne.Add(infracteur);
+                Enquete enquete = new Enquete(XNumEnquete.Text, Int32.Parse(XDepartement.Text), (DateTime)XDateDepot.SelectedDate, infracteur.IdPersonne, plaignant.IdPersonne, XMotif.Text, 1, 1);
+                db.Enquete.Add(enquete);
+                db.SaveChanges();
+            }
         }
     }
 }
