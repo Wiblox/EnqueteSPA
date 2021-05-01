@@ -8,9 +8,10 @@ namespace EnquteSPA
     class Document
     {
         public Document() { }
-        public Document(Enquete enquete, TypeDocument typeDocument, string pathDoc)
+        public Document(string enquete, TypeDocument typeDocument, string pathDoc)
         {
-            Enquete = enquete;
+
+            NoEnquete = enquete;
             this.typeDocument = typeDocument;
             PathDoc = pathDoc;
         }
@@ -18,11 +19,8 @@ namespace EnquteSPA
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdDocument { get; set; }
-        
-        [ForeignKey("Enquete")]
-        public int IdEnquete { get; set; }
-
-        public virtual Enquete Enquete {get; set; }
+      
+        public string  NoEnquete {get; set; }
 
         public TypeDocument typeDocument { get; set; }
         

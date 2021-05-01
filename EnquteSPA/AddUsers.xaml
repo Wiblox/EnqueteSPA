@@ -22,6 +22,7 @@
             Grid.Row="0"
             Margin="10px"
             Orientation="Horizontal">
+
             <Label VerticalAlignment="Center">Adresse email du compte :</Label>
             <TextBox
                 x:Name="email"
