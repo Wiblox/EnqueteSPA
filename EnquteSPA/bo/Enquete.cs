@@ -10,6 +10,20 @@ namespace EnquteSPA
     [Table("Enquete")]
     class Enquete
     {
+        public Enquete() { }
+
+        public Enquete(string noEnquete, int departement, DateTime dateDepot, int? idInfracteur, int? idPlaignant, string motif, int? idEnqueteur, int statut)
+        {
+            NoEnquete = noEnquete;
+            Departement = departement;
+            DateDepot = dateDepot;
+            IdInfracteur = idInfracteur;
+            IdPlaignant = idPlaignant;
+            Motif = motif;
+            IdEnqueteur = idEnqueteur;
+            Statut = statut;
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdEnquete { get; set; }

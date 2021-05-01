@@ -15,6 +15,8 @@ namespace EnquteSPA
         bool close;
         public MainWindow()
         {
+            AddEnquete ae = new AddEnquete();
+            ae.ShowDialog();
             AddDocument doc = new AddDocument("ds");
             doc.ShowDialog();
             init();
@@ -48,7 +50,7 @@ namespace EnquteSPA
             if (!close)
             {
                 e.Cancel = true;
-                await this.ShowMessageAsync("Déconexion", "Vous allez bientôt quitter l'application.");
+                await this.ShowMessageAsync("Déconnexion", "Vous allez bientôt quitter l'application.");
                 e.Cancel = false;
                 System.Windows.Application.Current.Shutdown();
             }

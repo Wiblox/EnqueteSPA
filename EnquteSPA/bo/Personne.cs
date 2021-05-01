@@ -6,6 +6,18 @@ namespace EnquteSPA
     [Table("Personne")]
     class Personne
     {
+        public Personne() { }
+
+        public Personne(string nom, string prenom, string mail, string ville, string rue, string numero)
+        {
+            Nom = nom;
+            Prenom = prenom;
+            Mail = mail;
+            Ville = ville;
+            Rue = rue;
+            Numero = numero;
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdPersonne { get; set; }

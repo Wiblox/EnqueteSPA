@@ -25,38 +25,32 @@ namespace EnquteSPA
             InitializeComponent();
         }
 
+        private void data_Initialized()
+        {
+            using var db = new context();
+            data.ItemsSource = db.Compte.ToList();
+        }
+
         private void data_Initialized(object sender, EventArgs e)
         {
-            using (var db = new context())
-            {
-                data.ItemsSource = db.Compte.ToList();
-            }
+            data_Initialized();
+        }
+
+        private void data_Initialized(object sender, RoutedEventArgs e)
+        {
+            data_Initialized();
         }
 
         private void Button_Initialized(object sender, EventArgs e)
         {
-            if(Static.utilisateur == true) { 
-            if ( Static.utilisateurCourant.Admin==false)
-            {
-                AddUser.IsEnabled = false;
-
-            }
-            }
+            if(Static.utilisateurCourant?.Admin == false)
+                 AddUser.IsEnabled = false;
         }
 
         private void AddUser_Click(object sender, RoutedEventArgs e)
         {
             AddUsers frm = new AddUsers();
             frm.ShowDialog();
-        }
-
-        private void data_Initialized(object sender, RoutedEventArgs e)
-        {
-            using (var db = new context())
-            {
-                data.ItemsSource = db.Compte.ToList();
-            }
-
         }
     }
 }
