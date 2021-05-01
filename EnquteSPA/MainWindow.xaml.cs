@@ -15,10 +15,10 @@ namespace EnquteSPA
         bool close;
         public MainWindow()
         {
-            AddEnquete ae = new AddEnquete();
-            ae.ShowDialog();
-            AddDocument doc = new AddDocument("ds");
-            doc.ShowDialog();
+            //AddEnquete ae = new AddEnquete();
+            //ae.ShowDialog();
+            //AddDocument doc = new AddDocument("ds");
+            //doc.ShowDialog();
             init();
             login frm = new login();
             frm.ShowDialog();

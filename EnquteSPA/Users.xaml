@@ -25,9 +25,26 @@
             Grid.Row="0"
             Margin="60,30,60,0"
             VerticalAlignment="Top"
+            AutoGenerateColumns="False"
             GotFocus="data_Initialized"
             Initialized="data_Initialized"
-            IsReadOnly="True" />
+            IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=Mail}" />
+                <DataGridTextColumn Binding="{Binding Path=MotDePasse }" />
+                <DataGridTextColumn Binding="{Binding Path=Admin}" />
+
+                <!--  Add your normal columns here  -->
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="ShowHideDetails">Modifier Compte</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
 
         <Grid Grid.Row="1">
             <Button
