@@ -28,10 +28,10 @@
                 Foreground="Gray" />
         </Grid>
 
-        <TabControl
+        <TabControl x:Name="tab"
             BorderBrush="#FF70624F"
             BorderThickness="0,2,1,0"
-            Style="{DynamicResource MahApps.Styles.TabControl.Animated}">
+            Style="{DynamicResource MahApps.Styles.TabControl.Animated}" SelectedIndex="1">
 
             <TabItem Width="130px" IsEnabled="False">
                 <TabItem.Header>
@@ -45,8 +45,9 @@
                 </Grid>
             </TabItem>
             <TabItem VerticalAlignment="Center" Header="Accueil">
-                <Grid Background="#F1F3F4" />
-
+                <Grid Background="#F1F3F4">
+                    <local:Index />
+                </Grid>
             </TabItem>
             <TabItem VerticalAlignment="Center" Header="Enquêtes">
                 <Grid Background="#F1F3F4">

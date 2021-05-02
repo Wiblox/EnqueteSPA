@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="EnquteSPA.Index"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EnquteSPA"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid Background="#F1F3F4">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*" />
+            <RowDefinition Height="50*" />
+            <RowDefinition Height="50*" />
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0" >
+            <TextBlock FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center">Bienvenue !</TextBlock>
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Background="#eb651b">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*" />
+                    <RowDefinition Height="50*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBlock FontSize="20" Text="Enquêtes non assignées" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <TextBlock x:Name="NbEnquetesNonAssignees" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+
+            </Grid>
+
+            <Grid Grid.Column="1" Background="#70624f">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*" />
+                    <RowDefinition Height="50*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" >
+                    <TextBlock FontSize="20" Foreground="White" Text="Enquêtes en cours" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <TextBlock x:Name="NbEnquetesEnCours" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+
+            </Grid>
+
+            <Grid Grid.Column="2" Background="#41392e">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*" />
+                    <RowDefinition Height="50*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" >
+                    <TextBlock FontSize="20" Foreground="White" Text="Enquêteurs" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <TextBlock x:Name="NbEnqueteurs" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+
+            </Grid>
+            
+        </Grid>
+
+        <Grid Grid.Row="2">
+
+        </Grid>
+        
+    </Grid>
+
+</UserControl>
