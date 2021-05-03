@@ -1,19 +1,11 @@
-﻿using EnquteSPA.bo;
-using MahApps.Metro.Controls;
+﻿using MahApps.Metro.Controls;
 using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Xml;
 
 namespace EnquteSPA
@@ -26,13 +18,8 @@ namespace EnquteSPA
         public LocateEnqueteur()
         {
             InitializeComponent();
-            using var db = new context();
-            var listeEnqueteur = db.SpaPersonne.ToList();
-            foreach (SpaPersonne enqueteur in listeEnqueteur) {
-                Geocode(enqueteur, enqueteur.Nom, enqueteur.Prenom, (bool)enqueteur.DelegueEnqueteur);
-            }
-
-
+            Geocode("39 rue charles de gaulle seremange","vivien KORPYS",true);
+            Geocode("7 impasse maurice ravel Morhange","Viviane JEAN",false);
         }
 
         void addPushPin(Location loc, string nom, string prenom, bool delegueEnqueteur)
