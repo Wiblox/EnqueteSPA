@@ -32,7 +32,10 @@
                     <DataGridTemplateColumn Header="Delegue">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Margin="5px" Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+                                <Button
+                                    Margin="5px"
+                                    CommandParameter="{Binding IdSpaPersonne}"
+                                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="Button_Click_2">
                                     <TextBlock>Modifier Enquêteur</TextBlock>
                                 </Button>
                             </DataTemplate>

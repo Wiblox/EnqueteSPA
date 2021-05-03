@@ -45,19 +45,17 @@
                 <Label Width="100" Content="Rue :" />
                 <TextBox x:Name="Rue" />
             </DockPanel>
-            <CheckBox x:Name="Delegue"
+            <CheckBox
+                x:Name="Delegue"
                 Padding="5px"
                 HorizontalAlignment="Center"
                 Content="Delegué Enquêteur" />
 
         </WrapPanel>
         <Grid Grid.Row="2" Margin="20px">
-            <Button
-                Width="100px"
-                Click="Button_Click_1"
-                Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+            <Button Click="Button_Click_1" Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
 
-                <TextBlock>Crée l'enquêteur</TextBlock>
+                <TextBlock x:Name="NomB">Crée l'enquêteur</TextBlock>
             </Button>
         </Grid>
     </Grid>

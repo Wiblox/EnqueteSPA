@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -43,6 +44,19 @@ namespace EnquteSPA
         {
             LocateEnqueteur locate = new LocateEnqueteur();
             locate.ShowDialog();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Button fdv = (Button)sender;
+            Debug.WriteLine(fdv.CommandParameter);
+            using var db = new context();
+            var modifSPA = db.SpaPersonne.Find(fdv.CommandParameter);
+            AddSpaPersonne newx = new AddSpaPersonne(modifSPA);
+            newx.ShowDialog();
+            data.ItemsSource = db.SpaPersonne.ToList();
+
+
         }
     }
 }
