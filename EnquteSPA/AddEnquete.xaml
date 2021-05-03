@@ -7,119 +7,132 @@
     xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Ajout d'une enquête"
-    ResizeMode="NoResize"
     Width="700"
     Height="Auto"
+    d:DesignHeight="372.88"
+    ResizeMode="NoResize"
     SizeToContent="WidthAndHeight"
     mc:Ignorable="d">
 
     <Grid Margin="5,5,5,5">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <WrapPanel Grid.Row="0" Orientation="Horizontal">
             <StackPanel Orientation="Horizontal">
-                <Label Content="Numéro d'enquête :"/>
-                <TextBox x:Name="XNumEnquete" IsReadOnly="True" Width="150"/>
+                <Label Content="Numéro d'enquête :" />
+                <TextBox
+                    x:Name="XNumEnquete"
+                    Width="150"
+                    IsReadOnly="True" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Content="Date de dépôt :"/>
-                <DatePicker x:Name="XDateDepot" VerticalAlignment="Top" Width="100" />
+                <Label Content="Date de dépôt :" />
+                <DatePicker
+                    x:Name="XDateDepot"
+                    Width="100"
+                    VerticalAlignment="Top" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Content="Département :"/>
-                <TextBox x:Name="XDepartement" Width="50" TextChanged="TxtDepartementChange" />
+                <Label Content="Département :" />
+                <TextBox
+                    x:Name="XDepartement"
+                    Width="50"
+                    TextChanged="TxtDepartementChange" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Content="Inspecteur :"/>
-                <ComboBox x:Name="XInspecteur" Initialized="ListeInspecteurs" Width="150"/>
+                <Label Content="Inspecteur :" />
+                <ComboBox
+                    x:Name="XInspecteur"
+                    Width="150"
+                    Initialized="ListeInspecteurs" />
             </StackPanel>
         </WrapPanel>
 
         <StackPanel Grid.Row="1">
-            <Separator Margin="5,15,5,5"/>
-            <Label Content="Motif :"/>
-            <TextBox x:Name="XMotif"
+            <Separator Margin="5,15,5,5" />
+            <Label Content="Motif :" />
+            <TextBox
+                x:Name="XMotif"
                 Width="700"
                 MinHeight="50"
                 MaxHeight="150"
-                TextWrapping="Wrap"
-                AcceptsReturn="True"
-                VerticalScrollBarVisibility="Visible"
                 Margin="10,0"
-            />
-            <Separator Margin="5,15,5,10"/>
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Visible" />
+            <Separator Margin="5,15,5,10" />
         </StackPanel>
 
         <WrapPanel Grid.Row="2" HorizontalAlignment="Center">
-            <GroupBox 
+            <GroupBox
+                Grid.Column="0"
+                Width="325"
                 Margin="0,0,0,0"
                 Header="Plaignant"
-                Style="{x:Null}"
-                Width="325"
-                Grid.Column="0">
+                Style="{x:Null}">
                 <WrapPanel Grid.Row="0" Orientation="Horizontal">
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Nom :"/>
-                        <TextBox x:Name="XPlaignantNom" Width="100"/>
+                        <Label Content="Nom :" />
+                        <TextBox x:Name="XPlaignantNom" Width="100" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Prénom :"/>
-                        <TextBox x:Name="XPlaignantPrenom" Width="100"/>
+                        <Label Content="Prénom :" />
+                        <TextBox x:Name="XPlaignantPrenom" Width="100" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Mail :"/>
-                        <TextBox x:Name="XPlaignantMail" Width="200"/>
+                        <Label Content="Mail :" />
+                        <TextBox x:Name="XPlaignantMail" Width="200" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Ville :"/>
-                        <TextBox x:Name="XPlaignantVille" Width="150"/>
+                        <Label Content="Ville :" />
+                        <TextBox x:Name="XPlaignantVille" Width="150" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Numéro :"/>
-                        <TextBox x:Name="XPlaignantNumero" Width="50"/>
+                        <Label Content="Numéro :" />
+                        <TextBox x:Name="XPlaignantNumero" Width="50" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Rue :"/>
-                        <TextBox x:Name="XPlaignantRue" Width="150"/>
+                        <Label Content="Rue :" />
+                        <TextBox x:Name="XPlaignantRue" Width="150" />
                     </StackPanel>
                 </WrapPanel>
             </GroupBox>
-            <GroupBox 
+            <GroupBox
+                Grid.Column="1"
+                Width="350"
                 Margin="10,0,0,0"
                 Header="Infracteur"
-                Style="{x:Null}"
-                Width="350"
-                Grid.Column="1">
+                Style="{x:Null}">
                 <WrapPanel Grid.Row="0" Orientation="Horizontal">
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Nom :"/>
-                        <TextBox x:Name="XInfracteurNom" Width="100"/>
+                        <Label Content="Nom :" />
+                        <TextBox x:Name="XInfracteurNom" Width="100" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Prénom :"/>
-                        <TextBox x:Name="XInfracteurPrenom" Width="100"/>
+                        <Label Content="Prénom :" />
+                        <TextBox x:Name="XInfracteurPrenom" Width="100" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Mail :"/>
-                        <TextBox x:Name="XInfracteurMail" Width="200"/>
+                        <Label Content="Mail :" />
+                        <TextBox x:Name="XInfracteurMail" Width="200" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Ville :"/>
-                        <TextBox x:Name="XInfracteurVille" Width="150"/>
+                        <Label Content="Ville :" />
+                        <TextBox x:Name="XInfracteurVille" Width="150" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Numéro :"/>
-                        <TextBox x:Name="XInfracteurNumero" Width="50"/>
+                        <Label Content="Numéro :" />
+                        <TextBox x:Name="XInfracteurNumero" Width="50" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Rue :"/>
-                        <TextBox x:Name="XInfracteurRue" Width="150"/>
+                        <Label Content="Rue :" />
+                        <TextBox x:Name="XInfracteurRue" Width="150" />
                     </StackPanel>
                 </WrapPanel>
             </GroupBox>
@@ -129,8 +142,9 @@
             Grid.Row="3"
             Width="75"
             Height="30"
-            Content="Valider"
             Margin="0,5"
-            Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="ClickBtnValider" />
+            Click="ClickBtnValider"
+            Content="Valider"
+            Style="{StaticResource MahApps.Styles.Button.Square.Accent}" />
     </Grid>
 </mah:MetroWindow>

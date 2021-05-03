@@ -7,6 +7,21 @@ namespace EnquteSPA
     [Table("SpaPersonne")]
     class SpaPersonne
     {
+        public SpaPersonne() { }
+
+        public SpaPersonne(string nom, string prenom, string mail, string ville, string rue, string numero, int idFonction, bool? delegueEnqueteur, bool etat)
+        {
+            Nom = nom;
+            Prenom = prenom;
+            Mail = mail;
+            Ville = ville;
+            Rue = rue;
+            Numero = numero;
+            IdFonction = idFonction;
+            DelegueEnqueteur = delegueEnqueteur;
+            Etat = etat;
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdSpaPersonne { get; set; }
@@ -17,9 +32,13 @@ namespace EnquteSPA
 
         public string Mail { get; set; }
 
-        public int IdFonction { get; set; }
+        public string Ville { get; set; }
 
-        public Fonction Fonction {get; set; }
+        public string Rue { get; set; }
+
+        public string Numero { get; set; }
+
+        public int IdFonction { get; set; }
         
         public bool? DelegueEnqueteur { get; set; }
         
