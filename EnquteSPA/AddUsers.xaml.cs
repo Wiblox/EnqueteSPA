@@ -1,23 +1,13 @@
 ﻿using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace EnquteSPA
 {
     /// <summary>
     /// Interaction logic for AddUsers.xaml
     /// </summary>
-    public partial class AddUsers :   MetroWindow
+    public partial class AddUsers : MetroWindow
     {
         public AddUsers()
         {
@@ -46,30 +36,27 @@ namespace EnquteSPA
         //On crée le compte
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            bool verfication = true;
-            string erreur= "";
-            if (email.Text.Length == 0 || !IsValidEmail(email.Text)) { verfication = false;
+            bool verification = true;
+            string erreur = "";
+            if (email.Text.Length == 0 || !IsValidEmail(email.Text))
+            {
+                verification = false;
                 erreur += "Email incorect \n";
             }
-
-
-            if(password.Text.Length == 0)
+            if (password.Text.Length == 0)
             {
                 erreur += "Mot de passe incorect ";
-
-                verfication = false;
+                verification = false;
             }
-            if (verfication)
+            if (verification)
             {
-                Compte newCompte = new Compte(email.Text, password.Text,false);
-                this.Close();
+                new Compte(email.Text, password.Text, false);
+                Close();
             }
             else
             {
-                 this.ShowMessageAsync("Erreur création de compte", erreur);
-
+                this.ShowMessageAsync("Erreur création de compte", erreur);
             }
-
         }
     }
 }
