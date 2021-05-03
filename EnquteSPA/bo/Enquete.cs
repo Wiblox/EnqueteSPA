@@ -53,7 +53,7 @@ namespace EnquteSPA
     
         public IQueryable<Document> GetAllDocuments()
         {
-            using var db = new context();
+            using var db = new Context();
             return db.Document.Where(v => v.NoEnquete == this.NoEnquete);
         }
     }

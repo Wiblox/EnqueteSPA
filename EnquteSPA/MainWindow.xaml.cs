@@ -43,7 +43,7 @@ namespace EnquteSPA
 
         private void init()
         {
-            using (var db = new context()) { 
+            using (var db = new Context()) { 
 
                 //On initialise un admin
                 if (db.Compte.ToList().Count == 0)

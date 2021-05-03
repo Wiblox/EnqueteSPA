@@ -17,7 +17,7 @@ namespace EnquteSPA
             MotDePasse = motDePasse;
             Admin = admin;
 
-            using var db = new context();
+            using var db = new Context();
             db.Compte.Add(this);
             db.SaveChanges();
         }
@@ -55,7 +55,7 @@ namespace EnquteSPA
 
         public static Compte CheckCompte(string mail, string mdp)
         {
-            using var db = new context();
+            using var db = new Context();
             IQueryable<Compte> cTab = db.Compte.Where(v => v.Mail == mail && v.MotDePasse == mdp);
             //IQueryable<Compte> cTab = from v in db.Compte where v.Mail == mail && v.MotDePasse == mdp select v;
             return cTab.Count() == 0 ? null : cTab.First();

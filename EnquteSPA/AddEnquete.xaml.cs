@@ -42,7 +42,7 @@ namespace EnquteSPA
 
         private void ClickBtnValider(object sender, RoutedEventArgs e)
         {
-            using (var db = new context())
+            using (var db = new Context())
             {
 
                 

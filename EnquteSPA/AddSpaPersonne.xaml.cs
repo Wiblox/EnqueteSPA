@@ -27,7 +27,7 @@ namespace EnquteSPA
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            using (var db = new context())
+            using (var db = new Context())
             {
                 SpaPersonne enqueteur = new SpaPersonne(Nom.Text, Prenom.Text, Mail.Text, Ville.Text, Rue.Text, Numero.Text, 1, Delegue.IsChecked, true);
                 db.SpaPersonne.Add(enqueteur);

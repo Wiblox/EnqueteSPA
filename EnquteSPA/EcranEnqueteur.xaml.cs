@@ -27,7 +27,7 @@ namespace EnquteSPA
 
         private void data_Initialized(object sender, EventArgs e)
         {
-            using var db = new context();
+            using var db = new Context();
             data.ItemsSource = db.SpaPersonne.ToList();
         }
 
@@ -35,7 +35,7 @@ namespace EnquteSPA
         {
             AddSpaPersonne fenetre = new AddSpaPersonne();
             fenetre.ShowDialog();
-            using var db = new context();
+            using var db = new Context();
             data.ItemsSource = db.SpaPersonne.ToList();
         }
 

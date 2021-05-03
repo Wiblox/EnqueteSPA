@@ -52,7 +52,7 @@ namespace EnquteSPA
                 System.IO.Directory.CreateDirectory("numeroEnquete/"+ numeroEnqute);
                 System.IO.File.Copy(v, "numeroEnquete/" + numeroEnqute+"/"+ System.IO.Path.GetFileName(v), true);
                 Document doc = new Document(numeroEnqute, modele.TypeDocument.Pdf, "numeroEnquete/" + numeroEnqute + "/" + System.IO.Path.GetFileName(v));
-                using (var db = new context())
+                using (var db = new Context())
                 {
                     db.Document.Add(doc);
                     db.SaveChanges();
