@@ -55,8 +55,6 @@ namespace EnquteSPA
             AddSpaPersonne newx = new AddSpaPersonne(modifSPA);
             newx.ShowDialog();
             data.ItemsSource = db.SpaPersonne.ToList();
-
-
         }
     }
 }
