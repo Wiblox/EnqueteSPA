@@ -40,16 +40,9 @@ namespace EnquteSPA
 
         private void init()
         {
-<<<<<<< HEAD
-            using (var db = new Context()) { 
-
-                //On initialise un admin
-                if (db.Compte.ToList().Count == 0)
-=======
-            using var db = new context();
+            using var db = new Context();
             //On initialise un admin
             if (db.Compte.ToList().Count == 0)
->>>>>>> 73dbe76ae7a5edcfea55f69319b36c865e672dc8
             {
                 new Compte("admin@gmail.com", "azerty123", true);
             }

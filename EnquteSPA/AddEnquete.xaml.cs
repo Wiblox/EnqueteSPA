@@ -73,13 +73,9 @@ namespace EnquteSPA
 
         private void ClickBtnValider(object sender, RoutedEventArgs e)
         {
-<<<<<<< HEAD
-            using (var db = new Context())
-=======
             if(VerifChamps())
->>>>>>> 73dbe76ae7a5edcfea55f69319b36c865e672dc8
             {
-                using var db = new context();
+                using var db = new Context();
                 Personne plaignant = new Personne(XPlaignantNom.Text, XPlaignantPrenom.Text, XPlaignantMail.Text, XPlaignantVille.Text, XPlaignantRue.Text, XPlaignantNumero.Text);
                 db.Personne.Add(plaignant);
                 Personne infracteur = new Personne(XInfracteurNom.Text, XInfracteurPrenom.Text, XInfracteurMail.Text, XInfracteurVille.Text, XInfracteurRue.Text, XInfracteurNumero.Text);
