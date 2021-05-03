@@ -1,6 +1,5 @@
 ﻿using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
-using System;
 using System.Linq;
 using System.Windows;
 using EnquteSPA.bo;
@@ -15,15 +14,13 @@ namespace EnquteSPA
         bool close;
         public MainWindow()
         {
-            //AddEnquete ae = new AddEnquete();
-            //ae.ShowDialog();
-            //AddDocument doc = new AddDocument("ds");
-            //doc.ShowDialog();
-            LocateEnqueteur df = new LocateEnqueteur();
-            df.ShowDialog();
+            // AddEnquete ae = new AddEnquete();
+            // ae.ShowDialog();
+            // AddDocument doc = new AddDocument("ds");
+            // doc.ShowDialog();
 
-
-
+            // LocateEnqueteur df = new LocateEnqueteur();
+            // df.ShowDialog();
 
             init();
             login frm = new login();
@@ -43,15 +40,20 @@ namespace EnquteSPA
 
         private void init()
         {
+<<<<<<< HEAD
             using (var db = new Context()) { 
 
                 //On initialise un admin
                 if (db.Compte.ToList().Count == 0)
+=======
+            using var db = new context();
+            //On initialise un admin
+            if (db.Compte.ToList().Count == 0)
+>>>>>>> 73dbe76ae7a5edcfea55f69319b36c865e672dc8
             {
                 new Compte("admin@gmail.com", "azerty123", true);
             }
         }
-    }
 
         protected override async void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
@@ -60,7 +62,7 @@ namespace EnquteSPA
                 e.Cancel = true;
                 await this.ShowMessageAsync("Déconnexion", "Vous allez bientôt quitter l'application.");
                 e.Cancel = false;
-                System.Windows.Application.Current.Shutdown();
+                Application.Current.Shutdown();
             }
         }
         private async void Button_Click(object sender, RoutedEventArgs e)

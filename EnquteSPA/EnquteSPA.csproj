@@ -16,6 +16,7 @@
     <PackageReference Include="MahApps.Metro" Version="2.4.3" />
     <PackageReference Include="Microsoft.Maps.MapControl.WPF" Version="1.0.0.3" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="SharpVectors0.3.1.41013" Version="0.3.1.41013" />
   </ItemGroup>
 
   <ItemGroup>

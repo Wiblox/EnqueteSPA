@@ -30,15 +30,20 @@
             Initialized="data_Initialized"
             IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=Mail}" />
-                <DataGridTextColumn Binding="{Binding Path=MotDePasse }" />
-                <DataGridTextColumn Binding="{Binding Path=Admin}" />
+                <DataGridTextColumn Binding="{Binding Path=Mail}" Header="Mail" />
+                <DataGridTextColumn Binding="{Binding Path=MotDePasse}" Header="Password" />
+                <DataGridCheckBoxColumn Binding="{Binding Path=Admin}" Header="Admin" />
 
                 <!--  Add your normal columns here  -->
-                <DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Modification">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Click="ShowHideDetails">Modifier Compte</Button>
+                            <Button
+                                Margin="5px"
+                                Click="ShowHideDetails"
+                                Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+                                <TextBlock>Modifier Compte</TextBlock>
+                            </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -52,9 +57,10 @@
                 Width="150px"
                 Height="50px"
                 Click="AddUser_Click"
-                Content="Ajouter un utilisateur"
                 Initialized="Button_Initialized"
-                Style="{StaticResource MahApps.Styles.Button.Square.Accent}" />
+                Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+                <TextBlock>Ajouter un utilisateur</TextBlock>
+            </Button>
         </Grid>
     </Grid>
 
