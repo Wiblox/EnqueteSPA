@@ -39,7 +39,7 @@ namespace EnquteSPA
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            using (var db = new context())
+            using (var db = new Context())
             {
                 Compte loogin = Compte.CheckCompte(user.Text,password.Password);
                 if (loogin != null)

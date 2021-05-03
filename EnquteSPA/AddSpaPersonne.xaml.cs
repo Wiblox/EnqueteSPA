@@ -47,7 +47,7 @@ namespace EnquteSPA
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            using (var db = new context())
+            using (var db = new Context())
             {
                 if (modifier == null)
                 {

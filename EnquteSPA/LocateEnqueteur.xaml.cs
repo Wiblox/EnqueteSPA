@@ -19,7 +19,7 @@ namespace EnquteSPA
         public LocateEnqueteur()
         {
             InitializeComponent();
-            using var db = new context();
+            using var db = new Context();
             var listeEnqueteur = db.SpaPersonne.ToList();
             foreach (SpaPersonne enqueteur in listeEnqueteur)
             {

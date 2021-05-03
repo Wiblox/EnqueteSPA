@@ -27,7 +27,7 @@ namespace EnquteSPA
 
         private void data_Initialized()
         {
-            using var db = new context();
+            using var db = new Context();
             data.ItemsSource = db.Compte.ToList();
         }
         void ShowHideDetails(object sender, RoutedEventArgs e)

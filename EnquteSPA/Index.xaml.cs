@@ -22,7 +22,7 @@ namespace EnquteSPA
             int nbEnquetesEnCours;
             int nbEnqueteurs;
 
-            using (var db = new context())
+            using (var db = new Context())
             {
 
                 nbEnquetesNonAssignees = db.Enquete.Where(o => o.Statut == (int)modele.StatutEnquete.NON_ASSIGNEE).Count();

@@ -2,8 +2,13 @@
 
 namespace EnquteSPA.bo
 {
-    class context : DbContext
+    class Context : DbContext
     {
+
+        public Context(){
+            Database.SetInitializer(new ContextDbInitializer());
+        }
+
         public DbSet<Compte> Compte { get; set; }
         public DbSet<Document> Document { get; set; }
         public DbSet<Personne> Personne { get; set; }
