@@ -21,17 +21,18 @@
 
             <TextBlock
                 x:Name="LoginName"
-                Height="30"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Bottom"
                 FontSize="25"
                 Foreground="Gray" />
         </Grid>
 
-        <TabControl x:Name="tab"
+        <TabControl
+            x:Name="tab"
             BorderBrush="#FF70624F"
             BorderThickness="0,2,1,0"
-            Style="{DynamicResource MahApps.Styles.TabControl.Animated}" SelectedIndex="1">
+            SelectedIndex="1"
+            Style="{DynamicResource MahApps.Styles.TabControl.Animated}">
 
             <TabItem Width="130px" IsEnabled="False">
                 <TabItem.Header>
@@ -52,6 +53,11 @@
             <TabItem VerticalAlignment="Center" Header="Enquêtes">
                 <Grid Background="#F1F3F4">
                     <local:EcranEnquete />
+                </Grid>
+            </TabItem>
+            <TabItem VerticalAlignment="Center" Header="Enquêteur">
+                <Grid Background="#F1F3F4">
+                    <local:EcranEnqueteur />
                 </Grid>
             </TabItem>
             <TabItem VerticalAlignment="Center" Header="Utilisateurs">
