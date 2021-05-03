@@ -1,5 +1,4 @@
 using EnquteSPA.bo;
-using EnquteSPA.modele;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -36,21 +35,20 @@ namespace EnquteSPA
         
         public int? IdInfracteur { get; set; }
 
-        public virtual Personne Infracteur {get; set; }
+        //public virtual Personne Infracteur {get; set; }
         
         public int? IdPlaignant { get; set; }
 
-        public virtual Personne Plaignant {get; set; }
+        //public virtual Personne Plaignant {get; set; }
 
         public string Motif { get; set; }
         
         public int? IdEnqueteur { get; set; }
 
-        public virtual SpaPersonne Enqueteur { get; set; }
+        //public virtual SpaPersonne Enqueteur { get; set; }
 
         public int Statut {get; set; }
 
-    
         public IQueryable<Document> GetAllDocuments()
         {
             using var db = new context();

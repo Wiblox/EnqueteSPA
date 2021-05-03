@@ -43,5 +43,10 @@ namespace EnquteSPA
         public bool? DelegueEnqueteur { get; set; }
         
         public bool Etat { get; set; }
+
+        public string GetLocalisation()
+        {
+            return $"{Numero} {Rue} {Ville} France";
+        }
     }
 }
