@@ -50,7 +50,7 @@ namespace EnquteSPA
         {
             Button fdv = (Button)sender;
             Debug.WriteLine(fdv.CommandParameter);
-            using var db = new context();
+            using var db = new Context();
             var modifSPA = db.SpaPersonne.Find(fdv.CommandParameter);
             AddSpaPersonne newx = new AddSpaPersonne(modifSPA);
             newx.ShowDialog();
