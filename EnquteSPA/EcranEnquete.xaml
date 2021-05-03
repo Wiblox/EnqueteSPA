@@ -12,14 +12,14 @@
     <Grid Background="#F1F3F4">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
         <Button
-                Grid.Column="0"
-                Margin="10px"
-                Click="CreateEnquete"
+            Grid.Column="0"
             Height="10"
-                Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+            Margin="10px"
+            Click="CreateEnquete"
+            Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
             <TextBlock FontSize="18">Crée une enquête</TextBlock>
         </Button>
         <DataGrid

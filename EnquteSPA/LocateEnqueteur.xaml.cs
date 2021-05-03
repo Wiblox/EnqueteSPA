@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls;
+﻿using EnquteSPA.bo;
+using MahApps.Metro.Controls;
 using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
@@ -18,8 +19,14 @@ namespace EnquteSPA
         public LocateEnqueteur()
         {
             InitializeComponent();
-            Geocode("39 rue charles de gaulle seremange","vivien KORPYS",true);
-            Geocode("7 impasse maurice ravel Morhange","Viviane JEAN",false);
+            using var db = new context();
+            var listeEnqueteur = db.SpaPersonne.ToList();
+            foreach (SpaPersonne enqueteur in listeEnqueteur)
+            {
+                Geocode(enqueteur.GetLocalisation(), enqueteur.Nom, enqueteur.Prenom, (bool)enqueteur.DelegueEnqueteur);
+            }
+
+
         }
 
         void addPushPin(Location loc, string nom, string prenom, bool delegueEnqueteur)
@@ -27,19 +34,18 @@ namespace EnquteSPA
             Pushpin te = new Pushpin();
             te.Location = loc;
             var CoordinateTip = new ToolTip();
-            CoordinateTip.Content = name;
-
-            te.Content =name;
+            CoordinateTip.Content = nom.ToUpper() + " " + prenom.ToUpper();
+            te.Content = nom[0] + " "+ prenom[0] ;
             te.ToolTip = CoordinateTip;
-            if (delegueEnqueteur) { 
-            te.Background = new SolidColorBrush(Colors.Blue);
+            if (delegueEnqueteur)
+            {
+                te.Background = new SolidColorBrush(Colors.Blue);
             }
-
             myMap.Children.Add(te);
         }
 
         // Geocode an address and return a latitude and longitude
-        public void Geocode(string addressQuery,string nom,string prenom,bool delegueEnqueteur)
+        public void Geocode(string addressQuery, string nom, string prenom, bool delegueEnqueteur)
         {
             //Create REST Services geocode request using Locations API
             string geocodeRequest = "http://dev.virtualearth.net/REST/v1/Locations/" + addressQuery + "?o=xml&key=" + "magxKWMjHaUtTsRgF1lW~MRGGMAW5GbjaUW6sUk7-Cw~AtgoUxOrpiDSHWcYdPwQMWlLB71ydq7H2smazBVWmL3vt28stY2eAw3bv40wZBiM";
