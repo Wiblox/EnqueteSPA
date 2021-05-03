@@ -54,6 +54,7 @@ namespace EnquteSPA
             var modifSPA = db.SpaPersonne.Find(fdv.CommandParameter);
             AddSpaPersonne newx = new AddSpaPersonne(modifSPA);
             newx.ShowDialog();
+            db.SaveChanges();
             data.ItemsSource = db.SpaPersonne.ToList();
 
 

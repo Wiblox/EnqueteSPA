@@ -22,14 +22,20 @@
             AutoGenerateColumns="False"
             IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=Nom}" />
-                <DataGridTextColumn Binding="{Binding Path=Prenom}" />
+                <DataGridTextColumn Binding="{Binding Path=NoEnquete}" Header="No Enquete" />
+                <DataGridTextColumn Binding="{Binding Path=Departement}" Header="Departement" />
+                <DataGridTextColumn Binding="{Binding Path=Statut}" Header="Statut" />
 
                 <!--  Add your normal columns here  -->
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Padding="2px">Modifier Enquête</Button>
+                            <Button
+                                Padding="5px"
+                                Click="Button_Click"
+                                CommandParameter="{Binding NoEnquete}">
+                                Modifier Enquête
+                            </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -38,8 +44,8 @@
         </DataGrid>
         <Button
             Grid.Row="1"
-            Margin="10px"
             Width="200"
+            Margin="10px"
             Click="CreateEnquete"
             Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
             <TextBlock FontSize="18">Créer une enquête</TextBlock>

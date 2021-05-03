@@ -53,6 +53,8 @@ namespace EnquteSPA
                 {
                     SpaPersonne enqueteur = new SpaPersonne(Nom.Text, Prenom.Text, Mail.Text, Ville.Text, Rue.Text, Numero.Text, 1, Delegue.IsChecked, true);
                     db.SpaPersonne.Add(enqueteur);
+                    db.SaveChanges();
+
                 }
                 else
                 {
@@ -63,10 +65,10 @@ namespace EnquteSPA
                     modifier.Rue = Rue.Text;
                     modifier.Numero = Numero.Text;
                     modifier.DelegueEnqueteur = Delegue.IsChecked;
+                    db.SaveChanges();
 
                 }
 
-                db.SaveChanges();
                 this.Close();
             }
         }
