@@ -17,7 +17,7 @@ namespace EnquteSPA
     /// <summary>
     /// Interaction logic for AddUsers.xaml
     /// </summary>
-    public partial class AddUsers :   MetroWindow
+    public partial class AddUsers : MetroWindow
     {
         public AddUsers()
         {
@@ -46,30 +46,27 @@ namespace EnquteSPA
         //On crée le compte
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            bool verfication = true;
-            string erreur= "";
-            if (email.Text.Length == 0 || !IsValidEmail(email.Text)) { verfication = false;
+            bool verification = true;
+            string erreur = "";
+            if (email.Text.Length == 0 || !IsValidEmail(email.Text))
+            {
+                verification = false;
                 erreur += "Email incorect \n";
             }
-
-
-            if(password.Text.Length == 0)
+            if (password.Text.Length == 0)
             {
                 erreur += "Mot de passe incorect ";
-
-                verfication = false;
+                verification = false;
             }
-            if (verfication)
+            if (verification)
             {
-                Compte newCompte = new Compte(email.Text, password.Text,false);
-                this.Close();
+                new Compte(email.Text, password.Text, false);
+                Close();
             }
             else
             {
-                 this.ShowMessageAsync("Erreur création de compte", erreur);
-
+                this.ShowMessageAsync("Erreur création de compte", erreur);
             }
-
         }
     }
 }

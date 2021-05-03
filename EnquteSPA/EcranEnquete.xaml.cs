@@ -21,7 +21,7 @@ namespace EnquteSPA
 
         private void CreateEnquete(object sender, RoutedEventArgs e)
         {
-            AddUsers frm = new AddUsers();
+            AddEnquete frm = new AddEnquete();
             frm.ShowDialog();
         }
     }

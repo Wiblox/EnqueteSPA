@@ -31,29 +31,27 @@ namespace EnquteSPA
         private void TxtDepartementChange(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             GenTxtNumEnquete();
-            //// Regex des départements : https://www.regions-et-departements.fr/departements-francais
-            //Regex regex = new Regex("^([0-9]|[0-8][0-9])|9[0-5]|2[A|B]|97[1-4|6]$");
-            //if (!regex.IsMatch(XDepartement.Text) && XDepartement.Text.Length > 0)
-            //{
-            //    //XDepartement.Text = XDepartement.Text.Remove(XDepartement.Text.Length - 1, 1);
-            //}
-            //System.Diagnostics.Debug.WriteLine($"e: {XDepartement.Text} {XDepartement.Text.Length} {regex.Match(XDepartement.Text)}");
+            // Regex des départements : https://www.regions-et-departements.fr/departements-francais
+            // Regex regex = new Regex("^([0-9]|[0-8][0-9])|9[0-5]|2[A|B]|97[1-4|6]$");
+            // if (!regex.IsMatch(XDepartement.Text) && XDepartement.Text.Length > 0)
+            // {
+            //     //XDepartement.Text = XDepartement.Text.Remove(XDepartement.Text.Length - 1, 1);
+            // }
+            // System.Diagnostics.Debug.WriteLine($"e: {XDepartement.Text} {XDepartement.Text.Length} {regex.Match(XDepartement.Text)}");
         }
 
         private void ClickBtnValider(object sender, RoutedEventArgs e)
         {
-            using (var db = new context())
-            {
-
-                
-                Personne plaignant = new Personne(XPlaignantNom.Text, XPlaignantPrenom.Text, XPlaignantMail.Text, XPlaignantVille.Text, XPlaignantRue.Text, XPlaignantNumero.Text);
-                db.Personne.Add(plaignant);
-                Personne infracteur = new Personne(XInfracteurNom.Text, XInfracteurPrenom.Text, XInfracteurMail.Text, XInfracteurVille.Text, XInfracteurRue.Text, XInfracteurNumero.Text);
-                db.Personne.Add(infracteur);
-                Enquete enquete = new Enquete(XNumEnquete.Text, Int32.Parse(XDepartement.Text), (DateTime)XDateDepot.SelectedDate, infracteur.IdPersonne, plaignant.IdPersonne, XMotif.Text, 1, 1);
-                db.Enquete.Add(enquete);
-                db.SaveChanges();
-            }
+            using var db = new context();
+            Personne plaignant = new Personne(XPlaignantNom.Text, XPlaignantPrenom.Text, XPlaignantMail.Text, XPlaignantVille.Text, XPlaignantRue.Text, XPlaignantNumero.Text);
+            db.Personne.Add(plaignant);
+            Personne infracteur = new Personne(XInfracteurNom.Text, XInfracteurPrenom.Text, XInfracteurMail.Text, XInfracteurVille.Text, XInfracteurRue.Text, XInfracteurNumero.Text);
+            db.Personne.Add(infracteur);
+            db.SaveChanges();
+            Enquete enquete = new Enquete(XNumEnquete.Text, Int32.Parse(XDepartement.Text), (DateTime)XDateDepot.SelectedDate, infracteur.IdPersonne, plaignant.IdPersonne, XMotif.Text, 1, 1);
+            db.Enquete.Add(enquete);
+            db.SaveChanges();
+            Close();
         }
     }
 }
