@@ -41,7 +41,8 @@ namespace EnquteSPA
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            LocateEnqueteur locate = new LocateEnqueteur();
+            locate.ShowDialog();
         }
     }
 }

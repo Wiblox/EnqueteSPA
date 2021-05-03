@@ -24,15 +24,17 @@
                 Initialized="data_Initialized"
                 IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Path=Nom}" />
-                    <DataGridTextColumn Binding="{Binding Path=Prenom}" />
-                    <DataGridTextColumn Binding="{Binding Path=DelegueEnqueteur}" />
+                    <DataGridTextColumn Binding="{Binding Path=Nom}" Header="Nom" />
+                    <DataGridTextColumn Binding="{Binding Path=Prenom}" Header="Prenom" />
+                    <DataGridCheckBoxColumn Binding="{Binding Path=DelegueEnqueteur}" Header="Delegue" />
 
                     <!--  Add your normal columns here  -->
-                    <DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Delegue">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Padding="2px">Modifier Enquêteur</Button>
+                                <Button Margin="5px" Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+                                    <TextBlock>Modifier Enquêteur</TextBlock>
+                                </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -57,7 +59,8 @@
             <Button
                 Grid.Column="1"
                 Margin="10px"
-                Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="Button_Click_1">
+                Click="Button_Click_1"
+                Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
                 <TextBlock FontSize="18">Localiser enquêteur</TextBlock>
             </Button>
             <Button
