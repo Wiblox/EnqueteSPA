@@ -7,11 +7,11 @@ using System.Linq;
 namespace EnquteSPA
 {
     [Table("Enquete")]
-    class Enquete
+    public class Enquete
     {
         public Enquete() { }
 
-        public Enquete(string noEnquete, int departement, DateTime dateDepot, int? idInfracteur, int? idPlaignant, string motif, int? idEnqueteur, int statut)
+        public Enquete(string noEnquete, string departement, DateTime dateDepot, int? idInfracteur, int? idPlaignant, string motif, int? idEnqueteur, int statut)
         {
             NoEnquete = noEnquete;
             Departement = departement;
@@ -29,7 +29,7 @@ namespace EnquteSPA
 
         public string NoEnquete { get; set; }
 
-        public int Departement { get; set; }
+        public string Departement { get; set; }
 
         public DateTime DateDepot { get; set; }
         

@@ -1,6 +1,6 @@
 ﻿namespace EnquteSPA.modele
 {
-    enum StatutEnquete
+    public enum StatutEnquete
     {
         NON_ASSIGNEE = 1,
         EN_COURS = 2,

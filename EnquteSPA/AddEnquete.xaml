@@ -1,4 +1,5 @@
 ﻿<mah:MetroWindow
+    x:Name="XFen"
     x:Class="EnquteSPA.AddEnquete"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -105,7 +106,7 @@
             </GroupBox>
             <GroupBox
                 Grid.Column="1"
-                Width="350"
+                Width="325"
                 Margin="10,0,0,0"
                 Header="Infracteur"
                 Style="{x:Null}">
@@ -144,7 +145,8 @@
             Height="30"
             Margin="0,5"
             Click="ClickBtnValider"
-            Content="Valider"
-            Style="{StaticResource MahApps.Styles.Button.Square.Accent}" />
+            Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+            <TextBlock>Valider</TextBlock>
+        </Button>
     </Grid>
 </mah:MetroWindow>

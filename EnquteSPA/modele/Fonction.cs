@@ -1,6 +1,6 @@
 ﻿namespace EnquteSPA.modele
 {
-    enum Fonction
+    public enum Fonction
     {
         Admin = 1,
         Salarie = 2,

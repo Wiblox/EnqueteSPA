@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace EnquteSPA
 {
     [Table("Visite")]
-    class Visite
+    public class Visite
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
