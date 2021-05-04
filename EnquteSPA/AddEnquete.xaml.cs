@@ -4,6 +4,8 @@ using System;
 using EnquteSPA.bo;
 using EnquteSPA.modele;
 using MahApps.Metro.Controls.Dialogs;
+using System.Linq;
+using System.Diagnostics;
 
 namespace EnquteSPA
 {
@@ -80,9 +82,9 @@ namespace EnquteSPA
 
             }
         }
-        private void ListeEnqueteur(object sender, EventArgs e)
+        private void ListeEnqueteurs(object sender, EventArgs e)
         {
-            // TODO : La listes des enqueteurs DISPONIBLES
+
         }
 
         private void TxtDepartementChange(object sender, System.Windows.Controls.TextChangedEventArgs e)
@@ -100,7 +102,7 @@ namespace EnquteSPA
             erreur.ResetMsgRetour();
             erreur.TestDepartement(XDepartement.Text, "Département");
             /*if(XEnqueteur.SelectedItem == null)
-                erreur.AddToMsgRetour("Pas d'inspecteur sélectionné.");*/
+                erreur.AddToMsgRetour("Pas d'enquêteur sélectionné.");*/
             erreur.TestNonVide(XMotif.Text, "Motif");
             // Plaignant
             erreur.TestNonVide(XPlaignantNom.Text, "Nom du plaignant");

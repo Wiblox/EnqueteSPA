@@ -47,11 +47,11 @@
                     TextChanged="TxtDepartementChange" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Content="Inspecteur :" />
+                <Label Content="Enqueteur :" />
                 <ComboBox
-                    x:Name="XInspecteur"
+                    x:Name="XEnqueteur"
                     Width="150"
-                    Initialized="ListeInspecteurs" />
+                    Initialized="ListeEnqueteurs" />
             </StackPanel>
         </WrapPanel>
 
