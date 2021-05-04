@@ -82,17 +82,7 @@ namespace EnquteSPA
 
             }
         }
-        private void ListeEnqueteur(object sender, EventArgs e)
-        {
-            // TODO : La listes des enqueteurs DISPONIBLES
-            using var db = new Context();
-            List<SpaPersonne> cc = new List<SpaPersonne>();
-            cc = db.SpaPersonne.Where(v => v.Etat== true).ToList();
-            XInspecteur.ItemsSource = cc;
-            XInspecteur.DisplayMemberPath = "Nom";
-            XInspecteur.SelectedValue = "Nom";
-            XInspecteur.Text = "Selectionner";
-        }
+
 
         private void TxtDepartementChange(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
@@ -129,6 +119,18 @@ namespace EnquteSPA
             if (!erreur.IsSafe())
                 this.ShowMessageAsync("Erreur création de compte", erreur.GetMsgRetour());
             return erreur.IsSafe();
+        }
+
+        private void ListeInspecteurs(object sender, EventArgs e)
+        {
+            // TODO : La listes des enqueteurs DISPONIBLES
+            using var db = new Context();
+            List<SpaPersonne> cc = new List<SpaPersonne>();
+            cc = db.SpaPersonne.Where(v => v.Etat == true).ToList();
+            XInspecteur.ItemsSource = cc;
+            XInspecteur.DisplayMemberPath = "Nom";
+            XInspecteur.SelectedValue = "Nom";
+            XInspecteur.Text = "Selectionner";
         }
 
         private void ClickBtnValider(object sender, RoutedEventArgs e)
