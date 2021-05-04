@@ -45,6 +45,11 @@ namespace EnquteSPA
             db.SaveChanges();
             data.ItemsSource = db.Enquete.ToList();
         }
+
+        private void OuvrirEnquete(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
     public class StatutConverter : IValueConverter

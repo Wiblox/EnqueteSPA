@@ -16,12 +16,11 @@ namespace EnquteSPA
         {
             // AddEnquete ae = new AddEnquete();
             // ae.ShowDialog();
-            // AddDocument doc = new AddDocument("ds");
-            // doc.ShowDialog();
+            //AddDocument doc = new AddDocument("ds");
+            //doc.ShowDialog();
 
-            // LocateEnqueteur df = new LocateEnqueteur();
-            // df.ShowDialog();
-
+            OuvertureEnquete ds = new OuvertureEnquete(3);
+            ds.ShowDialog();
             init();
             login frm = new login();
             frm.ShowDialog();

@@ -8,7 +8,7 @@ namespace EnquteSPA
     public class Document
     {
         public Document() { }
-        public Document(string enquete, TypeDocument typeDocument, string pathDoc)
+        public Document(int enquete, TypeDocument typeDocument, string pathDoc)
         {
 
             NoEnquete = enquete;
@@ -20,7 +20,7 @@ namespace EnquteSPA
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdDocument { get; set; }
       
-        public string  NoEnquete {get; set; }
+        public int  NoEnquete {get; set; }
 
         public TypeDocument typeDocument { get; set; }
         

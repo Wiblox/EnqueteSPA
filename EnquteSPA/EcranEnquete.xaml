@@ -47,18 +47,35 @@
                 <DataGridTextColumn Binding="{Binding Path=IdEnqueteur, Converter={StaticResource SpaPersonneConverter}}" Header="Enquêteur" />
 
                 <!--  Add your normal columns here  -->
-                <DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Modification">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button
-                                Padding="5px"
+                                Margin="4px"
                                 Click="EditEnquete"
-                                CommandParameter="{Binding NoEnquete}">
-                                Modifier Enquête
+                                CommandParameter="{Binding NoEnquete}"
+                                Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+
+                                <TextBlock>Modifier Enquête</TextBlock>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Ouverture">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                Margin="4px"
+                                Click="OuvrirEnquete"
+                                CommandParameter="{Binding NoEnquete}"
+                                Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+
+                                <TextBlock>Ouvrir Enquête</TextBlock>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
 
             </DataGrid.Columns>
         </DataGrid>
