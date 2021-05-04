@@ -80,28 +80,16 @@ namespace EnquteSPA
             if(enquete == null)
             {
                 string id = "<ID>";
-                if(XDepartement.Text.Length > 0)
+                string depTxt = XDepartement.Text;
+                if (depTxt.Length == 0) depTxt = "<DEP>";
+                string numEnqueteWithoutID = $"{depTxt}-{DateTime.Today.Year}-{$"{DateTime.Today.Month}".PadLeft(2, '0')}";
+                if (XDepartement.Text.Length > 0)
                 {
-                    id = GetID();
+                    using var db = new Context();
+                    id = $"{db.Enquete.Where(v => v.NoEnquete.StartsWith(numEnqueteWithoutID)).Count() + 1}".PadLeft(4, '0');
                 }
-                XNumEnquete.Text = $"{GenTxtNumEnqueteWithoutID()}-{id}";
+                XNumEnquete.Text = $"{numEnqueteWithoutID}-{id}";
             }
-        }
-
-        private string GenTxtNumEnqueteWithoutID()
-        {
-            string d = XDepartement.Text;
-            if (d.Length == 0) d = "<DEP>";
-            return $"{d}-{DateTime.Today.Year}-{$"{DateTime.Today.Month}".PadLeft(2, '0')}";
-        }
-
-        private string GetID()
-        {
-            using var db = new Context();
-            string s = GenTxtNumEnqueteWithoutID();
-            var res = db.Enquete.Where(v => v.NoEnquete.StartsWith(s));
-            int res_count = res.Count();
-            return $"{res_count + 1}".PadLeft(4, '0');
         }
 
         private void ListeEnqueteurs(object sender, EventArgs e)
@@ -124,8 +112,6 @@ namespace EnquteSPA
         {
             erreur.ResetMsgRetour();
             erreur.TestDepartement(XDepartement.Text, "Département");
-            if(XEnqueteur.SelectedItem == null)
-                erreur.AddToMsgRetour("Pas d'enquêteur sélectionné.");
             erreur.TestNonVide(XMotif.Text, "Motif");
             // Plaignant
             erreur.TestNonVide(XPlaignantNom.Text, "Nom du plaignant");
@@ -152,6 +138,8 @@ namespace EnquteSPA
             if (VerifChamps())
             {
                 using var db = new Context();
+
+                int statut = (XEnqueteur.SelectedItem == null) ? (int)StatutEnquete.NON_ASSIGNEE : (int)StatutEnquete.EN_COURS;
                 if (enquete == null)
                 {
                     Personne plaignant = new Personne(XPlaignantNom.Text, XPlaignantPrenom.Text, XPlaignantMail.Text, XPlaignantVille.Text, XPlaignantRue.Text, XPlaignantNumero.Text);
@@ -159,12 +147,13 @@ namespace EnquteSPA
                     Personne infracteur = new Personne(XInfracteurNom.Text, XInfracteurPrenom.Text, XInfracteurMail.Text, XInfracteurVille.Text, XInfracteurRue.Text, XInfracteurNumero.Text);
                     db.Personne.Add(infracteur);
                     db.SaveChanges();
-                    Enquete enquete = new Enquete(XNumEnquete.Text, XDepartement.Text, (DateTime)XDateDepot.SelectedDate, infracteur.IdPersonne, plaignant.IdPersonne, XMotif.Text, (int)XEnqueteur.SelectedValue, 1);
+                    Enquete enquete = new Enquete(XNumEnquete.Text, XDepartement.Text, (DateTime)XDateDepot.SelectedDate, infracteur.IdPersonne, plaignant.IdPersonne, XMotif.Text, (int?)XEnqueteur.SelectedValue, statut);
                     db.Enquete.Add(enquete);
                 }
                 else
                 {
                     enquete.IdEnqueteur = (int)XEnqueteur.SelectedValue;
+                    enquete.Statut = statut;
                     enquete.Motif = XMotif.Text;
                 }
                 db.SaveChanges();

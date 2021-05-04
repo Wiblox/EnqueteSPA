@@ -40,7 +40,7 @@ namespace EnquteSPA.bo
             // ETAPE 2 : Génération des Enquêtes
             IList<Enquete> enquetes = new List<Enquete>
             {
-                new Enquete() { NoEnquete = "75-2020-01-0001", Departement = "75", DateDepot = new DateTime(2020, 1, 10, 12, 0, 0), IdInfracteur = 1, IdPlaignant = 2, Motif = "Maltraitance", IdEnqueteur = 1, Statut = (int)modele.StatutEnquete.NON_ASSIGNEE },
+                new Enquete() { NoEnquete = "75-2020-01-0001", Departement = "75", DateDepot = new DateTime(2020, 1, 10, 12, 0, 0), IdInfracteur = 1, IdPlaignant = 2, Motif = "Maltraitance", IdEnqueteur = null, Statut = (int)modele.StatutEnquete.NON_ASSIGNEE },
                 new Enquete() { NoEnquete = "31-2020-02-0001", Departement = "31", DateDepot = new DateTime(2020, 2, 2, 12, 0, 0), IdInfracteur = 3, IdPlaignant = 4, Motif = "Abandon", IdEnqueteur = 2, Statut = (int)modele.StatutEnquete.EN_COURS },
                 new Enquete() { NoEnquete = "51-2020-11-0001", Departement = "51", DateDepot = new DateTime(2020, 11, 20, 12, 0, 0), IdInfracteur = 5, IdPlaignant = 6, Motif = "Animal mort", IdEnqueteur = 3, Statut = (int)modele.StatutEnquete.EN_COURS },
                 new Enquete() { NoEnquete = "54-2021-05-0001", Departement = "54", DateDepot = new DateTime(2021, 5, 2, 12, 0, 0), IdInfracteur = 7, IdPlaignant = 8, Motif = "Accumulation d'animaux dans une petite surface", IdEnqueteur = 4, Statut = (int)modele.StatutEnquete.RENDUE }

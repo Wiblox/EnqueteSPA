@@ -8,7 +8,11 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-
+    <UserControl.Resources>
+        <local:StatutConverter x:Key="StatutConverter" />
+        <local:PersonneConverter x:Key="PersonneConverter" />
+        <local:SpaPersonneConverter x:Key="SpaPersonneConverter" />
+    </UserControl.Resources>
     <Grid Background="#F1F3F4">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
@@ -22,9 +26,25 @@
             AutoGenerateColumns="False"
             IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=NoEnquete}" Header="No Enquete" />
-                <DataGridTextColumn Binding="{Binding Path=Departement}" Header="Departement" />
-                <DataGridTextColumn Binding="{Binding Path=Statut}" Header="Statut" />
+                <DataGridTextColumn Binding="{Binding Path=NoEnquete}" Header="N° Enquête" />
+                <DataGridTextColumn Binding="{Binding Path=Departement}" Header="Département">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Statut, Converter={StaticResource StatutConverter}}" Header="Statut" />
+                <DataGridTextColumn Binding="{Binding Path=DateDepot, StringFormat={}{0:dd/MM/yyyy}}" Header="Date de dépôt">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=IdInfracteur, Converter={StaticResource PersonneConverter}}" Header="Infracteur" />
+                <DataGridTextColumn Binding="{Binding Path=IdPlaignant, Converter={StaticResource PersonneConverter}}" Header="Plaignant" />
+                <DataGridTextColumn Binding="{Binding Path=IdEnqueteur, Converter={StaticResource SpaPersonneConverter}}" Header="Enquêteur" />
 
                 <!--  Add your normal columns here  -->
                 <DataGridTemplateColumn>

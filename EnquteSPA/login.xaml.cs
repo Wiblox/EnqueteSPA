@@ -29,6 +29,8 @@ namespace EnquteSPA
             MouseDown += Window_MouseDown;
 
             InitializeComponent();
+            user.Text = "admin@gmail.com";
+            password.Password = "azerty123";
 
         }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
