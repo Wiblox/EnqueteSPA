@@ -41,12 +41,7 @@ namespace EnquteSPA
 
                 using var db = new Context();
 
-                SpaPersonne sp = db.SpaPersonne.Find(enquete.IdEnqueteur);
-                //Debug.WriteLine(sp.IdSpaPersonne);
-                //Debug.WriteLine(XEnqueteur.FindName($"{sp.Nom} {sp.Prenom}"));
-                XEnqueteur.SelectedItem = sp;
-                // = enquete.IdEnqueteur;
-                //Debug.WriteLine(((SpaPersonne)XEnqueteur.SelectedValue).IdSpaPersonne);
+                XEnqueteur.SelectedItem = db.SpaPersonne.Find(enquete.IdEnqueteur);
 
                 plaignant = db.Personne.Find(this.enquete.IdPlaignant);
                 infracteur = db.Personne.Find(this.enquete.IdInfracteur);
@@ -94,12 +89,6 @@ namespace EnquteSPA
         {
             using var db = new Context();
             XEnqueteur.ItemsSource = db.SpaPersonne.Where(v => v.Etat == true).ToList();
-            //XEnqueteur.Text = "Sélectionner";
-        }
-
-        private void XEnqueteur_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            Debug.WriteLine(XEnqueteur.SelectedValue);
         }
 
         private void TxtDepartementChange(object sender, System.Windows.Controls.TextChangedEventArgs e)
