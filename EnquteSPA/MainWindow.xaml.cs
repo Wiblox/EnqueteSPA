@@ -19,8 +19,8 @@ namespace EnquteSPA
             //AddDocument doc = new AddDocument("ds");
             //doc.ShowDialog();
 
-            OuvertureEnquete ds = new OuvertureEnquete(3);
-            ds.ShowDialog();
+   
+
             init();
             login frm = new login();
             frm.ShowDialog();

@@ -19,8 +19,8 @@ namespace EnquteSPA
     public partial class AddDocument : MetroWindow
     {
 
-        string numeroEnqute;
-        public AddDocument(string numero)
+        int numeroEnqute;
+        public AddDocument(int numero)
         {
             numeroEnqute = numero;
             InitializeComponent();
@@ -51,7 +51,7 @@ namespace EnquteSPA
             {
                 System.IO.Directory.CreateDirectory("numeroEnquete/"+ numeroEnqute);
                 System.IO.File.Copy(v, "numeroEnquete/" + numeroEnqute+"/"+ System.IO.Path.GetFileName(v), true);
-                Document doc = new Document(numeroEnqute, modele.TypeDocument.Pdf, "numeroEnquete/" + numeroEnqute + "/" + System.IO.Path.GetFileName(v));
+                Document doc = new Document(numeroEnqute, System.IO.Path.GetExtension(v), "numeroEnquete/" + numeroEnqute + "/" + System.IO.Path.GetFileName(v));
                 using (var db = new Context())
                 {
                     db.Document.Add(doc);

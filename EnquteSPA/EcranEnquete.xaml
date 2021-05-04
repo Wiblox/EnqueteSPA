@@ -67,7 +67,7 @@
                             <Button
                                 Margin="4px"
                                 Click="OuvrirEnquete"
-                                CommandParameter="{Binding NoEnquete}"
+                                CommandParameter="{Binding IdEnquete}"
                                 Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
 
                                 <TextBlock>Ouvrir Enquête</TextBlock>

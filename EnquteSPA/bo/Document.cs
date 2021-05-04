@@ -8,7 +8,7 @@ namespace EnquteSPA
     public class Document
     {
         public Document() { }
-        public Document(int enquete, TypeDocument typeDocument, string pathDoc)
+        public Document(int enquete, string typeDocument, string pathDoc)
         {
 
             NoEnquete = enquete;
@@ -22,7 +22,7 @@ namespace EnquteSPA
       
         public int  NoEnquete {get; set; }
 
-        public TypeDocument typeDocument { get; set; }
+        public string typeDocument { get; set; }
         
         public string PathDoc { get; set; } 
     }

@@ -48,6 +48,10 @@ namespace EnquteSPA
 
         private void OuvrirEnquete(object sender, RoutedEventArgs e)
         {
+            Button fdv = (Button)sender;
+
+            OuvertureEnquete ds = new OuvertureEnquete((int)fdv.CommandParameter);
+            ds.ShowDialog();
 
         }
     }

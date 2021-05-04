@@ -34,8 +34,9 @@
                             <DataTemplate>
                                 <Button
                                     Margin="5px"
+                                    Click="Button_Click_2"
                                     CommandParameter="{Binding IdSpaPersonne}"
-                                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="Button_Click_2">
+                                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
                                     <TextBlock>Modifier Enquêteur</TextBlock>
                                 </Button>
                             </DataTemplate>
