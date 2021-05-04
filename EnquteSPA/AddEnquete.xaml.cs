@@ -4,6 +4,8 @@ using System;
 using EnquteSPA.bo;
 using EnquteSPA.modele;
 using MahApps.Metro.Controls.Dialogs;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq;
 using System.Diagnostics;
 
@@ -29,17 +31,23 @@ namespace EnquteSPA
             if (this.enquete != null)
             {
                 Title = "Modification d'une enquête";
-                //XFen.Title
 
                 XNumEnquete.Text = this.enquete.NoEnquete;
                 XDateDepot.SelectedDate = this.enquete.DateDepot;
                 XDateDepot.Focusable = false;
                 XDepartement.Text = this.enquete.Departement;
                 XDepartement.IsReadOnly = true;
-                // XEnqueteur.SelectedItem = this.enquete.IdEnqueteur;
                 XMotif.Text = this.enquete.Motif;
 
                 using var db = new Context();
+
+                SpaPersonne sp = db.SpaPersonne.Find(enquete.IdEnqueteur);
+                //Debug.WriteLine(sp.IdSpaPersonne);
+                //Debug.WriteLine(XEnqueteur.FindName($"{sp.Nom} {sp.Prenom}"));
+                XEnqueteur.SelectedItem = sp;
+                // = enquete.IdEnqueteur;
+                //Debug.WriteLine(((SpaPersonne)XEnqueteur.SelectedValue).IdSpaPersonne);
+
                 plaignant = db.Personne.Find(this.enquete.IdPlaignant);
                 infracteur = db.Personne.Find(this.enquete.IdInfracteur);
 
@@ -79,12 +87,19 @@ namespace EnquteSPA
                 if (d.Length == 0) d = "<DEP>";
                 // TODO : Get la liste des enquêtes du jour pour connaître <ID>
                 XNumEnquete.Text = $"{d}-{DateTime.Today.Year}-{DateTime.Today.Month}-<ID>";
-
             }
         }
+
         private void ListeEnqueteurs(object sender, EventArgs e)
         {
+            using var db = new Context();
+            XEnqueteur.ItemsSource = db.SpaPersonne.Where(v => v.Etat == true).ToList();
+            //XEnqueteur.Text = "Sélectionner";
+        }
 
+        private void XEnqueteur_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            Debug.WriteLine(XEnqueteur.SelectedValue);
         }
 
         private void TxtDepartementChange(object sender, System.Windows.Controls.TextChangedEventArgs e)
@@ -101,8 +116,8 @@ namespace EnquteSPA
         {
             erreur.ResetMsgRetour();
             erreur.TestDepartement(XDepartement.Text, "Département");
-            /*if(XEnqueteur.SelectedItem == null)
-                erreur.AddToMsgRetour("Pas d'enquêteur sélectionné.");*/
+            if(XEnqueteur.SelectedItem == null)
+                erreur.AddToMsgRetour("Pas d'enquêteur sélectionné.");
             erreur.TestNonVide(XMotif.Text, "Motif");
             // Plaignant
             erreur.TestNonVide(XPlaignantNom.Text, "Nom du plaignant");
@@ -136,13 +151,12 @@ namespace EnquteSPA
                     Personne infracteur = new Personne(XInfracteurNom.Text, XInfracteurPrenom.Text, XInfracteurMail.Text, XInfracteurVille.Text, XInfracteurRue.Text, XInfracteurNumero.Text);
                     db.Personne.Add(infracteur);
                     db.SaveChanges();
-                    Enquete enquete = new Enquete(XNumEnquete.Text, XDepartement.Text, (DateTime)XDateDepot.SelectedDate, infracteur.IdPersonne, plaignant.IdPersonne, XMotif.Text, 1, 1);
-                    //Enquete enquete = new Enquete(XNumEnquete.Text, XDepartement.Text, (DateTime)XDateDepot.SelectedDate, infracteur.IdPersonne, plaignant.IdPersonne, XMotif.Text, Int32.Parse(XEnqueteur.), 1);
+                    Enquete enquete = new Enquete(XNumEnquete.Text, XDepartement.Text, (DateTime)XDateDepot.SelectedDate, infracteur.IdPersonne, plaignant.IdPersonne, XMotif.Text, (int)XEnqueteur.SelectedValue, 1);
                     db.Enquete.Add(enquete);
                 }
                 else
                 {
-                    // enquete.IdEnqueteur = XEnqueteur.SelectedItem;
+                    enquete.IdEnqueteur = (int)XEnqueteur.SelectedValue;
                     enquete.Motif = XMotif.Text;
                 }
                 db.SaveChanges();

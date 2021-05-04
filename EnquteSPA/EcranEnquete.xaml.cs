@@ -27,12 +27,14 @@ namespace EnquteSPA
         {
             AddEnquete frm = new AddEnquete();
             frm.ShowDialog();
+            using var db = new Context();
+            db.SaveChanges();
+            data.ItemsSource = db.Enquete.ToList();
         }
 
         private void EditEnquete(object sender, RoutedEventArgs e)
         {
             Button fdv = (Button)sender;
-            Debug.WriteLine(fdv.CommandParameter);
             using var db = new Context();
             Enquete editEnquete = db.Enquete.Where(v => v.NoEnquete == (string)fdv.CommandParameter).First();
             AddEnquete addEnquete = new AddEnquete(editEnquete);

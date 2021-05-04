@@ -1,4 +1,3 @@
-using EnquteSPA.modele;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -43,6 +42,21 @@ namespace EnquteSPA
         public bool? DelegueEnqueteur { get; set; }
         
         public bool Etat { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return obj is SpaPersonne personne &&
+                   IdSpaPersonne == personne.IdSpaPersonne &&
+                   Nom == personne.Nom &&
+                   Prenom == personne.Prenom &&
+                   Mail == personne.Mail &&
+                   Ville == personne.Ville &&
+                   Rue == personne.Rue &&
+                   Numero == personne.Numero &&
+                   IdFonction == personne.IdFonction &&
+                   DelegueEnqueteur == personne.DelegueEnqueteur &&
+                   Etat == personne.Etat;
+        }
 
         public string GetLocalisation()
         {
