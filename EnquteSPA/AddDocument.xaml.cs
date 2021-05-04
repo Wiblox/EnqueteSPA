@@ -43,22 +43,25 @@ namespace EnquteSPA
 
         private void confirmAsync(string v)
         {
-            string titre= "Ajout document Enquete n°"+ numeroEnqute;
-            string message="Voulez vous ajouter le document "+ v + " à l'enquete n°"+ numeroEnqute;
-            var truc = this.ShowModalMessageExternal(titre, message, MessageDialogStyle.AffirmativeAndNegative);
-
-            if (truc == MessageDialogResult.Affirmative)
+            using (var db = new Context())
             {
-                System.IO.Directory.CreateDirectory("numeroEnquete/"+ numeroEnqute);
-                System.IO.File.Copy(v, "numeroEnquete/" + numeroEnqute+"/"+ System.IO.Path.GetFileName(v), true);
-                Document doc = new Document(numeroEnqute, System.IO.Path.GetExtension(v), "numeroEnquete/" + numeroEnqute + "/" + System.IO.Path.GetFileName(v));
-                using (var db = new Context())
+                string num = db.Enquete.Find(numeroEnqute).NoEnquete;
+                string titre = "Ajout document Enquete n°" + numeroEnqute;
+                string message = "Voulez vous ajouter le document " + v + " à l'enquete n°" + num;
+                var truc = this.ShowModalMessageExternal(titre, message, MessageDialogStyle.AffirmativeAndNegative);
+
+                if (truc == MessageDialogResult.Affirmative)
                 {
+                    System.IO.Directory.CreateDirectory("numeroEnquete/" + numeroEnqute);
+                    System.IO.File.Copy(v, "numeroEnquete/" + numeroEnqute + "/" + System.IO.Path.GetFileName(v), true);
+                    Document doc = new Document(numeroEnqute, System.IO.Path.GetExtension(v), "numeroEnquete/" + numeroEnqute + "/" + System.IO.Path.GetFileName(v));
+
                     db.Document.Add(doc);
                     db.SaveChanges();
-                }
+
 
                     Close();
+                }
             }
         }
     }
