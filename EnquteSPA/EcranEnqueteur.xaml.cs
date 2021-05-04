@@ -49,15 +49,13 @@ namespace EnquteSPA
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             Button fdv = (Button)sender;
-            Debug.WriteLine(fdv.CommandParameter);
+            // Debug.WriteLine(fdv.CommandParameter);
             using var db = new Context();
             var modifSPA = db.SpaPersonne.Find(fdv.CommandParameter);
             AddSpaPersonne newx = new AddSpaPersonne(modifSPA);
             newx.ShowDialog();
             db.SaveChanges();
             data.ItemsSource = db.SpaPersonne.ToList();
-
-
         }
     }
 }

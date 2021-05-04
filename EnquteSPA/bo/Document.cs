@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace EnquteSPA
 {
     [Table("Document")]
-    class Document
+    public class Document
     {
         public Document() { }
         public Document(string enquete, TypeDocument typeDocument, string pathDoc)

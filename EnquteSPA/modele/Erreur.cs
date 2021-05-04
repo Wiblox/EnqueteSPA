@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace EnquteSPA.modele
 {
-    class Erreur
+    public class Erreur
     {
         private List<string> MsgRetour;
 

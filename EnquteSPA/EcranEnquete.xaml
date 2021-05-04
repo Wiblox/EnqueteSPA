@@ -32,7 +32,7 @@
                         <DataTemplate>
                             <Button
                                 Padding="5px"
-                                Click="Button_Click"
+                                Click="EditEnquete"
                                 CommandParameter="{Binding NoEnquete}">
                                 Modifier Enquête
                             </Button>

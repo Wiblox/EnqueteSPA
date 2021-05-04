@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace EnquteSPA
 {
     [Table("Personne")]
-    class Personne
+    public class Personne
     {
         public Personne() { }
 
