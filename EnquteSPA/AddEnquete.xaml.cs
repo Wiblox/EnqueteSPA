@@ -19,6 +19,7 @@ namespace EnquteSPA
         private readonly Erreur erreur;
         private Enquete enquete;
         private Personne plaignant, infracteur;
+        private string ID;
 
         public AddEnquete(Enquete enquete = null)
         {
@@ -78,11 +79,29 @@ namespace EnquteSPA
         {
             if(enquete == null)
             {
-                string d = XDepartement.Text;
-                if (d.Length == 0) d = "<DEP>";
-                // TODO : Get la liste des enquêtes du jour pour connaître <ID>
-                XNumEnquete.Text = $"{d}-{DateTime.Today.Year}-{DateTime.Today.Month}-<ID>";
+                string id = "<ID>";
+                if(XDepartement.Text.Length > 0)
+                {
+                    id = GetID();
+                }
+                XNumEnquete.Text = $"{GenTxtNumEnqueteWithoutID()}-{id}";
             }
+        }
+
+        private string GenTxtNumEnqueteWithoutID()
+        {
+            string d = XDepartement.Text;
+            if (d.Length == 0) d = "<DEP>";
+            return $"{d}-{DateTime.Today.Year}-{$"{DateTime.Today.Month}".PadLeft(2, '0')}";
+        }
+
+        private string GetID()
+        {
+            using var db = new Context();
+            string s = GenTxtNumEnqueteWithoutID();
+            var res = db.Enquete.Where(v => v.NoEnquete.StartsWith(s));
+            int res_count = res.Count();
+            return $"{res_count + 1}".PadLeft(4, '0');
         }
 
         private void ListeEnqueteurs(object sender, EventArgs e)
