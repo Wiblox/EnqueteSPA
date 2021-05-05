@@ -37,8 +37,6 @@ namespace EnquteSPA
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             Info.Text = System.IO.Path.GetFileName(files[0]);
             this.confirmAsync(files[0]);
-
-
         }
 
         private void confirmAsync(string v)
