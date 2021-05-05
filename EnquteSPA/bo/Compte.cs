@@ -37,22 +37,6 @@ namespace EnquteSPA
                    Admin == compte.Admin;
         }
 
-        public void EditMotDePasse(string mdp)
-        {
-            if (true) // TODO: Remplacer par vérif par regex
-            {
-                this.MotDePasse = mdp;
-            }
-        }
-
-        public void EditMail(string mail)
-        {
-            if (true) // TODO: Remplacer par vérif par regex
-            {
-                this.Mail = mail;
-            }
-        }
-
         public static Compte CheckCompte(string mail, string mdp)
         {
             using var db = new Context();

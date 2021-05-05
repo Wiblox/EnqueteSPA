@@ -34,18 +34,12 @@ namespace EnquteSPA
         public DateTime DateDepot { get; set; }
         
         public int? IdInfracteur { get; set; }
-
-        //public virtual Personne Infracteur {get; set; }
         
         public int? IdPlaignant { get; set; }
-
-        //public virtual Personne Plaignant {get; set; }
 
         public string Motif { get; set; }
         
         public int? IdEnqueteur { get; set; }
-
-        //public virtual SpaPersonne Enqueteur { get; set; }
 
         public int Statut {get; set; }
 

@@ -14,7 +14,7 @@
     SizeToContent="WidthAndHeight"
     mc:Ignorable="d">
 
-    <Grid Margin="5,5,5,5">
+    <Grid Margin="5">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -29,7 +29,7 @@
                 <TextBox
                     x:Name="XNumEnquete"
                     Width="150"
-                    IsReadOnly="True" />
+                    IsEnabled="False" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Date de dépôt :" />
@@ -89,11 +89,11 @@
                 <WrapPanel Grid.Row="0" Orientation="Horizontal">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Nom :" />
-                        <TextBox x:Name="XPlaignantNom" Width="100" />
+                        <TextBox x:Name="XPlaignantNom" Width="100" TextChanged="XPlaignantNom_TextChanged" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Prénom :" />
-                        <TextBox x:Name="XPlaignantPrenom" Width="100" />
+                        <TextBox x:Name="XPlaignantPrenom" Width="100" TextChanged="XPlaignantPrenom_TextChanged" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Mail :" />
@@ -122,11 +122,11 @@
                 <WrapPanel Grid.Row="0" Orientation="Horizontal">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Nom :" />
-                        <TextBox x:Name="XInfracteurNom" Width="100" />
+                        <TextBox x:Name="XInfracteurNom" Width="100" TextChanged="XInfracteurNom_TextChanged" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Prénom :" />
-                        <TextBox x:Name="XInfracteurPrenom" Width="100" />
+                        <TextBox x:Name="XInfracteurPrenom" Width="100" TextChanged="XInfracteurPrenom_TextChanged" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Mail :" />

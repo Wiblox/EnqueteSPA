@@ -18,17 +18,10 @@ namespace EnquteSPA
 
         public void InitData()
         {
-            int nbEnquetesNonAssignees;
-            int nbEnquetesEnCours;
-            int nbEnqueteurs;
-
-            using (var db = new Context())
-            {
-
-                nbEnquetesNonAssignees = db.Enquete.Where(o => o.Statut == (int)modele.StatutEnquete.NON_ASSIGNEE).Count();
-                nbEnquetesEnCours = db.Enquete.Where(o => o.Statut == (int)modele.StatutEnquete.EN_COURS).Count();
-                nbEnqueteurs = db.SpaPersonne.Where(o => o.DelegueEnqueteur == true).Count();
-            }
+            using var db = new Context();
+            int nbEnquetesNonAssignees = db.Enquete.Where(o => o.Statut == (int)modele.StatutEnquete.NON_ASSIGNEE).Count();
+            int nbEnquetesEnCours = db.Enquete.Where(o => o.Statut == (int)modele.StatutEnquete.EN_COURS).Count();
+            int nbEnqueteurs = db.SpaPersonne.Count();
 
             NbEnquetesNonAssignees.Text = nbEnquetesNonAssignees.ToString();
             NbEnquetesEnCours.Text = nbEnquetesEnCours.ToString();

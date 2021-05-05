@@ -8,7 +8,7 @@ namespace EnquteSPA
     {
         public SpaPersonne() { }
 
-        public SpaPersonne(string nom, string prenom, string mail, string ville, string rue, string numero, int idFonction, bool? delegueEnqueteur, bool etat)
+        public SpaPersonne(string nom, string prenom, string mail, string ville, string rue, string numero, bool isSalarie, bool etat)
         {
             Nom = nom;
             Prenom = prenom;
@@ -16,8 +16,7 @@ namespace EnquteSPA
             Ville = ville;
             Rue = rue;
             Numero = numero;
-            IdFonction = idFonction;
-            DelegueEnqueteur = delegueEnqueteur;
+            IsSalarie = isSalarie;
             Etat = etat;
         }
 
@@ -36,10 +35,8 @@ namespace EnquteSPA
         public string Rue { get; set; }
 
         public string Numero { get; set; }
-
-        public int IdFonction { get; set; }
         
-        public bool? DelegueEnqueteur { get; set; }
+        public bool IsSalarie { get; set; }
         
         public bool Etat { get; set; }
 
@@ -53,8 +50,7 @@ namespace EnquteSPA
                    Ville == personne.Ville &&
                    Rue == personne.Rue &&
                    Numero == personne.Numero &&
-                   IdFonction == personne.IdFonction &&
-                   DelegueEnqueteur == personne.DelegueEnqueteur &&
+                   IsSalarie == personne.IsSalarie &&
                    Etat == personne.Etat;
         }
 

@@ -40,7 +40,8 @@
                 FontFamily="Bahnschrift SemiBold"
                 FontSize="48"
                 Foreground="Gray"
-                TextAlignment="Center">
+                TextAlignment="Center"
+                IsHitTestVisible="False">
                 Drag And Drop
             </TextBox>
         </Grid>
