@@ -26,7 +26,7 @@ namespace EnquteSPA
             frm.ShowDialog();
             if ((bool)frm.DialogResult)
             {
-                Static.utilisateurCourant = frm.usser;
+                Static.utilisateurCourant = frm.compte;
                 InitializeComponent();
                 LoginName.Text = Static.utilisateurCourant.Mail;
             }

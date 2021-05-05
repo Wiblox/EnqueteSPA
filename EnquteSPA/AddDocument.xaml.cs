@@ -19,17 +19,17 @@ namespace EnquteSPA
     public partial class AddDocument : MetroWindow
     {
 
-        int numeroEnqute;
-        public AddDocument(int numero)
+        private int idEnquete;
+        public AddDocument(int idEnquete)
         {
-            numeroEnqute = numero;
             InitializeComponent();
+            this.idEnquete = idEnquete;
         }
 
         private void dragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effects = DragDropEffects.Move;
-
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effects = DragDropEffects.Move;
         }
 
         private void dragDrop(object sender, DragEventArgs e)
@@ -37,31 +37,25 @@ namespace EnquteSPA
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             Info.Text = System.IO.Path.GetFileName(files[0]);
             this.confirmAsync(files[0]);
-
-
         }
 
         private void confirmAsync(string v)
         {
-            using (var db = new Context())
+            using var db = new Context();
+            string num = db.Enquete.Find(idEnquete).NoEnquete;
+            string titre = "Ajout document à l'enquete n°" + num;
+            string message = "Voulez vous ajouter le document " + v + " à l'enquete n°" + num;
+            var addYesOrNo = this.ShowModalMessageExternal(titre, message, MessageDialogStyle.AffirmativeAndNegative);
+
+            if (addYesOrNo == MessageDialogResult.Affirmative)
             {
-                string num = db.Enquete.Find(numeroEnqute).NoEnquete;
-                string titre = "Ajout document Enquete n°" + numeroEnqute;
-                string message = "Voulez vous ajouter le document " + v + " à l'enquete n°" + num;
-                var truc = this.ShowModalMessageExternal(titre, message, MessageDialogStyle.AffirmativeAndNegative);
+                Directory.CreateDirectory("numeroEnquete/" + idEnquete);
+                File.Copy(v, "numeroEnquete/" + idEnquete + "/" + System.IO.Path.GetFileName(v), true);
+                Document doc = new Document(idEnquete, System.IO.Path.GetExtension(v), "numeroEnquete/" + idEnquete + "/" + System.IO.Path.GetFileName(v));
 
-                if (truc == MessageDialogResult.Affirmative)
-                {
-                    System.IO.Directory.CreateDirectory("numeroEnquete/" + numeroEnqute);
-                    System.IO.File.Copy(v, "numeroEnquete/" + numeroEnqute + "/" + System.IO.Path.GetFileName(v), true);
-                    Document doc = new Document(numeroEnqute, System.IO.Path.GetExtension(v), "numeroEnquete/" + numeroEnqute + "/" + System.IO.Path.GetFileName(v));
-
-                    db.Document.Add(doc);
-                    db.SaveChanges();
-
-
-                    Close();
-                }
+                db.Document.Add(doc);
+                db.SaveChanges();
+                Close();
             }
         }
     }

@@ -2,7 +2,6 @@
 using MahApps.Metro.Controls;
 using Microsoft.Maps.MapControl.WPF;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Windows.Controls;
@@ -23,10 +22,8 @@ namespace EnquteSPA
             var listeEnqueteur = db.SpaPersonne.ToList();
             foreach (SpaPersonne enqueteur in listeEnqueteur)
             {
-                Geocode(enqueteur.GetLocalisation(), enqueteur.Nom, enqueteur.Prenom, (bool)enqueteur.DelegueEnqueteur);
+                Geocode(enqueteur.GetLocalisation(), enqueteur.Nom, enqueteur.Prenom, enqueteur.IsSalarie);
             }
-
-
         }
 
         void addPushPin(Location loc, string nom, string prenom, bool delegueEnqueteur)

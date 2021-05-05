@@ -1,16 +1,9 @@
 ﻿using EnquteSPA.bo;
+using EnquteSPA.modele;
 using MahApps.Metro.Controls;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using MahApps.Metro.Controls.Dialogs;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace EnquteSPA
 {
@@ -19,58 +12,85 @@ namespace EnquteSPA
     /// </summary>
     public partial class AddSpaPersonne : MetroWindow
     {
-        SpaPersonne modifier;
+        private SpaPersonne spaPersonne;
+        private Erreur erreur;
 
-
-        public AddSpaPersonne()
+        public AddSpaPersonne(SpaPersonne spaPersonne = null)
         {
-            modifier = null;
             InitializeComponent();
-        }
+            erreur = new Erreur();
+            this.spaPersonne = spaPersonne;
 
-        public AddSpaPersonne(SpaPersonne modif)
-        {
-            modifier = modif;
-            InitializeComponent();
-
-            Nom.Text = modif.Nom;
-            Prenom.Text = modif.Prenom;
-            Mail.Text = modif.Mail;
-            Ville.Text = modif.Ville;
-            Rue.Text = modif.Rue;
-            Numero.Text = modif.Numero;
-            Delegue.IsChecked = modif.DelegueEnqueteur;
-            NomB.Text = "Modifer Enquêteur";
-
-        }
-
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            using (var db = new Context())
+            if (spaPersonne != null)
             {
-                if (modifier == null)
-                {
-                    SpaPersonne enqueteur = new SpaPersonne(Nom.Text, Prenom.Text, Mail.Text, Ville.Text, Rue.Text, Numero.Text, 1, Delegue.IsChecked, true);
-                    db.SpaPersonne.Add(enqueteur);
-                    db.SaveChanges();
+                Title = "Modification d'un enquêteur";
 
+                XNom.Text = spaPersonne.Nom;
+                XPrenom.Text = spaPersonne.Prenom;
+                XMail.Text = spaPersonne.Mail;
+                XVille.Text = spaPersonne.Ville;
+                XRue.Text = spaPersonne.Rue;
+                XNumero.Text = spaPersonne.Numero;
+                XFonction.SelectedIndex = spaPersonne.IsSalarie ? 0 : 1;
+                XEtat.IsChecked = spaPersonne.Etat;
+
+                XEtat.Visibility = Visibility.Visible;
+            }
+        }
+
+        private bool VerifChamps()
+        {
+            erreur.ResetMsgRetour();
+            erreur.TestNonVide(XNom.Text, "Nom");
+            erreur.TestNonVide(XPrenom.Text, "Prénom");
+            erreur.TestMail(XMail.Text, "Mail");
+            erreur.TestNonVide(XVille.Text, "Ville");
+            erreur.TestNonVide(XNumero.Text, "Numéro");
+            erreur.TestNonVide(XRue.Text, "Rue");
+            if (XFonction.SelectedItem == null)
+                erreur.AddToMsgRetour("Pas de fonction sélectionnée.");
+
+            if (!erreur.IsSafe())
+                this.ShowMessageAsync("Erreur ajout enquêteur", erreur.GetMsgRetour());
+            return erreur.IsSafe();
+        }
+
+        private void Button_Valider(object sender, RoutedEventArgs e)
+        {
+            if (VerifChamps())
+            {
+                using var db = new Context();
+                if (spaPersonne == null)
+                {
+                    SpaPersonne SpaPersonne = new SpaPersonne(XNom.Text, XPrenom.Text, XMail.Text, XVille.Text, XRue.Text, XNumero.Text, true, true);
+                    db.SpaPersonne.Add(SpaPersonne);
                 }
                 else
                 {
-                    modifier.Nom = Nom.Text;
-                    modifier.Prenom = Prenom.Text;
-                    modifier.Mail = Mail.Text;
-                    modifier.Ville = Ville.Text;
-                    modifier.Rue = Rue.Text;
-                    modifier.Numero = Numero.Text;
-                    modifier.DelegueEnqueteur = Delegue.IsChecked;
-                    db.SaveChanges();
-
+                    spaPersonne.Nom = XNom.Text;
+                    spaPersonne.Prenom = XPrenom.Text;
+                    spaPersonne.Mail = XMail.Text;
+                    spaPersonne.Ville = XVille.Text;
+                    spaPersonne.Rue = XRue.Text;
+                    spaPersonne.Numero = XNumero.Text;
+                    spaPersonne.IsSalarie = bool.Parse(((ComboBoxItem)XFonction.SelectedItem).Tag.ToString());
+                    spaPersonne.Etat = (bool)XEtat.IsChecked;
                 }
-
-                this.Close();
+                db.SaveChanges();
+                Close();
             }
+        }
+
+        private void XNom_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            XNom.Text = XNom.Text.ToUpper();
+            XNom.SelectionStart = XNom.Text.Length;
+        }
+
+        private void XPrenom_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            XPrenom.Text = Static.FirstLetterToUpper(XPrenom.Text);
+            XPrenom.SelectionStart = XPrenom.Text.Length;
         }
     }
 }

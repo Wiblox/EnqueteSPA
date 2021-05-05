@@ -8,7 +8,9 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-
+    <UserControl.Resources>
+        <local:FonctionConverter x:Key="FonctionConverter" />
+    </UserControl.Resources>
     <Grid Background="#F1F3F4">
         <Grid.RowDefinitions>
             <RowDefinition Height="400*" />
@@ -21,20 +23,37 @@
                 Margin="60,30,60,0"
                 VerticalAlignment="Top"
                 AutoGenerateColumns="False"
-                Initialized="data_Initialized"
+                Initialized="ListeEnqueteurs"
                 IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Path=Nom}" Header="Nom" />
-                    <DataGridTextColumn Binding="{Binding Path=Prenom}" Header="Prenom" />
-                    <DataGridCheckBoxColumn Binding="{Binding Path=DelegueEnqueteur}" Header="Delegue" />
+                    <DataGridTextColumn Header="Enquêteur">
+                        <DataGridTextColumn.Binding>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="Nom" />
+                                <Binding Path="Prenom" />
+                            </MultiBinding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Path=Mail}" Header="Mail" />
+                    <DataGridTextColumn Binding="{Binding Path=IsSalarie, Converter={StaticResource FonctionConverter}}" Header="Fonction" />
+                    <DataGridCheckBoxColumn Binding="{Binding Path=Etat}" Header="Disponible"/>
+                    <DataGridTextColumn Header="Adresse">
+                        <DataGridTextColumn.Binding>
+                            <MultiBinding StringFormat="{}{0} {1} {2}">
+                                <Binding Path="Numero" />
+                                <Binding Path="Rue" />
+                                <Binding Path="Ville" />
+                            </MultiBinding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
 
                     <!--  Add your normal columns here  -->
-                    <DataGridTemplateColumn Header="Delegue">
+                    <DataGridTemplateColumn Header="Modification">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button
                                     Margin="5px"
-                                    Click="Button_Click_2"
+                                    Click="Button_EditEnqueteur"
                                     CommandParameter="{Binding IdSpaPersonne}"
                                     Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
                                     <TextBlock>Modifier Enquêteur</TextBlock>
@@ -56,22 +75,22 @@
             <Button
                 Grid.Column="0"
                 Margin="10px"
-                Click="Button_Click"
+                Click="Button_AddEnqueteur"
                 Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
-                <TextBlock FontSize="18">Crée un enquêteur</TextBlock>
+                <TextBlock FontSize="18">Ajouter un enquêteur</TextBlock>
             </Button>
             <Button
                 Grid.Column="1"
                 Margin="10px"
-                Click="Button_Click_1"
+                Click="Button_Localisation"
                 Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
-                <TextBlock FontSize="18">Localiser enquêteur</TextBlock>
+                <TextBlock FontSize="18">Localiser les enquêteurs</TextBlock>
             </Button>
             <Button
                 Grid.Column="2"
                 Margin="10px"
                 Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
-                <TextBlock FontSize="18">Transfert Enquête</TextBlock>
+                <TextBlock FontSize="18">Transfert enquêtes</TextBlock>
             </Button>
         </Grid>
     </Grid>

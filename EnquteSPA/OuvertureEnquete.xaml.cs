@@ -1,19 +1,12 @@
 ﻿using EnquteSPA.bo;
 using MahApps.Metro.Controls;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace EnquteSPA
 {
@@ -30,30 +23,30 @@ namespace EnquteSPA
             using var db = new Context();
             en = db.Enquete.Find(id);
             InitializeComponent();
-            this.Title = "Enquete : " + en.NoEnquete;
+            Title = "Enquête : " + en.NoEnquete;
         }
 
-        private void DataGrid_Initialized(object sender, EventArgs e)
+        private void ListeVisites(object sender, EventArgs e)
         {
             using var db = new Context();
-            GridVisite.ItemsSource = db.Visite.Where(v => v.IdEnquete == idenquete).ToList();
+            XGridVisite.ItemsSource = db.Visite.Where(v => v.IdEnquete == idenquete).ToList();
         }
 
-        private void DataGrid_Initialized_1(object sender, EventArgs e)
+        private void ListeDocuments(object sender, EventArgs e)
         {
             using var db = new Context();
-            GridDocument.ItemsSource = db.Document.Where(v => v.NoEnquete == idenquete).ToList();
+            XGridDocument.ItemsSource = db.Document.Where(v => v.NoEnquete == idenquete).ToList();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AjouterDocument(object sender, RoutedEventArgs e)
         {
             AddDocument add = new AddDocument(idenquete);
             add.ShowDialog();
             using var db = new Context();
-            GridDocument.ItemsSource = db.Document.Where(v => v.NoEnquete == idenquete).ToList();
+            XGridDocument.ItemsSource = db.Document.Where(v => v.NoEnquete == idenquete).ToList();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void OuvrirDocument(object sender, RoutedEventArgs e)
         {
             //open document
             Button fdv = (Button)sender;
@@ -66,6 +59,51 @@ namespace EnquteSPA
             photoViewer.StartInfo.Arguments = @opeen;
             photoViewer.Start();
 
+        }
+    }
+
+    public class DocumentPathConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if (value == null) return null;
+            string file = ((string)value).Split('/').Last();
+            string ext = '.'+file.Split('.').Last();
+            if (file.Length - ext.Length < 45)
+                return file;
+            return file[0..40]+"[...]"+ext;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return value;
+        }
+    }
+    public class DocumentTypeConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if (value == null) return null;
+            switch((string)value)
+            {
+                case ".jpg":
+                case ".jpeg":
+                case ".png":
+                    return "Image";
+                case ".pdf":
+                    return "PDF";
+                case ".doc":
+                case ".docx":
+                    return "Word";
+                case ".mp3":
+                    return "Audio";
+            }
+            return value;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return value;
         }
     }
 }

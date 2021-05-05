@@ -4,10 +4,7 @@ using System;
 using EnquteSPA.bo;
 using EnquteSPA.modele;
 using MahApps.Metro.Controls.Dialogs;
-using System.Collections.Generic;
 using System.Linq;
-using System.Linq;
-using System.Diagnostics;
 
 namespace EnquteSPA
 {
@@ -19,7 +16,6 @@ namespace EnquteSPA
         private readonly Erreur erreur;
         private Enquete enquete;
         private Personne plaignant, infracteur;
-        private string ID;
 
         public AddEnquete(Enquete enquete = null)
         {
@@ -35,9 +31,9 @@ namespace EnquteSPA
 
                 XNumEnquete.Text = this.enquete.NoEnquete;
                 XDateDepot.SelectedDate = this.enquete.DateDepot;
-                XDateDepot.Focusable = false;
+                XDateDepot.IsEnabled = false;
                 XDepartement.Text = this.enquete.Departement;
-                XDepartement.IsReadOnly = true;
+                XDepartement.IsEnabled = false;
                 XMotif.Text = this.enquete.Motif;
 
                 using var db = new Context();
@@ -48,30 +44,30 @@ namespace EnquteSPA
                 infracteur = db.Personne.Find(this.enquete.IdInfracteur);
 
                 XPlaignantNom.Text = plaignant.Nom;
-                XPlaignantNom.IsReadOnly = true;
+                XPlaignantNom.IsEnabled = false;
                 XPlaignantPrenom.Text = plaignant.Prenom;
-                XPlaignantPrenom.IsReadOnly = true;
+                XPlaignantPrenom.IsEnabled = false;
                 XPlaignantMail.Text = plaignant.Mail;
-                XPlaignantMail.IsReadOnly = true;
+                XPlaignantMail.IsEnabled = false;
                 XPlaignantVille.Text = plaignant.Ville;
-                XPlaignantVille.IsReadOnly = true;
+                XPlaignantVille.IsEnabled = false;
                 XPlaignantNumero.Text = plaignant.Numero;
-                XPlaignantNumero.IsReadOnly = true;
+                XPlaignantNumero.IsEnabled = false;
                 XPlaignantRue.Text = plaignant.Rue;
-                XPlaignantRue.IsReadOnly = true;
+                XPlaignantRue.IsEnabled = false;
 
                 XInfracteurNom.Text = infracteur.Nom;
-                XInfracteurNom.IsReadOnly = true;
+                XInfracteurNom.IsEnabled = false;
                 XInfracteurPrenom.Text = infracteur.Prenom;
-                XInfracteurPrenom.IsReadOnly = true;
+                XInfracteurPrenom.IsEnabled = false;
                 XInfracteurMail.Text = infracteur.Mail;
-                XInfracteurMail.IsReadOnly = true;
+                XInfracteurMail.IsEnabled = false;
                 XInfracteurVille.Text = infracteur.Ville;
-                XInfracteurVille.IsReadOnly = true;
+                XInfracteurVille.IsEnabled = false;
                 XInfracteurNumero.Text = infracteur.Numero;
-                XInfracteurNumero.IsReadOnly = true;
+                XInfracteurNumero.IsEnabled = false;
                 XInfracteurRue.Text = infracteur.Rue;
-                XInfracteurRue.IsReadOnly = true;
+                XInfracteurRue.IsEnabled = false;
             }
         }
 
@@ -82,13 +78,13 @@ namespace EnquteSPA
                 string id = "<ID>";
                 string depTxt = XDepartement.Text;
                 if (depTxt.Length == 0) depTxt = "<DEP>";
-                string numEnqueteWithoutID = $"{depTxt}-{DateTime.Today.Year}-{$"{DateTime.Today.Month}".PadLeft(2, '0')}";
+                string numEnqueteWithoutID = $"{depTxt}/{DateTime.Now.ToString("yy/MM")}";
                 if (XDepartement.Text.Length > 0)
                 {
                     using var db = new Context();
-                    id = $"{db.Enquete.Where(v => v.NoEnquete.StartsWith(numEnqueteWithoutID)).Count() + 1}".PadLeft(4, '0');
+                    id = $"{db.Enquete.Where(v => v.NoEnquete.StartsWith(numEnqueteWithoutID)).Count() + 1}".PadLeft(3, '0');
                 }
-                XNumEnquete.Text = $"{numEnqueteWithoutID}-{id}";
+                XNumEnquete.Text = $"{numEnqueteWithoutID}/{id}";
             }
         }
 
@@ -159,6 +155,31 @@ namespace EnquteSPA
                 db.SaveChanges();
                 Close();
             }
+        }
+
+        private void XPlaignantNom_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            XPlaignantNom.Text = XPlaignantNom.Text.ToUpper();
+            XPlaignantNom.SelectionStart = XPlaignantNom.Text.Length;
+        }
+
+        private void XPlaignantPrenom_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            XPlaignantPrenom.Text = Static.FirstLetterToUpper(XPlaignantPrenom.Text);
+            XPlaignantPrenom.SelectionStart = XPlaignantPrenom.Text.Length;
+        }
+
+        private void XInfracteurNom_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            XInfracteurNom.Text = XInfracteurNom.Text.ToUpper();
+            XInfracteurNom.SelectionStart = XInfracteurNom.Text.Length;
+
+        }
+
+        private void XInfracteurPrenom_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            XInfracteurPrenom.Text = Static.FirstLetterToUpper(XInfracteurPrenom.Text);
+            XInfracteurPrenom.SelectionStart = XInfracteurPrenom.Text.Length;
         }
     }
 }
