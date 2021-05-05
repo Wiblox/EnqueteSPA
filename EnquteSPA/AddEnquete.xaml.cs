@@ -148,7 +148,8 @@ namespace EnquteSPA
                 }
                 else
                 {
-                    enquete.IdEnqueteur = (int)XEnqueteur.SelectedValue;
+                    if(XEnqueteur.SelectedValue != null)
+                        enquete.IdEnqueteur = (int)XEnqueteur.SelectedValue;
                     enquete.Statut = statut;
                     enquete.Motif = XMotif.Text;
                 }
