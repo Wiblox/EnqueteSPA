@@ -60,6 +60,23 @@ namespace EnquteSPA
             photoViewer.Start();
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SupprimerDocument(object sender, RoutedEventArgs e)
+        {
+            Button fdv = (Button)sender;
+            using var db = new Context();
+            Document doc = db.Document.Find(fdv.CommandParameter);
+            db.Document.Remove(doc);
+            db.SaveChanges();
+            XGridDocument.ItemsSource = db.Document.Where(v => v.NoEnquete == idenquete).ToList();
+
+
+        }
     }
 
     public class DocumentPathConverter : IValueConverter
