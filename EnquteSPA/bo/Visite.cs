@@ -14,10 +14,12 @@ namespace EnquteSPA
         [ForeignKey("Enquete")]
         public int IdEnquete { get; set; }
 
-        public virtual Enquete Enquete {get; set; }
-
         public string Rapport { get; set; }
 
         public DateTime DateVisite { get; set; }
+
+        public bool AvisPassage { get; set; }
+
+        public int IdAccompagnant { get; set; }
     }
 }
