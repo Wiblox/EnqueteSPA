@@ -44,7 +44,9 @@
             <Button
                 Width="100px"
                 Click="Button_Click_1"
-                Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+                Background="#eb651b"
+                Foreground="White"
+                Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
 
                 <TextBlock>Crée le compte</TextBlock>
             </Button>

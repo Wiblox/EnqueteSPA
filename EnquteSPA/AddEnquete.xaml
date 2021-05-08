@@ -154,7 +154,9 @@
             Height="30"
             Margin="0,5"
             Click="ClickBtnValider"
-            Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+            Background="#eb651b"
+            Foreground="White"
+            Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
             <TextBlock>Valider</TextBlock>
         </Button>
     </Grid>

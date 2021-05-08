@@ -54,7 +54,9 @@
                                 Margin="4px"
                                 Click="EditEnquete"
                                 CommandParameter="{Binding NoEnquete}"
-                                Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+                                Background="#eb651b"
+                                Foreground="White"
+                                Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
 
                                 <TextBlock>Modifier Enquête</TextBlock>
                             </Button>
@@ -68,7 +70,9 @@
                                 Margin="4px"
                                 Click="OuvrirEnquete"
                                 CommandParameter="{Binding IdEnquete}"
-                                Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+                                Background="#eb651b"
+                                Foreground="White"
+                                Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
 
                                 <TextBlock>Ouvrir Enquête</TextBlock>
                             </Button>
@@ -84,7 +88,9 @@
             Width="200"
             Margin="10px"
             Click="CreateEnquete"
-            Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+            Background="#eb651b"
+            Foreground="White"
+            Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
             <TextBlock FontSize="18">Créer une enquête</TextBlock>
         </Button>
     </Grid>

@@ -62,7 +62,9 @@
                 Visibility="Collapsed"/>
         </WrapPanel>
         <Grid Grid.Row="1" Margin="10px">
-            <Button Click="Button_Valider" Width="110" Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+            <Button Click="Button_Valider" Width="110" Background="#eb651b"
+                Foreground="White"
+                Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
                 <TextBlock x:Name="NomB">Valider</TextBlock>
             </Button>
         </Grid>
