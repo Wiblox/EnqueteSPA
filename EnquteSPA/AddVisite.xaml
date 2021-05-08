@@ -1,0 +1,77 @@
+﻿<mah:MetroWindow
+    x:Class="EnquteSPA.AddVisite"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:EnquteSPA"
+    xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    Title="Ajout d'une visite"
+    Height="Auto"
+    ResizeMode="NoResize"
+    SizeToContent="WidthAndHeight"
+    mc:Ignorable="d">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <WrapPanel
+            Grid.Row="0"
+            HorizontalAlignment="Center">
+            <Label Content="Date :" />
+            <DatePicker
+                x:Name="XDate"
+                VerticalAlignment="Top" />
+            <Separator Margin="15,0,8,0" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            <Label Content="Accompagnant :" />
+            <ComboBox
+                x:Name="XAccompagnant"
+                Width="150"
+                SelectedValuePath="IdSpaPersonne">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="{Binding Nom}" />
+                            <Run Text="{Binding Prenom}" />
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Separator Margin="15,0" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            <CheckBox
+                x:Name="XAvisPassage"
+                Padding="5px"
+                HorizontalAlignment="Center"
+                Content="Avis de passage" Checked="XAvisPassage_Checked" Unchecked="XAvisPassage_Unchecked"/>
+        </WrapPanel>
+        <WrapPanel
+            x:Name="XRapport_Container"
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            Orientation="Vertical"
+            Margin="0,10,0,0">
+            <Label Content="Rapport :"/>
+            <TextBox
+                x:Name="XRapport"
+                Width="600"
+                MinHeight="50"
+                MaxHeight="150"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Visible" />
+        </WrapPanel>
+        <Button
+            x:Name="XBtnValider"
+            Grid.Row="2"
+            Width="75"
+            Height="30"
+            Margin="0,15,0,0"
+            Click="ClickBtnValider"
+            Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+            <TextBlock>Valider</TextBlock>
+        </Button>
+    </Grid>
+</mah:MetroWindow>

@@ -67,7 +67,7 @@ namespace EnquteSPA
                 case (int)StatutEnquete.NON_ASSIGNEE:
                     return "Non assignée";
                 case (int)StatutEnquete.RENDUE:
-                    return "Clôturée";
+                    return "Rendue";
             }
             return "ERREUR";
         }

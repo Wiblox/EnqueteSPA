@@ -62,7 +62,7 @@ namespace EnquteSPA
                 using var db = new Context();
                 if (spaPersonne == null)
                 {
-                    SpaPersonne SpaPersonne = new SpaPersonne(XNom.Text, XPrenom.Text, XMail.Text, XVille.Text, XRue.Text, XNumero.Text, true, true);
+                    SpaPersonne SpaPersonne = new SpaPersonne(XNom.Text, XPrenom.Text, XMail.Text, XVille.Text, XRue.Text, XNumero.Text, XFonction.SelectedIndex == 0 ? true : false, true);
                     db.SpaPersonne.Add(SpaPersonne);
                 }
                 else

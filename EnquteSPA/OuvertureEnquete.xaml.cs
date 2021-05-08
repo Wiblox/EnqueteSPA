@@ -58,12 +58,6 @@ namespace EnquteSPA
             photoViewer.StartInfo.FileName = @"explorer.exe";
             photoViewer.StartInfo.Arguments = @opeen;
             photoViewer.Start();
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void SupprimerDocument(object sender, RoutedEventArgs e)
@@ -74,8 +68,14 @@ namespace EnquteSPA
             db.Document.Remove(doc);
             db.SaveChanges();
             XGridDocument.ItemsSource = db.Document.Where(v => v.NoEnquete == idenquete).ToList();
+        }
 
-
+        private void Button_AddVisite_Click(object sender, RoutedEventArgs e)
+        {
+            AddVisite av = new AddVisite(en);
+            av.ShowDialog();
+            using var db = new Context();
+            XGridVisite.ItemsSource = db.Visite.ToList();
         }
     }
 
@@ -88,7 +88,7 @@ namespace EnquteSPA
             string ext = '.'+file.Split('.').Last();
             if (file.Length - ext.Length < 45)
                 return file;
-            return file[0..40]+"[...]"+ext;
+            return $"{file[0..40]}[...]{ext}";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -96,6 +96,7 @@ namespace EnquteSPA
             return value;
         }
     }
+
     public class DocumentTypeConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -106,6 +107,8 @@ namespace EnquteSPA
                 case ".jpg":
                 case ".jpeg":
                 case ".png":
+                case ".gif":
+                case ".tiff":
                     return "Image";
                 case ".pdf":
                     return "PDF";
@@ -113,9 +116,42 @@ namespace EnquteSPA
                 case ".docx":
                     return "Word";
                 case ".mp3":
+                case ".m4a":
+                case ".flac":
+                case ".ogg":
                     return "Audio";
             }
             return value;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return value;
+        }
+    }
+    
+    public class VisiteAccompagnantConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if (value == null) return null;
+            using var db = new Context();
+            SpaPersonne sp = db.SpaPersonne.Find(value);
+            return $"{sp.Nom} {sp.Prenom}";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return value;
+        }
+    }
+    
+    public class VisiteRapportConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if (value == null || ((string)value).Length == 0) return false;
+            return true;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

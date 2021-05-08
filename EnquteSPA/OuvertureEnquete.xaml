@@ -14,6 +14,8 @@
     <mah:MetroWindow.Resources>
         <local:DocumentPathConverter x:Key="DocumentPathConverter" />
         <local:DocumentTypeConverter x:Key="DocumentTypeConverter" />
+        <local:VisiteAccompagnantConverter x:Key="VisiteAccompagnantConverter" />
+        <local:VisiteRapportConverter x:Key="VisiteRapportConverter"/>
     </mah:MetroWindow.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -43,27 +45,38 @@
                     Initialized="ListeVisites"
                     IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Path=PathDoc}" Header="Nom Fichier" />
-                        <DataGridTextColumn Binding="{Binding Path=typeDocument}" Header="Type Fichier" />
-
-                        <DataGridTemplateColumn Header="Modification">
+                        <DataGridTextColumn Binding="{Binding Path=DateVisite, StringFormat={}{0:dd/MM/yyyy}}" Header="Date visite" />
+                        <DataGridTextColumn Binding="{Binding Path=IdAccompagnant, Converter={StaticResource VisiteAccompagnantConverter}}" Header="Accompagnant" />
+                        <DataGridCheckBoxColumn Binding="{Binding Path=AvisPassage}" Header="Avis passage" />
+                        <!--<DataGridCheckBoxColumn Binding="{Binding Path=Rapport, Converter={StaticResource VisiteRapportConverter}}" Header="Rapport" />-->
+                        
+                        <DataGridTemplateColumn Header="Rapport">
 
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button
+                                        x:Name="Button_EditVisite"
                                         Margin="4px"
-                                        Click="Button_Click"
                                         CommandParameter="{Binding PathDoc}"
                                         Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
-
-                                        <TextBlock>Supprimer</TextBlock>
+                                        <Button.Visibility>
+                                            <Binding Path="Rapport">
+                                                <Binding.Converter>
+                                                    <local:VisiteRapportConverter/>
+                                                </Binding.Converter>
+                                            </Binding>
+                                        </Button.Visibility>
+                                        <TextBlock>Afficher</TextBlock>
                                     </Button>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button Grid.Row="1" Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+                <Button 
+                    x:Name="Button_AddVisite"
+                    Grid.Row="1" 
+                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="Button_AddVisite_Click">
                     <TextBlock>Ajouter une visite</TextBlock>
                 </Button>
             </Grid>
