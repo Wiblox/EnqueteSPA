@@ -24,6 +24,7 @@
             <RowDefinition Height="10*" />
             <RowDefinition Height="50*" />
             <RowDefinition Height="80*" />
+            <RowDefinition Height="5*" />
         </Grid.RowDefinitions>
         <TextBlock
             x:Name="TitleEnqute"
@@ -143,5 +144,14 @@
                 </Button>
             </Grid>
         </Grid>
+
+        <Button
+            Grid.Row="3"
+            Click="SendMail"
+            Background="#eb651b"
+            Foreground="White"
+            Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
+            <TextBlock>Générer un mail</TextBlock>
+        </Button>
     </Grid>
 </mah:MetroWindow>

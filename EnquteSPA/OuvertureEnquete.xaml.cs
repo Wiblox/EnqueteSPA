@@ -86,6 +86,15 @@ namespace EnquteSPA
             Visite visite = db.Visite.Find(fdv.CommandParameter);
             this.ShowMessageAsync($"Enquête n°{en.NoEnquete} - Visite du {visite.DateVisite.ToString("dd/MM/yyyy")}", visite.Rapport);
         }
+
+        private void SendMail(object sender, RoutedEventArgs e)
+        {
+            String destinataire = "test@gmail.com";
+            String sujet = "Affectation de l'enquête 57/21/05/001";
+            String corps = "Bonjour Michel, %0A%0AL'enquête 57/21/05/001 saisie le 09/05/2020 vous a été affectée. %0ACelle-ci a pour objet \"Refuge\" et concerne les espèces suivantes : Cochons, Chiens.%0ASon motif : \"Maltraitance de cochons\".%0A%0APlaignant%0AL214%0AMail : l214@gmail.com%0AAdresse : 4 rue du soleil 67204 Achenheim%0A%0AInfracteur%0ALes Mousquetaires%0AMail : lesmousquetaires@mail.com%0AAdresse : 18 rue Taison 57000 Metz";
+            System.Diagnostics.Process.Start(new ProcessStartInfo("mailto:" + destinataire + "?subject=" + sujet + "&body=" + corps + "") { UseShellExecute = true });
+
+        }
     }
 
     public class DocumentPathConverter : IValueConverter

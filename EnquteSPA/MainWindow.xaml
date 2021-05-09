@@ -25,6 +25,8 @@
                 VerticalAlignment="Bottom"
                 FontSize="25"
                 Foreground="Gray" />
+            <Image Source="/Resources/sign-out-alt-solid.png" />
+
         </Grid>
 
         <TabControl
