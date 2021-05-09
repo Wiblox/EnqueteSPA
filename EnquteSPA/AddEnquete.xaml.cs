@@ -9,6 +9,7 @@ using System.Xml;
 using System.Net;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Collections;
 
 namespace EnquteSPA
 {
@@ -127,8 +128,8 @@ namespace EnquteSPA
                 //Get the geocode points that are used for display (UsageType=Display)
                 XmlNodeList displayGeocodePoints =
                         locationElements[0].SelectNodes(".//rest:GeocodePoint/rest:UsageType[.='Display']/parent::node()", nsmgr);
-                latitude = double.Parse(displayGeocodePoints[0].SelectSingleNode(".//rest:Latitude", nsmgr).InnerText.Replace('.', ','));
-                longitude = double.Parse(displayGeocodePoints[0].SelectSingleNode(".//rest:Longitude", nsmgr).InnerText.Replace('.', ','));
+                 latitude = double.Parse(displayGeocodePoints[0].SelectSingleNode(".//rest:Latitude", nsmgr).InnerText.Replace('.',','));
+                 longitude = double.Parse(displayGeocodePoints[0].SelectSingleNode(".//rest:Longitude", nsmgr).InnerText.Replace('.', ','));
             }
 
 
@@ -170,7 +171,7 @@ namespace EnquteSPA
 
         private void ListeEnqueteurs(object sender, EventArgs e)
         {
-            XEnqueteur.ItemsSource = listTrier(localisation("39 rue charles de gaulle seremange"));
+            XEnqueteur.ItemsSource = listTrier();
         }
 
         private void TxtDepartementChange(object sender, System.Windows.Controls.TextChangedEventArgs e)
@@ -237,6 +238,23 @@ namespace EnquteSPA
                 db.SaveChanges();
                 Close();
             }
+        }
+
+        private void XEnqueteur_GotFocus(object sender, RoutedEventArgs e)
+        {
+            erreur.ResetMsgRetour();
+            erreur.TestNonVide(XInfracteurNumero.Text, "Nom du plaignant");
+            erreur.TestNonVide(XInfracteurRue.Text, "Nom du plaignant");
+            erreur.TestNonVide(XInfracteurVille.Text, "Nom du plaignant");
+
+            XEnqueteur.ItemsSource = erreur.IsSafe() ? listTrier(localisation(XInfracteurNumero.Text + " " + XInfracteurRue.Text + " " + XInfracteurVille.Text)) : listTrier(); ;
+        }
+
+        private List<SpaPersonne> listTrier()
+        {
+            using var db = new Context();
+
+            return db.SpaPersonne.Where(v => v.IsEnqueteur == true).ToList();
         }
     }
 }

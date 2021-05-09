@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -45,6 +46,18 @@ namespace EnquteSPA
             AddSpaPersonne newx = new AddSpaPersonne(modifSPA);
             newx.ShowDialog();
             db.SaveChanges();
+            data.ItemsSource = db.SpaPersonne.ToList();
+        }
+
+        private void data_Loaded(object sender, RoutedEventArgs e)
+        {
+            using var db = new Context();
+            data.ItemsSource = db.SpaPersonne.ToList();
+        }
+
+        private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            using var db = new Context();
             data.ItemsSource = db.SpaPersonne.ToList();
         }
     }

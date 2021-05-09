@@ -65,7 +65,7 @@
                     x:Name="XEnqueteur"
                     Width="150"
                     Initialized="ListeEnqueteurs"
-                    SelectedValuePath="IdSpaPersonne">
+                    SelectedValuePath="IdSpaPersonne" GotFocus="XEnqueteur_GotFocus">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock>
