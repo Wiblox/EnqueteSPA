@@ -7,16 +7,16 @@
     xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Ajout d'une enquête"
-    Width="700"
-    Height="Auto"
     d:DesignHeight="372.88"
     ResizeMode="NoResize"
     SizeToContent="WidthAndHeight"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    WindowStartupLocation="CenterOwner">
 
     <Grid Margin="5">
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -38,6 +38,20 @@
                     Width="100"
                     VerticalAlignment="Top" />
             </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Objet :" />
+                <TextBox
+                    x:Name="XObjet"
+                    Width="100" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Race :" />
+                <TextBox
+                    x:Name="XRace"
+                    Width="100" />
+            </StackPanel>
+        </WrapPanel>
+        <WrapPanel Grid.Row="1" Orientation="Horizontal">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Département :" />
                 <TextBox
@@ -64,7 +78,7 @@
             </StackPanel>
         </WrapPanel>
 
-        <StackPanel Grid.Row="1">
+        <StackPanel Grid.Row="2">
             <Separator Margin="5,15,5,5" />
             <Label Content="Motif :" />
             <TextBox
@@ -79,7 +93,7 @@
             <Separator Margin="5,15,5,10" />
         </StackPanel>
 
-        <WrapPanel Grid.Row="2" HorizontalAlignment="Center">
+        <WrapPanel Grid.Row="3" HorizontalAlignment="Center">
             <GroupBox
                 Grid.Column="0"
                 Width="325"
@@ -88,26 +102,14 @@
                 Style="{x:Null}">
                 <WrapPanel Grid.Row="0" Orientation="Horizontal">
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Nom :" />
+                        <Label Content="Dénomination :" />
                         <TextBox
-                            x:Name="XPlaignantNom"
-                            Width="100"
-                            TextChanged="XPlaignantNom_TextChanged" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="Prénom :" />
-                        <TextBox
-                            x:Name="XPlaignantPrenom"
-                            Width="100"
-                            TextChanged="XPlaignantPrenom_TextChanged" />
+                            x:Name="XPlaignantDenomination"
+                            Width="210" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Mail :" />
-                        <TextBox x:Name="XPlaignantMail" Width="200" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="Ville :" />
-                        <TextBox x:Name="XPlaignantVille" Width="150" />
+                        <TextBox x:Name="XPlaignantMail" Width="263" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Numéro :" />
@@ -115,7 +117,11 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Rue :" />
-                        <TextBox x:Name="XPlaignantRue" Width="150" />
+                        <TextBox x:Name="XPlaignantRue" Width="156" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Ville :" />
+                        <TextBox x:Name="XPlaignantVille" Width="263" />
                     </StackPanel>
                 </WrapPanel>
             </GroupBox>
@@ -127,26 +133,14 @@
                 Style="{x:Null}">
                 <WrapPanel Grid.Row="0" Orientation="Horizontal">
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Nom :" />
+                        <Label Content="Dénomination :" />
                         <TextBox
-                            x:Name="XInfracteurNom"
-                            Width="100"
-                            TextChanged="XInfracteurNom_TextChanged" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="Prénom :" />
-                        <TextBox
-                            x:Name="XInfracteurPrenom"
-                            Width="100"
-                            TextChanged="XInfracteurPrenom_TextChanged" />
+                            x:Name="XInfracteurDenomination"
+                            Width="210" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Mail :" />
-                        <TextBox x:Name="XInfracteurMail" Width="200" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="Ville :" />
-                        <TextBox x:Name="XInfracteurVille" Width="150" />
+                        <TextBox x:Name="XInfracteurMail" Width="263" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Numéro :" />
@@ -154,14 +148,18 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Rue :" />
-                        <TextBox x:Name="XInfracteurRue" Width="150" />
+                        <TextBox x:Name="XInfracteurRue" Width="156" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Ville :" />
+                        <TextBox x:Name="XInfracteurVille" Width="263" />
                     </StackPanel>
                 </WrapPanel>
             </GroupBox>
         </WrapPanel>
         <Button
             x:Name="XBtnValider"
-            Grid.Row="3"
+            Grid.Row="4"
             Width="75"
             Height="30"
             Margin="0,5"

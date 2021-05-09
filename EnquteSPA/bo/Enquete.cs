@@ -11,9 +11,11 @@ namespace EnquteSPA
     {
         public Enquete() { }
 
-        public Enquete(string noEnquete, string departement, DateTime dateDepot, int? idInfracteur, int? idPlaignant, string motif, int? idEnqueteur, int statut)
+        public Enquete(string noEnquete, string objet, string race, string departement, DateTime dateDepot, int? idInfracteur, int? idPlaignant, string motif, int? idEnqueteur, int statut)
         {
             NoEnquete = noEnquete;
+            Objet = objet;
+            Race = race;
             Departement = departement;
             DateDepot = dateDepot;
             IdInfracteur = idInfracteur;
@@ -28,6 +30,10 @@ namespace EnquteSPA
         public int IdEnquete { get; set; }
 
         public string NoEnquete { get; set; }
+
+        public string Objet { get; set; }
+
+        public string Race { get; set; }
 
         public string Departement { get; set; }
 

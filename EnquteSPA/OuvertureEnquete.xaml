@@ -9,7 +9,8 @@
     Title="Enquête"
     Width="1200"
     Height="750"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    WindowStartupLocation="CenterOwner">
 
     <mah:MetroWindow.Resources>
         <local:DocumentPathConverter x:Key="DocumentPathConverter" />

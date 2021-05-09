@@ -36,6 +36,8 @@ namespace EnquteSPA
                 Title = "Modification d'une enquête";
 
                 XNumEnquete.Text = this.enquete.NoEnquete;
+                XObjet.Text = this.enquete.Objet;
+                XRace.Text = this.enquete.Race;
                 XDateDepot.SelectedDate = this.enquete.DateDepot;
                 XDateDepot.IsEnabled = false;
                 XDepartement.Text = this.enquete.Departement;
@@ -49,10 +51,8 @@ namespace EnquteSPA
                 plaignant = db.Personne.Find(this.enquete.IdPlaignant);
                 infracteur = db.Personne.Find(this.enquete.IdInfracteur);
 
-                XPlaignantNom.Text = plaignant.Nom;
-                XPlaignantNom.IsEnabled = false;
-                XPlaignantPrenom.Text = plaignant.Prenom;
-                XPlaignantPrenom.IsEnabled = false;
+                XPlaignantDenomination.Text = plaignant.Denomination;
+                XPlaignantDenomination.IsEnabled = false;
                 XPlaignantMail.Text = plaignant.Mail;
                 XPlaignantMail.IsEnabled = false;
                 XPlaignantVille.Text = plaignant.Ville;
@@ -62,10 +62,8 @@ namespace EnquteSPA
                 XPlaignantRue.Text = plaignant.Rue;
                 XPlaignantRue.IsEnabled = false;
 
-                XInfracteurNom.Text = infracteur.Nom;
-                XInfracteurNom.IsEnabled = false;
-                XInfracteurPrenom.Text = infracteur.Prenom;
-                XInfracteurPrenom.IsEnabled = false;
+                XInfracteurDenomination.Text = infracteur.Denomination;
+                XInfracteurDenomination.IsEnabled = false;
                 XInfracteurMail.Text = infracteur.Mail;
                 XInfracteurMail.IsEnabled = false;
                 XInfracteurVille.Text = infracteur.Ville;
@@ -79,7 +77,7 @@ namespace EnquteSPA
 
         private void GenTxtNumEnquete()
         {
-            if(enquete == null)
+            if (enquete == null)
             {
                 string id = "<ID>";
                 string depTxt = XDepartement.Text;
@@ -129,8 +127,8 @@ namespace EnquteSPA
                 //Get the geocode points that are used for display (UsageType=Display)
                 XmlNodeList displayGeocodePoints =
                         locationElements[0].SelectNodes(".//rest:GeocodePoint/rest:UsageType[.='Display']/parent::node()", nsmgr);
-                 latitude = double.Parse(displayGeocodePoints[0].SelectSingleNode(".//rest:Latitude", nsmgr).InnerText.Replace('.',','));
-                 longitude = double.Parse(displayGeocodePoints[0].SelectSingleNode(".//rest:Longitude", nsmgr).InnerText.Replace('.', ','));
+                latitude = double.Parse(displayGeocodePoints[0].SelectSingleNode(".//rest:Latitude", nsmgr).InnerText.Replace('.', ','));
+                longitude = double.Parse(displayGeocodePoints[0].SelectSingleNode(".//rest:Longitude", nsmgr).InnerText.Replace('.', ','));
             }
 
 
@@ -141,7 +139,7 @@ namespace EnquteSPA
         {
             List<SpaPersonne> listefinale = new List<SpaPersonne>();
             using var db = new Context();
-            var listeEnqueteur = db.SpaPersonne.Where(v => v.IsEnqueteur==true).ToList();
+            var listeEnqueteur = db.SpaPersonne.Where(v => v.IsEnqueteur == true).ToList();
             Point[] distance = new Point[listeEnqueteur.Count()];
             double[] distanceDouble = new double[listeEnqueteur.Count()];
 
@@ -150,36 +148,28 @@ namespace EnquteSPA
             {
                 distance[i] = new Point(enqueteur.x, enqueteur.y);
                 i++;
-
             }
-            for ( i = 0; i < listeEnqueteur.Count(); i++)
+            for (i = 0; i < listeEnqueteur.Count(); i++)
             {
                 distanceDouble[i] = Math.Abs(distance[i].X - p.X) + Math.Abs(distance[i].Y - p.Y);
             }
-            List<Tuple<double, SpaPersonne>> test = new List<Tuple<double, SpaPersonne>>() ;
+            List<Tuple<double, SpaPersonne>> test = new List<Tuple<double, SpaPersonne>>();
 
             for (i = 0; i < listeEnqueteur.Count(); i++)
             {
                 test.Add(new Tuple<double, SpaPersonne>(distanceDouble[i], listeEnqueteur[i]));
-
             }
             test.Sort(Comparer<Tuple<double, SpaPersonne>>.Default);
             for (i = 0; i < listeEnqueteur.Count(); i++)
             {
                 listefinale.Add(test[i].Item2);
-
             }
-
             return listefinale;
 
         }
 
         private void ListeEnqueteurs(object sender, EventArgs e)
         {
-            using var db = new Context();
-
-
-
             XEnqueteur.ItemsSource = listTrier(localisation("39 rue charles de gaulle seremange"));
         }
 
@@ -197,17 +187,17 @@ namespace EnquteSPA
         {
             erreur.ResetMsgRetour();
             erreur.TestDepartement(XDepartement.Text, "Département");
+            erreur.TestNonVide(XObjet.Text, "Objet");
+            erreur.TestNonVide(XRace.Text, "Race");
             erreur.TestNonVide(XMotif.Text, "Motif");
             // Plaignant
-            erreur.TestNonVide(XPlaignantNom.Text, "Nom du plaignant");
-            erreur.TestNonVide(XPlaignantPrenom.Text, "Prénom du plaignant");
+            erreur.TestNonVide(XPlaignantDenomination.Text, "Dénomination du plaignant");
             erreur.TestMail(XPlaignantMail.Text, "Mail du plaignant");
             erreur.TestNonVide(XPlaignantVille.Text, "Ville du plaignant");
             erreur.TestNonVide(XPlaignantNumero.Text, "Numéro du plaignant");
             erreur.TestNonVide(XPlaignantRue.Text, "Rue du plaignant");
             // Infracteur
-            erreur.TestNonVide(XInfracteurNom.Text, "Nom de l'infracteur");
-            erreur.TestNonVide(XInfracteurPrenom.Text, "Prénom de l'infracteur");
+            erreur.TestNonVide(XInfracteurDenomination.Text, "Nom de l'infracteur");
             erreur.TestMail(XInfracteurMail.Text, "Mail de l'infracteur");
             erreur.TestNonVide(XInfracteurVille.Text, "Ville de l'infracteur");
             erreur.TestNonVide(XInfracteurNumero.Text, "Numéro de l'infracteur");
@@ -227,49 +217,26 @@ namespace EnquteSPA
                 int statut = (XEnqueteur.SelectedItem == null) ? (int)StatutEnquete.NON_ASSIGNEE : (int)StatutEnquete.EN_COURS;
                 if (enquete == null)
                 {
-                    Personne plaignant = new Personne(XPlaignantNom.Text, XPlaignantPrenom.Text, XPlaignantMail.Text, XPlaignantVille.Text, XPlaignantRue.Text, XPlaignantNumero.Text);
+                    Personne plaignant = new Personne(XPlaignantDenomination.Text, XPlaignantMail.Text, XPlaignantVille.Text, XPlaignantRue.Text, XPlaignantNumero.Text);
                     db.Personne.Add(plaignant);
-                    Personne infracteur = new Personne(XInfracteurNom.Text, XInfracteurPrenom.Text, XInfracteurMail.Text, XInfracteurVille.Text, XInfracteurRue.Text, XInfracteurNumero.Text);
+                    Personne infracteur = new Personne(XInfracteurDenomination.Text, XInfracteurMail.Text, XInfracteurVille.Text, XInfracteurRue.Text, XInfracteurNumero.Text);
                     db.Personne.Add(infracteur);
                     db.SaveChanges();
-                    Enquete enquete = new Enquete(XNumEnquete.Text, XDepartement.Text, (DateTime)XDateDepot.SelectedDate, infracteur.IdPersonne, plaignant.IdPersonne, XMotif.Text, (int?)XEnqueteur.SelectedValue, statut);
+                    Enquete enquete = new Enquete(XNumEnquete.Text, XObjet.Text, XRace.Text, XDepartement.Text, (DateTime)XDateDepot.SelectedDate, infracteur.IdPersonne, plaignant.IdPersonne, XMotif.Text, (int?)XEnqueteur.SelectedValue, statut);
                     db.Enquete.Add(enquete);
                 }
                 else
                 {
-                    if(XEnqueteur.SelectedValue != null)
+                    if (XEnqueteur.SelectedValue != null)
                         enquete.IdEnqueteur = (int)XEnqueteur.SelectedValue;
                     enquete.Statut = statut;
                     enquete.Motif = XMotif.Text;
+                    enquete.Objet = XObjet.Text;
+                    enquete.Race = XRace.Text;
                 }
                 db.SaveChanges();
                 Close();
             }
-        }
-
-        private void XPlaignantNom_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            XPlaignantNom.Text = XPlaignantNom.Text.ToUpper();
-            XPlaignantNom.SelectionStart = XPlaignantNom.Text.Length;
-        }
-
-        private void XPlaignantPrenom_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            XPlaignantPrenom.Text = Static.FirstLetterToUpper(XPlaignantPrenom.Text);
-            XPlaignantPrenom.SelectionStart = XPlaignantPrenom.Text.Length;
-        }
-
-        private void XInfracteurNom_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            XInfracteurNom.Text = XInfracteurNom.Text.ToUpper();
-            XInfracteurNom.SelectionStart = XInfracteurNom.Text.Length;
-
-        }
-
-        private void XInfracteurPrenom_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            XInfracteurPrenom.Text = Static.FirstLetterToUpper(XInfracteurPrenom.Text);
-            XInfracteurPrenom.SelectionStart = XInfracteurPrenom.Text.Length;
         }
     }
 }

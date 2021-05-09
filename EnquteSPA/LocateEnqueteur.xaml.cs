@@ -33,12 +33,10 @@ namespace EnquteSPA
             te.Location = loc;
             var CoordinateTip = new ToolTip();
             CoordinateTip.Content = nom.ToUpper() + " " + prenom.ToUpper();
-            te.Content = nom[0] + " "+ prenom[0] ;
+            te.Content = $"{nom.FirstOrDefault()}{prenom.FirstOrDefault()}";
             te.ToolTip = CoordinateTip;
             if (delegueEnqueteur)
-            {
                 te.Background = new SolidColorBrush(Colors.Blue);
-            }
             myMap.Children.Add(te);
         }
 

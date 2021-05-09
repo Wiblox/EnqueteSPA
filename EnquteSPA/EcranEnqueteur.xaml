@@ -54,12 +54,13 @@
                             <DataTemplate>
                                 <Button
                                     Margin="5px"
+                                    Width="70"
                                     Background="#eb651b"
                                     Click="Button_EditEnqueteur"
                                     CommandParameter="{Binding IdSpaPersonne}"
                                     Foreground="White"
                                     Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
-                                    <TextBlock Margin="3px">Modifier personne</TextBlock>
+                                    <TextBlock Margin="3px">Modifier</TextBlock>
                                 </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
