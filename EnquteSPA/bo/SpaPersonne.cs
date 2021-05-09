@@ -8,7 +8,7 @@ namespace EnquteSPA
     {
         public SpaPersonne() { }
 
-        public SpaPersonne(string nom, string prenom, string mail, string ville, string rue, string numero, bool isSalarie, bool etat)
+        public SpaPersonne(string nom, string prenom, string mail, string ville, string rue, string numero, bool isSalarie, bool isEnqueteur, bool etat)
         {
             Nom = nom;
             Prenom = prenom;
@@ -17,6 +17,7 @@ namespace EnquteSPA
             Rue = rue;
             Numero = numero;
             IsSalarie = isSalarie;
+            IsEnqueteur = isEnqueteur;
             Etat = etat;
         }
 
@@ -37,6 +38,8 @@ namespace EnquteSPA
         public string Numero { get; set; }
         
         public bool IsSalarie { get; set; }
+
+        public bool IsEnqueteur { get; set; }
         
         public bool Etat { get; set; }
 
@@ -51,6 +54,7 @@ namespace EnquteSPA
                    Rue == personne.Rue &&
                    Numero == personne.Numero &&
                    IsSalarie == personne.IsSalarie &&
+                   IsEnqueteur == personne.IsEnqueteur &&
                    Etat == personne.Etat;
         }
 

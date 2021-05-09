@@ -26,7 +26,7 @@
                 Initialized="ListeEnqueteurs"
                 IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Enquêteur">
+                    <DataGridTextColumn Header="Personne">
                         <DataGridTextColumn.Binding>
                             <MultiBinding StringFormat="{}{0} {1}">
                                 <Binding Path="Nom" />
@@ -36,6 +36,7 @@
                     </DataGridTextColumn>
                     <DataGridTextColumn Binding="{Binding Path=Mail}" Header="Mail" />
                     <DataGridTextColumn Binding="{Binding Path=IsSalarie, Converter={StaticResource FonctionConverter}}" Header="Fonction" />
+                    <DataGridCheckBoxColumn Binding="{Binding Path=IsEnqueteur}" Header="Enquêteur"/>
                     <DataGridCheckBoxColumn Binding="{Binding Path=Etat}" Header="Disponible"/>
                     <DataGridTextColumn Header="Adresse">
                         <DataGridTextColumn.Binding>
@@ -58,7 +59,7 @@
                                     Background="#eb651b"
                                     Foreground="White"
                                     Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
-                                    <TextBlock>Modifier Enquêteur</TextBlock>
+                                    <TextBlock>Modifier personne</TextBlock>
                                 </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -81,7 +82,7 @@
                 Background="#eb651b"
                 Foreground="White"
                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
-                <TextBlock FontSize="18">Ajouter un enquêteur</TextBlock>
+                <TextBlock FontSize="18">Ajouter une personne</TextBlock>
             </Button>
             <Button
                 Grid.Column="1"

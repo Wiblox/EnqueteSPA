@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:EnquteSPA"
     xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="Ajout d'un enquêteur"
+    Title="Ajout d'une personne"
     Width="325"
     ResizeMode="NoResize"
     SizeToContent="WidthAndHeight"
@@ -53,13 +53,23 @@
                     <ComboBoxItem Content="Bénévole" Tag="false"/>
                 </ComboBox>
             </DockPanel>
-            <CheckBox
-                x:Name="XEtat"
-                Padding="5px"
-                HorizontalAlignment="Center"
-                Content="Disponible"
-                IsChecked="True"
-                Visibility="Collapsed"/>
+
+            <DockPanel HorizontalAlignment="Center">
+                <CheckBox
+                    x:Name="XEnqueteur"
+                    Padding="5px"
+                    HorizontalAlignment="Center"
+                    Content="Enquêteur"
+                    IsChecked="True"/>
+                <CheckBox
+                    x:Name="XEtat"
+                    Padding="5px"
+                    Margin="50,0,0,0"
+                    HorizontalAlignment="Center"
+                    Content="Disponible"
+                    IsChecked="True"
+                    Visibility="Collapsed"/>
+            </DockPanel>
         </WrapPanel>
         <Grid Grid.Row="1" Margin="10px">
             <Button Click="Button_Valider" Width="110" Background="#eb651b"

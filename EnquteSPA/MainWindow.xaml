@@ -55,7 +55,7 @@
                     <local:EcranEnquete />
                 </Grid>
             </TabItem>
-            <TabItem VerticalAlignment="Center" Header="Enquêteurs">
+            <TabItem VerticalAlignment="Center" Header="Personnel">
                 <Grid Background="#F1F3F4">
                     <local:EcranEnqueteur />
                 </Grid>

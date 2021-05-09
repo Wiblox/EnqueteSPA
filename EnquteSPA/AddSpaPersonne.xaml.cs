@@ -32,6 +32,7 @@ namespace EnquteSPA
                 XRue.Text = spaPersonne.Rue;
                 XNumero.Text = spaPersonne.Numero;
                 XFonction.SelectedIndex = spaPersonne.IsSalarie ? 0 : 1;
+                XEnqueteur.IsChecked = spaPersonne.IsEnqueteur;
                 XEtat.IsChecked = spaPersonne.Etat;
 
                 XEtat.Visibility = Visibility.Visible;
@@ -41,8 +42,8 @@ namespace EnquteSPA
         private bool VerifChamps()
         {
             erreur.ResetMsgRetour();
-            erreur.TestNonVide(XNom.Text, "Nom");
-            erreur.TestNonVide(XPrenom.Text, "Prénom");
+            if (erreur.TestNonVide(XNom.Text + XPrenom.Text))
+                erreur.AddToMsgRetour("Veuillez saisir un nom et/ou un prénom.");
             erreur.TestMail(XMail.Text, "Mail");
             erreur.TestNonVide(XVille.Text, "Ville");
             erreur.TestNonVide(XNumero.Text, "Numéro");
@@ -62,7 +63,7 @@ namespace EnquteSPA
                 using var db = new Context();
                 if (spaPersonne == null)
                 {
-                    SpaPersonne SpaPersonne = new SpaPersonne(XNom.Text, XPrenom.Text, XMail.Text, XVille.Text, XRue.Text, XNumero.Text, XFonction.SelectedIndex == 0 ? true : false, true);
+                    SpaPersonne SpaPersonne = new SpaPersonne(XNom.Text, XPrenom.Text, XMail.Text, XVille.Text, XRue.Text, XNumero.Text, XFonction.SelectedIndex == 0 ? true : false, (bool)XEnqueteur.IsChecked, true);
                     db.SpaPersonne.Add(SpaPersonne);
                 }
                 else
@@ -74,6 +75,7 @@ namespace EnquteSPA
                     spaPersonne.Rue = XRue.Text;
                     spaPersonne.Numero = XNumero.Text;
                     spaPersonne.IsSalarie = bool.Parse(((ComboBoxItem)XFonction.SelectedItem).Tag.ToString());
+                    spaPersonne.IsEnqueteur = (bool)XEnqueteur.IsChecked;
                     spaPersonne.Etat = (bool)XEtat.IsChecked;
                 }
                 db.SaveChanges();
