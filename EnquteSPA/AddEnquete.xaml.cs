@@ -5,6 +5,10 @@ using EnquteSPA.bo;
 using EnquteSPA.modele;
 using MahApps.Metro.Controls.Dialogs;
 using System.Linq;
+using System.Xml;
+using System.Net;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace EnquteSPA
 {
@@ -16,6 +20,8 @@ namespace EnquteSPA
         private readonly Erreur erreur;
         private Enquete enquete;
         private Personne plaignant, infracteur;
+        private double latitude;
+        private double longitude;
 
         public AddEnquete(Enquete enquete = null)
         {
@@ -88,10 +94,93 @@ namespace EnquteSPA
             }
         }
 
+        private XmlDocument GetXmlResponse(string requestUrl)
+        {
+            System.Diagnostics.Trace.WriteLine("Request URL (XML): " + requestUrl);
+            HttpWebRequest request = WebRequest.Create(requestUrl) as HttpWebRequest;
+            using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+            {
+                if (response.StatusCode != HttpStatusCode.OK)
+                    throw new Exception(String.Format("Server error (HTTP {0}: {1}).",
+                    response.StatusCode,
+                    response.StatusDescription));
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(response.GetResponseStream());
+                return xmlDoc;
+            }
+        }
+
+        public Point localisation(string addressQuery)
+        {
+            //Create REST Services geocode request using Locations API
+            string geocodeRequest = "http://dev.virtualearth.net/REST/v1/Locations/" + addressQuery + "?o=xml&key=" + "magxKWMjHaUtTsRgF1lW~MRGGMAW5GbjaUW6sUk7-Cw~AtgoUxOrpiDSHWcYdPwQMWlLB71ydq7H2smazBVWmL3vt28stY2eAw3bv40wZBiM";
+
+            //Make the request and get the response
+            XmlDocument geocodeResponse = GetXmlResponse(geocodeRequest);
+            XmlNamespaceManager nsmgr = new XmlNamespaceManager(geocodeResponse.NameTable);
+            nsmgr.AddNamespace("rest", "http://schemas.microsoft.com/search/local/ws/rest/v1");
+            XmlNodeList locationElements = geocodeResponse.SelectNodes("//rest:Location", nsmgr);
+            if (locationElements.Count == 0)
+            {
+
+            }
+            else
+            {
+                //Get the geocode points that are used for display (UsageType=Display)
+                XmlNodeList displayGeocodePoints =
+                        locationElements[0].SelectNodes(".//rest:GeocodePoint/rest:UsageType[.='Display']/parent::node()", nsmgr);
+                 latitude = double.Parse(displayGeocodePoints[0].SelectSingleNode(".//rest:Latitude", nsmgr).InnerText.Replace('.',','));
+                 longitude = double.Parse(displayGeocodePoints[0].SelectSingleNode(".//rest:Longitude", nsmgr).InnerText.Replace('.', ','));
+            }
+
+
+            return new Point(latitude, longitude);
+        }
+
+        private List<SpaPersonne> listTrier(Point p)
+        {
+            List<SpaPersonne> listefinale = new List<SpaPersonne>();
+            using var db = new Context();
+            var listeEnqueteur = db.SpaPersonne.ToList();
+            Point[] distance = new Point[listeEnqueteur.Count()];
+            double[] distanceDouble = new double[listeEnqueteur.Count()];
+
+            int i = 0;
+            foreach (SpaPersonne enqueteur in listeEnqueteur)
+            {
+                distance[i] = localisation(enqueteur.GetLocalisation());
+                i++;
+
+            }
+            for ( i = 0; i < listeEnqueteur.Count(); i++)
+            {
+                distanceDouble[i] = Math.Abs(distance[i].X - p.X) + Math.Abs(distance[i].Y - p.Y);
+            }
+            List<Tuple<double, SpaPersonne>> test = new List<Tuple<double, SpaPersonne>>() ;
+
+            for (i = 0; i < listeEnqueteur.Count(); i++)
+            {
+                test.Add(new Tuple<double, SpaPersonne>(distanceDouble[i], listeEnqueteur[i]));
+
+            }
+            test.Sort(Comparer<Tuple<double, SpaPersonne>>.Default);
+            for (i = 0; i < listeEnqueteur.Count(); i++)
+            {
+                listefinale.Add(test[i].Item2);
+
+            }
+
+            return listefinale;
+
+        }
+
         private void ListeEnqueteurs(object sender, EventArgs e)
         {
             using var db = new Context();
-            XEnqueteur.ItemsSource = db.SpaPersonne.Where(v => v.Etat == true).ToList();
+
+
+
+            XEnqueteur.ItemsSource = listTrier(localisation("39 rue charles de gaulle seremange"));
         }
 
         private void TxtDepartementChange(object sender, System.Windows.Controls.TextChangedEventArgs e)

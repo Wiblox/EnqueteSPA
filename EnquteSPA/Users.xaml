@@ -41,7 +41,9 @@
                             <Button
                                 Margin="5px"
                                 Click="ShowHideDetails"
-                                Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+                                Background="#eb651b"
+                                Foreground="White"
+                                Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
                                 <TextBlock>Modifier Compte</TextBlock>
                             </Button>
                         </DataTemplate>
@@ -58,7 +60,9 @@
                 Height="50px"
                 Click="AddUser_Click"
                 Initialized="Button_Initialized"
-                Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+                Background="#eb651b"
+                Foreground="White"
+                Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
                 <TextBlock>Ajouter un utilisateur</TextBlock>
             </Button>
         </Grid>

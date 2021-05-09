@@ -89,11 +89,17 @@
                 <WrapPanel Grid.Row="0" Orientation="Horizontal">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Nom :" />
-                        <TextBox x:Name="XPlaignantNom" Width="100" TextChanged="XPlaignantNom_TextChanged" />
+                        <TextBox
+                            x:Name="XPlaignantNom"
+                            Width="100"
+                            TextChanged="XPlaignantNom_TextChanged" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Prénom :" />
-                        <TextBox x:Name="XPlaignantPrenom" Width="100" TextChanged="XPlaignantPrenom_TextChanged" />
+                        <TextBox
+                            x:Name="XPlaignantPrenom"
+                            Width="100"
+                            TextChanged="XPlaignantPrenom_TextChanged" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Mail :" />
@@ -122,11 +128,17 @@
                 <WrapPanel Grid.Row="0" Orientation="Horizontal">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Nom :" />
-                        <TextBox x:Name="XInfracteurNom" Width="100" TextChanged="XInfracteurNom_TextChanged" />
+                        <TextBox
+                            x:Name="XInfracteurNom"
+                            Width="100"
+                            TextChanged="XInfracteurNom_TextChanged" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Prénom :" />
-                        <TextBox x:Name="XInfracteurPrenom" Width="100" TextChanged="XInfracteurPrenom_TextChanged" />
+                        <TextBox
+                            x:Name="XInfracteurPrenom"
+                            Width="100"
+                            TextChanged="XInfracteurPrenom_TextChanged" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Mail :" />
@@ -154,7 +166,9 @@
             Height="30"
             Margin="0,5"
             Click="ClickBtnValider"
-            Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+            Background="#eb651b"
+            Foreground="White"
+            Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
             <TextBlock>Valider</TextBlock>
         </Button>
     </Grid>

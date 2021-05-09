@@ -1,5 +1,6 @@
 ﻿using EnquteSPA.bo;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -77,6 +78,14 @@ namespace EnquteSPA
             using var db = new Context();
             XGridVisite.ItemsSource = db.Visite.ToList();
         }
+
+        private void Button_Visite_Rapport_Click(object sender, RoutedEventArgs e)
+        {
+            Button fdv = (Button)sender;
+            using var db = new Context();
+            Visite visite = db.Visite.Find(fdv.CommandParameter);
+            this.ShowMessageAsync($"Enquête n°{en.NoEnquete} - Visite du {visite.DateVisite.ToString("dd/MM/yyyy")}", visite.Rapport);
+        }
     }
 
     public class DocumentPathConverter : IValueConverter
@@ -102,7 +111,7 @@ namespace EnquteSPA
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (value == null) return null;
-            switch((string)value)
+            switch(((string)value).ToLower())
             {
                 case ".jpg":
                 case ".jpeg":
@@ -134,7 +143,7 @@ namespace EnquteSPA
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (value == null) return null;
+            if (value == null) return "--";
             using var db = new Context();
             SpaPersonne sp = db.SpaPersonne.Find(value);
             return $"{sp.Nom} {sp.Prenom}";
@@ -150,8 +159,7 @@ namespace EnquteSPA
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (value == null || ((string)value).Length == 0) return false;
-            return true;
+            return (value == null || ((string)value).Length == 0) ? Visibility.Collapsed : Visibility.Visible;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

@@ -16,6 +16,7 @@
         <local:DocumentTypeConverter x:Key="DocumentTypeConverter" />
         <local:VisiteAccompagnantConverter x:Key="VisiteAccompagnantConverter" />
         <local:VisiteRapportConverter x:Key="VisiteRapportConverter"/>
+        <BooleanToVisibilityConverter x:Key="VisibleIfTrueConverter" />
     </mah:MetroWindow.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -55,17 +56,13 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button
-                                        x:Name="Button_EditVisite"
+                                        x:Name="Button_Visite_Rapport"
+                                        CommandParameter="{Binding IdVisite}"
                                         Margin="4px"
-                                        CommandParameter="{Binding PathDoc}"
-                                        Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
-                                        <Button.Visibility>
-                                            <Binding Path="Rapport">
-                                                <Binding.Converter>
-                                                    <local:VisiteRapportConverter/>
-                                                </Binding.Converter>
-                                            </Binding>
-                                        </Button.Visibility>
+                                        Background="#eb651b"
+                                        Foreground="White"
+                                        Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}"
+                                        Visibility="{Binding Path=Rapport, Converter={StaticResource VisiteRapportConverter}}" Click="Button_Visite_Rapport_Click" >
                                         <TextBlock>Afficher</TextBlock>
                                     </Button>
                                 </DataTemplate>
@@ -76,7 +73,10 @@
                 <Button 
                     x:Name="Button_AddVisite"
                     Grid.Row="1" 
-                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="Button_AddVisite_Click">
+                    Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}"
+                    Click="Button_AddVisite_Click"
+                    Background="#eb651b"
+                    Foreground="White">
                     <TextBlock>Ajouter une visite</TextBlock>
                 </Button>
             </Grid>
@@ -104,7 +104,9 @@
                                         Margin="4px"
                                         Click="OuvrirDocument"
                                         CommandParameter="{Binding PathDoc}"
-                                        Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+                                        Background="#eb651b"
+                                        Foreground="White"
+                                        Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
 
                                         <TextBlock>Ouvrir</TextBlock>
                                     </Button>
@@ -119,7 +121,9 @@
                                         Margin="4px"
                                         Click="SupprimerDocument"
                                         CommandParameter="{Binding IdDocument}"
-                                        Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+                                        Background="#eb651b"
+                                        Foreground="White"
+                                        Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
 
                                         <TextBlock>Supprimer</TextBlock>
                                     </Button>
@@ -131,7 +135,9 @@
                 <Button
                     Grid.Row="1"
                     Click="AjouterDocument"
-                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+                    Background="#eb651b"
+                    Foreground="White"
+                    Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
                     <TextBlock>Ajouter un document</TextBlock>
                 </Button>
             </Grid>
