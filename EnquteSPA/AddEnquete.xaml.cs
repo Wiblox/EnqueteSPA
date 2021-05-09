@@ -263,6 +263,19 @@ namespace EnquteSPA
 
         }
 
+
+        private List<SpaPersonne> listTrier()
+        {
+            using var db = new Context();
+
+            return db.SpaPersonne.Where(v => v.IsEnqueteur == true).ToList();
+        }
+
+
+
+
+  
+
         private void XEnqueteur_GotFocus(object sender, RoutedEventArgs e)
         {
             erreur.ResetMsgRetour();
@@ -275,19 +288,12 @@ namespace EnquteSPA
             {
                 XEnqueteur.ItemsSource = listTrier(localisation(XInfracteurNumero.Text + " " + XInfracteurRue.Text + " " + XInfracteurVille.Text));
 
-               
+
             }
             else
             {
                 XEnqueteur.ItemsSource = listTrier();
             }
-        }
-
-        private List<SpaPersonne> listTrier()
-        {
-            using var db = new Context();
-
-            return db.SpaPersonne.Where(v => v.IsEnqueteur == true).ToList();
         }
 
         private void XInfracteurPrenom_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
