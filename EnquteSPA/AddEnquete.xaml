@@ -10,8 +10,8 @@
     d:DesignHeight="372.88"
     ResizeMode="NoResize"
     SizeToContent="WidthAndHeight"
-    mc:Ignorable="d"
-    WindowStartupLocation="CenterOwner">
+    WindowStartupLocation="CenterOwner"
+    mc:Ignorable="d">
 
     <Grid Margin="5">
 
@@ -40,15 +40,11 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Objet :" />
-                <TextBox
-                    x:Name="XObjet"
-                    Width="100" />
+                <TextBox x:Name="XObjet" Width="100" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Race :" />
-                <TextBox
-                    x:Name="XRace"
-                    Width="100" />
+                <TextBox x:Name="XRace" Width="100" />
             </StackPanel>
         </WrapPanel>
         <WrapPanel Grid.Row="1" Orientation="Horizontal">
@@ -65,7 +61,8 @@
                     x:Name="XEnqueteur"
                     Width="150"
                     Initialized="ListeEnqueteurs"
-                    SelectedValuePath="IdSpaPersonne" GotFocus="XEnqueteur_GotFocus">
+                    MouseEnter="XEnqueteur_MouseEnter"
+                    SelectedValuePath="IdSpaPersonne">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock>
@@ -103,9 +100,7 @@
                 <WrapPanel Grid.Row="0" Orientation="Horizontal">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Dénomination :" />
-                        <TextBox
-                            x:Name="XPlaignantDenomination"
-                            Width="210" />
+                        <TextBox x:Name="XPlaignantDenomination" Width="210" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Mail :" />
@@ -134,9 +129,7 @@
                 <WrapPanel Grid.Row="0" Orientation="Horizontal">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Dénomination :" />
-                        <TextBox
-                            x:Name="XInfracteurDenomination"
-                            Width="210" />
+                        <TextBox x:Name="XInfracteurDenomination" Width="210" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Mail :" />

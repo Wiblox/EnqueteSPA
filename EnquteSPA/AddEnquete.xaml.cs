@@ -248,12 +248,7 @@ namespace EnquteSPA
             return db.SpaPersonne.Where(v => v.IsEnqueteur == true).ToList();
         }
 
-
-
-
-  
-
-        private void XEnqueteur_GotFocus(object sender, RoutedEventArgs e)
+        private void XEnqueteur_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
             erreur.ResetMsgRetour();
             erreur.TestNonVide(XInfracteurNumero.Text, "Nom du plaignant");
@@ -272,5 +267,7 @@ namespace EnquteSPA
                 XEnqueteur.ItemsSource = listTrier();
             }
         }
+
+
     }
 }
