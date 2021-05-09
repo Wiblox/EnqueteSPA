@@ -7,11 +7,9 @@ namespace EnquteSPA
     public class Personne
     {
         public Personne() { }
-
-        public Personne(string nom, string prenom, string mail, string ville, string rue, string numero)
+        public Personne(string denomination, string mail, string ville, string rue, string numero)
         {
-            Nom = nom;
-            Prenom = prenom;
+            Denomination = denomination;
             Mail = mail;
             Ville = ville;
             Rue = rue;
@@ -22,9 +20,7 @@ namespace EnquteSPA
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdPersonne { get; set; }
         
-        public string Nom { get; set; } 
-        
-        public string Prenom { get; set; } 
+        public string Denomination { get; set; } 
         
         public string Mail { get; set; } 
         

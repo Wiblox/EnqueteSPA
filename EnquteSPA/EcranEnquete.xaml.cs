@@ -49,10 +49,10 @@ namespace EnquteSPA
         private void OuvrirEnquete(object sender, RoutedEventArgs e)
         {
             Button fdv = (Button)sender;
-
+            var el = (sender as FrameworkElement);
             OuvertureEnquete ds = new OuvertureEnquete((int)fdv.CommandParameter);
+            ds.Owner = Window.GetWindow(el);
             ds.ShowDialog();
-
         }
 
         private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -92,7 +92,7 @@ namespace EnquteSPA
             if (value == null) return "--";
             using var db = new Context();
             Personne p = db.Personne.Find((int)value);
-            return $"{p.Nom} {p.Prenom}";
+            return p.Denomination;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

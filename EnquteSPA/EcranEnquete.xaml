@@ -27,6 +27,7 @@
             IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=NoEnquete}" Header="N° Enquête" />
+                <DataGridTextColumn Binding="{Binding Path=Objet}" Header="Objet" />
                 <DataGridTextColumn Binding="{Binding Path=Departement}" Header="Département">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -42,8 +43,8 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=IdInfracteur, Converter={StaticResource PersonneConverter}}" Header="Infracteur" />
                 <DataGridTextColumn Binding="{Binding Path=IdPlaignant, Converter={StaticResource PersonneConverter}}" Header="Plaignant" />
+                <DataGridTextColumn Binding="{Binding Path=IdInfracteur, Converter={StaticResource PersonneConverter}}" Header="Infracteur" />
                 <DataGridTextColumn Binding="{Binding Path=IdEnqueteur, Converter={StaticResource SpaPersonneConverter}}" Header="Enquêteur" />
 
                 <!--  Add your normal columns here  -->
@@ -52,13 +53,14 @@
                         <DataTemplate>
                             <Button
                                 Margin="4px"
+                                Width="70"
                                 Background="#eb651b"
                                 Click="EditEnquete"
                                 CommandParameter="{Binding NoEnquete}"
                                 Foreground="White"
                                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
 
-                                <TextBlock Margin="3px">Modifier Enquête</TextBlock>
+                                <TextBlock Margin="3px">Modifier</TextBlock>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -68,13 +70,14 @@
                         <DataTemplate>
                             <Button
                                 Margin="4px"
+                                Width="70"
                                 Background="#eb651b"
                                 Click="OuvrirEnquete"
                                 CommandParameter="{Binding IdEnquete}"
                                 Foreground="White"
                                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
 
-                                <TextBlock Margin="3px">Ouvrir Enquête</TextBlock>
+                                <TextBlock Margin="3px">Ouvrir</TextBlock>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
