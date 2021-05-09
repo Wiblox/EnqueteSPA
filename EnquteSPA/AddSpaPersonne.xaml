@@ -23,7 +23,10 @@
             Orientation="Vertical">
             <DockPanel LastChildFill="True">
                 <Label Width="100" Content="Nom :" />
-                <TextBox x:Name="XNom" Width="200px" TextChanged="XNom_TextChanged" />
+                <TextBox
+                    x:Name="XNom"
+                    Width="200px"
+                    TextChanged="XNom_TextChanged" />
             </DockPanel>
             <DockPanel LastChildFill="True">
                 <Label Width="100" Content="Prénom :" />
@@ -47,10 +50,9 @@
             </DockPanel>
             <DockPanel LastChildFill="True">
                 <Label Width="100" Content="Fonction :" />
-                <ComboBox
-                    x:Name="XFonction">
-                    <ComboBoxItem Content="Salarié" Tag="true"/>
-                    <ComboBoxItem Content="Bénévole" Tag="false"/>
+                <ComboBox x:Name="XFonction">
+                    <ComboBoxItem Content="Salarié" Tag="true" />
+                    <ComboBoxItem Content="Bénévole" Tag="false" />
                 </ComboBox>
             </DockPanel>
 
@@ -60,22 +62,25 @@
                     Padding="5px"
                     HorizontalAlignment="Center"
                     Content="Enquêteur"
-                    IsChecked="True"/>
+                    IsChecked="True" />
                 <CheckBox
                     x:Name="XEtat"
-                    Padding="5px"
                     Margin="50,0,0,0"
+                    Padding="5px"
                     HorizontalAlignment="Center"
                     Content="Disponible"
                     IsChecked="True"
-                    Visibility="Collapsed"/>
+                    Visibility="Collapsed" />
             </DockPanel>
         </WrapPanel>
         <Grid Grid.Row="1" Margin="10px">
-            <Button Click="Button_Valider" Width="110" Background="#eb651b"
+            <Button
+                Width="110"
+                Background="#eb651b"
+                Click="Button_Valider"
                 Foreground="White"
                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
-                <TextBlock x:Name="NomB">Valider</TextBlock>
+                <TextBlock x:Name="NomB" Margin="3px">Valider</TextBlock>
             </Button>
         </Grid>
     </Grid>

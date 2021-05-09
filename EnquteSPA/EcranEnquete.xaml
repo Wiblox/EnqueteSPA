@@ -52,13 +52,13 @@
                         <DataTemplate>
                             <Button
                                 Margin="4px"
+                                Background="#eb651b"
                                 Click="EditEnquete"
                                 CommandParameter="{Binding NoEnquete}"
-                                Background="#eb651b"
                                 Foreground="White"
                                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
 
-                                <TextBlock>Modifier Enquête</TextBlock>
+                                <TextBlock Margin="3px">Modifier Enquête</TextBlock>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -68,13 +68,13 @@
                         <DataTemplate>
                             <Button
                                 Margin="4px"
+                                Background="#eb651b"
                                 Click="OuvrirEnquete"
                                 CommandParameter="{Binding IdEnquete}"
-                                Background="#eb651b"
                                 Foreground="White"
                                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
 
-                                <TextBlock>Ouvrir Enquête</TextBlock>
+                                <TextBlock Margin="3px">Ouvrir Enquête</TextBlock>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -87,8 +87,8 @@
             Grid.Row="1"
             Width="200"
             Margin="10px"
-            Click="CreateEnquete"
             Background="#eb651b"
+            Click="CreateEnquete"
             Foreground="White"
             Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
             <TextBlock FontSize="18">Créer une enquête</TextBlock>

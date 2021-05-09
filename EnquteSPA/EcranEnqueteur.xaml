@@ -36,8 +36,8 @@
                     </DataGridTextColumn>
                     <DataGridTextColumn Binding="{Binding Path=Mail}" Header="Mail" />
                     <DataGridTextColumn Binding="{Binding Path=IsSalarie, Converter={StaticResource FonctionConverter}}" Header="Fonction" />
-                    <DataGridCheckBoxColumn Binding="{Binding Path=IsEnqueteur}" Header="Enquêteur"/>
-                    <DataGridCheckBoxColumn Binding="{Binding Path=Etat}" Header="Disponible"/>
+                    <DataGridCheckBoxColumn Binding="{Binding Path=IsEnqueteur}" Header="Enquêteur" />
+                    <DataGridCheckBoxColumn Binding="{Binding Path=Etat}" Header="Disponible" />
                     <DataGridTextColumn Header="Adresse">
                         <DataGridTextColumn.Binding>
                             <MultiBinding StringFormat="{}{0} {1} {2}">
@@ -54,12 +54,12 @@
                             <DataTemplate>
                                 <Button
                                     Margin="5px"
+                                    Background="#eb651b"
                                     Click="Button_EditEnqueteur"
                                     CommandParameter="{Binding IdSpaPersonne}"
-                                    Background="#eb651b"
                                     Foreground="White"
                                     Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
-                                    <TextBlock>Modifier personne</TextBlock>
+                                    <TextBlock Margin="3px">Modifier personne</TextBlock>
                                 </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -78,20 +78,20 @@
             <Button
                 Grid.Column="0"
                 Margin="10px"
-                Click="Button_AddEnqueteur"
                 Background="#eb651b"
+                Click="Button_AddEnqueteur"
                 Foreground="White"
                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
-                <TextBlock FontSize="18">Ajouter une personne</TextBlock>
+                <TextBlock Margin="3px" FontSize="18">Ajouter une personne</TextBlock>
             </Button>
             <Button
                 Grid.Column="1"
                 Margin="10px"
-                Click="Button_Localisation"
                 Background="#eb651b"
+                Click="Button_Localisation"
                 Foreground="White"
                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
-                <TextBlock FontSize="18">Localiser les enquêteurs</TextBlock>
+                <TextBlock Margin="3px" FontSize="18">Localiser les enquêteurs</TextBlock>
             </Button>
             <Button
                 Grid.Column="2"
@@ -99,7 +99,7 @@
                 Background="#eb651b"
                 Foreground="White"
                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
-                <TextBlock FontSize="18">Transfert enquêtes</TextBlock>
+                <TextBlock Margin="3px" FontSize="18">Transfert enquêtes</TextBlock>
             </Button>
         </Grid>
     </Grid>

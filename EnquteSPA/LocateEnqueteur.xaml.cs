@@ -4,6 +4,7 @@ using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Linq;
 using System.Net;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Xml;
@@ -19,10 +20,10 @@ namespace EnquteSPA
         {
             InitializeComponent();
             using var db = new Context();
-            var listeEnqueteur = db.SpaPersonne.ToList();
+            var listeEnqueteur = db.SpaPersonne.Where(v => v .IsEnqueteur==true).ToList();
             foreach (SpaPersonne enqueteur in listeEnqueteur)
             {
-                Geocode(enqueteur.GetLocalisation(), enqueteur.Nom, enqueteur.Prenom, enqueteur.IsSalarie);
+                addPushPin(new Location(enqueteur.x, enqueteur.y), enqueteur.Nom, enqueteur.Prenom, enqueteur.IsSalarie);
             }
         }
 
@@ -41,32 +42,7 @@ namespace EnquteSPA
             myMap.Children.Add(te);
         }
 
-        // Geocode an address and return a latitude and longitude
-        public void Geocode(string addressQuery, string nom, string prenom, bool delegueEnqueteur)
-        {
-            //Create REST Services geocode request using Locations API
-            string geocodeRequest = "http://dev.virtualearth.net/REST/v1/Locations/" + addressQuery + "?o=xml&key=" + "magxKWMjHaUtTsRgF1lW~MRGGMAW5GbjaUW6sUk7-Cw~AtgoUxOrpiDSHWcYdPwQMWlLB71ydq7H2smazBVWmL3vt28stY2eAw3bv40wZBiM";
 
-
-            //Make the request and get the response
-            XmlDocument geocodeResponse = GetXmlResponse(geocodeRequest);
-            XmlNamespaceManager nsmgr = new XmlNamespaceManager(geocodeResponse.NameTable);
-            nsmgr.AddNamespace("rest", "http://schemas.microsoft.com/search/local/ws/rest/v1");
-            XmlNodeList locationElements = geocodeResponse.SelectNodes("//rest:Location", nsmgr);
-            if (locationElements.Count == 0)
-            {
-
-            }
-            else
-            {
-                //Get the geocode points that are used for display (UsageType=Display)
-                XmlNodeList displayGeocodePoints =
-                        locationElements[0].SelectNodes(".//rest:GeocodePoint/rest:UsageType[.='Display']/parent::node()", nsmgr);
-                string latitude = displayGeocodePoints[0].SelectSingleNode(".//rest:Latitude", nsmgr).InnerText;
-                string longitude = displayGeocodePoints[0].SelectSingleNode(".//rest:Longitude", nsmgr).InnerText;
-                addPushPin(new Location(Convert.ToDouble(latitude, System.Globalization.CultureInfo.InvariantCulture), Convert.ToDouble(longitude, System.Globalization.CultureInfo.InvariantCulture)),nom,prenom, delegueEnqueteur);
-            }
-        }
 
 
         private XmlDocument GetXmlResponse(string requestUrl)

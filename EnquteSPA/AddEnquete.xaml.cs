@@ -141,14 +141,14 @@ namespace EnquteSPA
         {
             List<SpaPersonne> listefinale = new List<SpaPersonne>();
             using var db = new Context();
-            var listeEnqueteur = db.SpaPersonne.ToList();
+            var listeEnqueteur = db.SpaPersonne.Where(v => v.IsEnqueteur==true).ToList();
             Point[] distance = new Point[listeEnqueteur.Count()];
             double[] distanceDouble = new double[listeEnqueteur.Count()];
 
             int i = 0;
             foreach (SpaPersonne enqueteur in listeEnqueteur)
             {
-                distance[i] = localisation(enqueteur.GetLocalisation());
+                distance[i] = new Point(enqueteur.x, enqueteur.y);
                 i++;
 
             }

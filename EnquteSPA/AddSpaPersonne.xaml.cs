@@ -42,7 +42,7 @@ namespace EnquteSPA
         private bool VerifChamps()
         {
             erreur.ResetMsgRetour();
-            if (erreur.TestNonVide(XNom.Text + XPrenom.Text))
+            if (!erreur.TestNonVide(XNom.Text + XPrenom.Text))
                 erreur.AddToMsgRetour("Veuillez saisir un nom et/ou un prénom.");
             erreur.TestMail(XMail.Text, "Mail");
             erreur.TestNonVide(XVille.Text, "Ville");

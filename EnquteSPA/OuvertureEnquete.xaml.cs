@@ -76,7 +76,7 @@ namespace EnquteSPA
             AddVisite av = new AddVisite(en);
             av.ShowDialog();
             using var db = new Context();
-            XGridVisite.ItemsSource = db.Visite.ToList();
+            XGridVisite.ItemsSource = db.Visite.Where(c => c.IdEnquete== idenquete).ToList();
         }
 
         private void Button_Visite_Rapport_Click(object sender, RoutedEventArgs e)

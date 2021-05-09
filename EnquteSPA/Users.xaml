@@ -40,11 +40,11 @@
                         <DataTemplate>
                             <Button
                                 Margin="5px"
-                                Click="ShowHideDetails"
                                 Background="#eb651b"
+                                Click="ShowHideDetails"
                                 Foreground="White"
                                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
-                                <TextBlock>Modifier Compte</TextBlock>
+                                <TextBlock Margin="3px">Modifier Compte</TextBlock>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -58,10 +58,10 @@
                 x:Name="AddUser"
                 Width="150px"
                 Height="50px"
-                Click="AddUser_Click"
-                Initialized="Button_Initialized"
                 Background="#eb651b"
+                Click="AddUser_Click"
                 Foreground="White"
+                Initialized="Button_Initialized"
                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
                 <TextBlock>Ajouter un utilisateur</TextBlock>
             </Button>
