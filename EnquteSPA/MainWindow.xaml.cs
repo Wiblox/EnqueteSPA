@@ -19,7 +19,7 @@ namespace EnquteSPA
             //AddDocument doc = new AddDocument("ds");
             //doc.ShowDialog();
 
-   
+    
 
             init();
             login frm = new login();
