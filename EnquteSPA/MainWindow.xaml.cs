@@ -29,6 +29,11 @@ namespace EnquteSPA
                 Static.utilisateurCourant = frm.compte;
                 InitializeComponent();
                 LoginName.Text = Static.utilisateurCourant.Mail;
+                if (Static.utilisateurCourant?.Admin == false)
+                {
+
+                    users.Visibility = Visibility.Hidden;
+                }
             }
             else
             {
