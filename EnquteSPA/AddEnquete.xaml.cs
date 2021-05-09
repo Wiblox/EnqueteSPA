@@ -9,6 +9,7 @@ using System.Xml;
 using System.Net;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Collections;
 
 namespace EnquteSPA
 {
@@ -176,11 +177,7 @@ namespace EnquteSPA
 
         private void ListeEnqueteurs(object sender, EventArgs e)
         {
-            using var db = new Context();
-
-
-
-            XEnqueteur.ItemsSource = listTrier(localisation("39 rue charles de gaulle seremange"));
+            XEnqueteur.ItemsSource = listTrier();
         }
 
         private void TxtDepartementChange(object sender, System.Windows.Controls.TextChangedEventArgs e)
@@ -264,6 +261,33 @@ namespace EnquteSPA
             XInfracteurNom.Text = XInfracteurNom.Text.ToUpper();
             XInfracteurNom.SelectionStart = XInfracteurNom.Text.Length;
 
+        }
+
+        private void XEnqueteur_GotFocus(object sender, RoutedEventArgs e)
+        {
+            erreur.ResetMsgRetour();
+            erreur.TestNonVide(XInfracteurNumero.Text, "Nom du plaignant");
+            erreur.TestNonVide(XInfracteurRue.Text, "Nom du plaignant");
+            erreur.TestNonVide(XInfracteurVille.Text, "Nom du plaignant");
+
+
+            if (erreur.IsSafe())
+            {
+                XEnqueteur.ItemsSource = listTrier(localisation(XInfracteurNumero.Text + " " + XInfracteurRue.Text + " " + XInfracteurVille.Text));
+
+               
+            }
+            else
+            {
+                XEnqueteur.ItemsSource = listTrier();
+            }
+        }
+
+        private List<SpaPersonne> listTrier()
+        {
+            using var db = new Context();
+
+            return db.SpaPersonne.Where(v => v.IsEnqueteur == true).ToList();
         }
 
         private void XInfracteurPrenom_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
