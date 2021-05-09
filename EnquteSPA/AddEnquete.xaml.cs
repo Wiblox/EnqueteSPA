@@ -140,7 +140,7 @@ namespace EnquteSPA
         {
             List<SpaPersonne> listefinale = new List<SpaPersonne>();
             using var db = new Context();
-            var listeEnqueteur = db.SpaPersonne.Where(v => v.IsEnqueteur == true).ToList();
+            var listeEnqueteur = db.SpaPersonne.Where(v => v.IsEnqueteur == true).Where(v => v.Etat == true).ToList();
             Point[] distance = new Point[listeEnqueteur.Count()];
             double[] distanceDouble = new double[listeEnqueteur.Count()];
 
@@ -245,7 +245,7 @@ namespace EnquteSPA
         {
             using var db = new Context();
 
-            return db.SpaPersonne.Where(v => v.IsEnqueteur == true).ToList();
+            return db.SpaPersonne.Where(v => v.IsEnqueteur == true).Where(v => v.Etat == true).ToList();
         }
 
         private void XEnqueteur_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
