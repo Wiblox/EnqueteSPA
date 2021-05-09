@@ -54,6 +54,13 @@ namespace EnquteSPA
             ds.ShowDialog();
 
         }
+
+        private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            using var db = new Context();
+            data.ItemsSource = db.Enquete.ToList();
+
+        }
     }
 
     public class StatutConverter : IValueConverter
