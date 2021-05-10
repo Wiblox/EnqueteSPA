@@ -18,23 +18,29 @@
             Height="56"
             HorizontalAlignment="Right"
             VerticalAlignment="Top">
+            <StackPanel Margin="8" Orientation="Horizontal">
 
-            <TextBlock
-                x:Name="LoginName"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Bottom"
-                FontSize="25"
-                Foreground="Gray" />
+                <TextBlock
+                    x:Name="LoginName"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Bottom"
+                    FontSize="25"
+                    Foreground="Gray" />
 
 
 
-            <Button Height="25" Width="25" Click="Deconnexion" Cursor="Hand">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Image Source="/Resources/sign-out-alt-solid.png"/>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+                <Button
+                    Margin="20,10,0,0"
+                    Click="Deconnexion"
+                    Cursor="Hand">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="/Resources/sign-out-alt-solid.png" />
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+
 
         </Grid>
 
@@ -56,17 +62,26 @@
                     </Grid.ColumnDefinitions>
                 </Grid>
             </TabItem>
-            <TabItem VerticalAlignment="Center" Header="Accueil" Cursor="Hand">
+            <TabItem
+                VerticalAlignment="Center"
+                Cursor="Hand"
+                Header="Accueil">
                 <Grid Background="#F1F3F4">
                     <local:Index />
                 </Grid>
             </TabItem>
-            <TabItem VerticalAlignment="Center" Header="Enquêtes" Cursor="Hand">
+            <TabItem
+                VerticalAlignment="Center"
+                Cursor="Hand"
+                Header="Enquêtes">
                 <Grid Background="#F1F3F4">
                     <local:EcranEnquete />
                 </Grid>
             </TabItem>
-            <TabItem VerticalAlignment="Center" Header="Personnel" Cursor="Hand">
+            <TabItem
+                VerticalAlignment="Center"
+                Cursor="Hand"
+                Header="Personnel">
                 <Grid Background="#F1F3F4">
                     <local:EcranEnqueteur />
                 </Grid>
