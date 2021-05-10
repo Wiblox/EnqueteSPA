@@ -38,13 +38,12 @@
                 <DataGridTemplateColumn Header="Modification">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button
-                                Margin="5px"
-                                Background="#eb651b"
-                                Click="ShowHideDetails"
-                                Foreground="White"
-                                Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
-                                <TextBlock Margin="3px">Modifier Compte</TextBlock>
+                            <Button Height="25" Width="25" Click="ShowHideDetails" Cursor="Hand">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Image Source="/Resources/edit-solid.png"/>
+                                    </ControlTemplate>
+                                </Button.Template>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -62,6 +61,7 @@
                 Click="AddUser_Click"
                 Foreground="White"
                 Initialized="Button_Initialized"
+                Cursor="Hand"
                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
                 <TextBlock>Ajouter un utilisateur</TextBlock>
             </Button>

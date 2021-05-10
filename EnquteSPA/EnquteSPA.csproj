@@ -9,7 +9,10 @@
   <ItemGroup>
     <None Remove="bo\Personne.cs~RF51b85e4.TMP" />
     <None Remove="logo.png" />
+    <None Remove="Resources\edit-solid.png" />
+    <None Remove="Resources\external-link-alt-solid.png" />
     <None Remove="Resources\logo.png" />
+    <None Remove="Resources\sign-out-alt-solid.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,6 +42,12 @@
     <Content Include="logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\edit-solid.png" />
+    <Resource Include="Resources\external-link-alt-solid.png" />
+    <Resource Include="Resources\sign-out-alt-solid.png" />
   </ItemGroup>
 
 </Project>

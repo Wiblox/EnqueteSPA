@@ -79,6 +79,7 @@
                 Background="#eb651b"
                 Click="Button_Valider"
                 Foreground="White"
+                Cursor="Hand"
                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
                 <TextBlock x:Name="NomB" Margin="3px">Valider</TextBlock>
             </Button>

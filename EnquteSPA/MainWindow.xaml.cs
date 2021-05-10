@@ -66,5 +66,11 @@ namespace EnquteSPA
         {
             await this.ShowMessageAsync("This is the title", "Some message");
         }
+
+        private async void Deconnexion(object sender, RoutedEventArgs e)
+        {
+            await this.ShowMessageAsync("Déconnexion", "Vous allez bientôt quitter l'application.");
+            Application.Current.Shutdown();
+        }
     }
 }

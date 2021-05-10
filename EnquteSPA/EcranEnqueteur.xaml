@@ -52,15 +52,12 @@
                     <DataGridTemplateColumn Header="Modification">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button
-                                    Margin="5px"
-                                    Width="70"
-                                    Background="#eb651b"
-                                    Click="Button_EditEnqueteur"
-                                    CommandParameter="{Binding IdSpaPersonne}"
-                                    Foreground="White"
-                                    Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
-                                    <TextBlock Margin="3px">Modifier</TextBlock>
+                                <Button Height="25" Width="25" Click="Button_EditEnqueteur" Cursor="Hand" CommandParameter="{Binding IdSpaPersonne}">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Image Source="/Resources/edit-solid.png"/>
+                                        </ControlTemplate>
+                                    </Button.Template>
                                 </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -82,6 +79,7 @@
                 Background="#eb651b"
                 Click="Button_AddEnqueteur"
                 Foreground="White"
+                Cursor="Hand"
                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
                 <TextBlock Margin="3px" FontSize="18">Ajouter une personne</TextBlock>
             </Button>
@@ -91,6 +89,7 @@
                 Background="#eb651b"
                 Click="Button_Localisation"
                 Foreground="White"
+                Cursor="Hand"
                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
                 <TextBlock Margin="3px" FontSize="18">Localiser les enquêteurs</TextBlock>
             </Button>
@@ -99,6 +98,7 @@
                 Margin="10px"
                 Background="#eb651b"
                 Foreground="White"
+                Cursor="Hand"
                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
                 <TextBlock Margin="3px" FontSize="18">Transfert enquêtes</TextBlock>
             </Button>

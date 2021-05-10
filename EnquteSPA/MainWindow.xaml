@@ -25,7 +25,16 @@
                 VerticalAlignment="Bottom"
                 FontSize="25"
                 Foreground="Gray" />
-            <Image Source="/Resources/sign-out-alt-solid.png" />
+
+
+
+            <Button Height="25" Width="25" Click="Deconnexion" Cursor="Hand">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="/Resources/sign-out-alt-solid.png"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
 
         </Grid>
 
@@ -47,17 +56,17 @@
                     </Grid.ColumnDefinitions>
                 </Grid>
             </TabItem>
-            <TabItem VerticalAlignment="Center" Header="Accueil">
+            <TabItem VerticalAlignment="Center" Header="Accueil" Cursor="Hand">
                 <Grid Background="#F1F3F4">
                     <local:Index />
                 </Grid>
             </TabItem>
-            <TabItem VerticalAlignment="Center" Header="Enquêtes">
+            <TabItem VerticalAlignment="Center" Header="Enquêtes" Cursor="Hand">
                 <Grid Background="#F1F3F4">
                     <local:EcranEnquete />
                 </Grid>
             </TabItem>
-            <TabItem VerticalAlignment="Center" Header="Personnel">
+            <TabItem VerticalAlignment="Center" Header="Personnel" Cursor="Hand">
                 <Grid Background="#F1F3F4">
                     <local:EcranEnqueteur />
                 </Grid>
