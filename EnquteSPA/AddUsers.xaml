@@ -38,7 +38,7 @@
                 x:Name="password"
                 Width="100px"
                 VerticalAlignment="Center" />
-            <Button Height="20px" Click="Button_Click">Générer mot de passe</Button>
+            <Button Height="20px" Click="Button_Click" Cursor="Hand">Générer mot de passe</Button>
         </StackPanel>
         <Grid Grid.Row="2" Margin="20px">
             <Button
@@ -46,6 +46,7 @@
                 Click="Button_Click_1"
                 Background="#eb651b"
                 Foreground="White"
+                Cursor="Hand"
                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
 
                 <TextBlock>Crée le compte</TextBlock>

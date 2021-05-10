@@ -70,6 +70,7 @@
             Background="#eb651b"
             Click="ClickBtnValider"
             Foreground="White"
+            Cursor="Hand"
             Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
             <TextBlock>Valider</TextBlock>
         </Button>
