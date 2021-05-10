@@ -62,7 +62,10 @@
                     <local:EcranEnqueteur />
                 </Grid>
             </TabItem>
-            <TabItem x:Name="users"  VerticalAlignment="Center" Header="Utilisateurs">
+            <TabItem
+                x:Name="users"
+                VerticalAlignment="Center"
+                Header="Utilisateurs">
                 <Grid Background="#F1F3F4">
                     <local:Users />
                 </Grid>
