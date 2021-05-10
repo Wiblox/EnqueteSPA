@@ -53,6 +53,8 @@ namespace EnquteSPA
             OuvertureEnquete ds = new OuvertureEnquete((int)fdv.CommandParameter);
             ds.Owner = Window.GetWindow(el);
             ds.ShowDialog();
+            using var db = new Context();
+            data.ItemsSource = db.Enquete.ToList();
         }
 
         private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)

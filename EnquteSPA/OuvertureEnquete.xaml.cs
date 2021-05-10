@@ -23,8 +23,16 @@ namespace EnquteSPA
             idenquete = id;
             using var db = new Context();
             en = db.Enquete.Find(id);
+
             InitializeComponent();
+            XMotif.Text = en.Motif;
+            XObjet.Text = en.Objet;
+            XRace.Text = en.Race;
+            XDateDepot.SelectedDate = en.DateDepot;
+            if (en.Statut == 3) { toggle.IsOn = true; }
+            else { toggle.IsOn = false; }
             Title = "Enquête : " + en.NoEnquete;
+
         }
 
         private void ListeVisites(object sender, EventArgs e)
@@ -94,6 +102,23 @@ namespace EnquteSPA
             String corps = "Bonjour Michel, %0A%0AL'enquête 57/21/05/001 saisie le 09/05/2020 vous a été affectée. %0ACelle-ci a pour objet \"Refuge\" et concerne les espèces suivantes : Cochons, Chiens.%0ASon motif : \"Maltraitance de cochons\".%0A%0APlaignant%0AL214%0AMail : l214@gmail.com%0AAdresse : 4 rue du soleil 67204 Achenheim%0A%0AInfracteur%0ALes Mousquetaires%0AMail : lesmousquetaires@mail.com%0AAdresse : 18 rue Taison 57000 Metz";
             System.Diagnostics.Process.Start(new ProcessStartInfo("mailto:" + destinataire + "?subject=" + sujet + "&body=" + corps + "") { UseShellExecute = true });
 
+        }
+
+        private void StatutEnquete(object sender, RoutedEventArgs e)
+        {
+            using var db = new Context();
+           var te= db.Enquete.Find(en.IdEnquete);
+            ToggleSwitch sdfsender = (ToggleSwitch)sender;
+            if (sdfsender.IsOn)
+            {
+                te.Statut = 3;
+            }
+            else
+            {
+                te.Statut = 2;
+            }
+            Debug.WriteLine("Staut = " + te.Statut);
+            db.SaveChanges();
         }
     }
 
