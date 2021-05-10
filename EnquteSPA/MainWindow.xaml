@@ -64,7 +64,6 @@
             </TabItem>
             <TabItem
                 VerticalAlignment="Center"
-                Cursor="Hand"
                 Header="Accueil">
                 <Grid Background="#F1F3F4">
                     <local:Index />
@@ -72,7 +71,6 @@
             </TabItem>
             <TabItem
                 VerticalAlignment="Center"
-                Cursor="Hand"
                 Header="Enquêtes">
                 <Grid Background="#F1F3F4">
                     <local:EcranEnquete />
@@ -80,7 +78,6 @@
             </TabItem>
             <TabItem
                 VerticalAlignment="Center"
-                Cursor="Hand"
                 Header="Personnel">
                 <Grid Background="#F1F3F4">
                     <local:EcranEnqueteur />
