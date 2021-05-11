@@ -21,27 +21,107 @@
     </mah:MetroWindow.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*" />
-            <RowDefinition Height="50*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="80" />
             <RowDefinition Height="80*" />
-            <RowDefinition Height="7*" />
         </Grid.RowDefinitions>
-        <DockPanel Grid.Column="0">
-            <mah:ToggleSwitch
+
+        <Grid Grid.Row="0" Margin="20">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="Objet :" />
+                <TextBox Grid.Column="1" x:Name="XObjet" VerticalAlignment="Top"  IsEnabled="False"/>
+            </Grid>
+
+            <Grid Grid.Column="1" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="Race :" />
+                <TextBox Grid.Column="1" x:Name="XRace" IsEnabled="False" VerticalAlignment="Top"/>
+            </Grid>
+
+            <Grid Grid.Column="2" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="Date de dépôt :" />
+                <DatePicker
+                    Grid.Column="1"
+                    x:Name="XDateDepot"
+                    VerticalAlignment="Top" 
+                    IsEnabled="False"/>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1"  Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <!--<Grid Grid.Column="0" Margin="10">
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                
+            </Grid>-->
+
+            <StackPanel Orientation="Horizontal">
+                <Label Grid.Column="0" Content="Motif :" />
+            <TextBlock  Grid.Column="1"
+                    x:Name="XMotif"
+                    Width="700"
+                     />
+            </StackPanel>
+
+            <Grid Grid.Column="1" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0" Content="Statut Enquête :" />
+
+                <mah:ToggleSwitch Grid.Column="1"
+                                  VerticalAlignment="Top"
                 x:Name="toggle"
-                HorizontalAlignment="Right"
-                Header="Statut Enquête"
                 OffContent="En cours"
                 OnContent="Terminé"
                 Toggled="StatutEnquete" />
+            </Grid>
+            
+        </Grid>
 
-        </DockPanel>
-        <TextBlock
-            x:Name="TitleEnqute"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            FontSize="22" />
-        <Grid Grid.Row="2">
+        <Button
+            x:Name="fsdfsdf"
+            Grid.Row="2"
+            Background="#eb651b"
+            Click="SendMail"
+            Cursor="Hand"
+            Margin="10px"
+            Foreground="White"
+            Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
+            <TextBlock>Générer un mail</TextBlock>
+        </Button>
+
+        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -49,7 +129,7 @@
             <Grid Grid.Column="0" Margin="10px">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*" />
-                    <RowDefinition Height="30px" />
+                    <RowDefinition Height="80" />
                 </Grid.RowDefinitions>
                 <DataGrid
                     x:Name="XGridVisite"
@@ -87,6 +167,7 @@
                 <Button
                     x:Name="Button_AddVisite"
                     Grid.Row="1"
+                    Margin="10px"
                     Background="#eb651b"
                     Click="Button_AddVisite_Click"
                     Cursor="Hand"
@@ -98,7 +179,7 @@
             <Grid Grid.Column="1" Margin="10px">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*" />
-                    <RowDefinition Height="30px" />
+                    <RowDefinition Height="80" />
                 </Grid.RowDefinitions>
                 <DataGrid
                     x:Name="XGridDocument"
@@ -149,8 +230,10 @@
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button x:Name="buttonds"
+                <Button
+                    x:Name="buttonds"
                     Grid.Row="1"
+                    Margin="10px"
                     Background="#eb651b"
                     Click="AjouterDocument"
                     Cursor="Hand"
@@ -159,59 +242,6 @@
                     <TextBlock>Ajouter un document</TextBlock>
                 </Button>
             </Grid>
-        </Grid>
-
-
-
-        <Button x:Name="fsdfsdf"
-            Grid.Row="3"
-            Background="#eb651b"
-            Click="SendMail"
-            Cursor="Hand"
-            Margin="4px"
-            Foreground="White"
-            Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
-            <TextBlock>Générer un mail</TextBlock>
-        </Button>
-
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0">
-                <Label Content="Objet :" FontSize="16" />
-                <TextBlock
-                    x:Name="XObjet"
-                    Margin="10,0"
-                    TextWrapping="Wrap" />
-
-
-                <Label Content="Race :" FontSize="16" />
-                <TextBlock
-                    x:Name="XRace"
-                    Margin="10,0"
-                    TextWrapping="Wrap" />
-                <Label Content="Date de dépôt :" FontSize="16" />
-                <DatePicker
-                    x:Name="XDateDepot"
-                    Width="100"
-                    HorizontalAlignment="Left"
-                    IsEnabled="False" />
-
-            </StackPanel>
-            <StackPanel Grid.Column="1">
-                <Label Content="Motif :" FontSize="16" />
-                <TextBlock
-                    x:Name="XMotif"
-                    Width="700"
-                    MinHeight="150"
-                    MaxHeight="200"
-                    Margin="10,0"
-                    TextWrapping="Wrap" />
-
-            </StackPanel>
-
         </Grid>
     </Grid>
 </mah:MetroWindow>
