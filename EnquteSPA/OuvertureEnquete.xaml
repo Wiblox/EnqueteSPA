@@ -168,6 +168,7 @@
             Background="#eb651b"
             Click="SendMail"
             Cursor="Hand"
+            Margin="4px"
             Foreground="White"
             Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
             <TextBlock>Générer un mail</TextBlock>

@@ -13,62 +13,62 @@
 
     <Grid Background="#F1F3F4">
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="1*" />
+            <RowDefinition Height="400*" />
+            <RowDefinition Height="80" />
         </Grid.RowDefinitions>
 
 
 
-
-        <DataGrid
+        <Grid Grid.Row="0">
+            <DataGrid
             x:Name="data"
-            Grid.Row="0"
             Margin="60,30,60,0"
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             GotFocus="data_Initialized"
             Initialized="data_Initialized"
             IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=Mail}" Header="Mail" />
-                <DataGridTextColumn Binding="{Binding Path=MotDePasse}" Header="Password" />
-                <DataGridCheckBoxColumn Binding="{Binding Path=Admin}" Header="Admin" />
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=Mail}" Header="Mail" />
+                    <DataGridTextColumn Binding="{Binding Path=MotDePasse}" Header="Password" />
+                    <DataGridCheckBoxColumn Binding="{Binding Path=Admin}" Header="Admin" />
 
-                <!--  Add your normal columns here  -->
-                <DataGridTemplateColumn Header="Modification">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button
+                    <!--  Add your normal columns here  -->
+                    <DataGridTemplateColumn Header="Modification">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button
                                 Width="25"
                                 Height="25"
                                 Click="ShowHideDetails"
                                 CommandParameter="{Binding IdCompte}"
                                 Cursor="Hand" GotFocus="Button_GotFocus">
-                                <Button.Template>
-                                    <ControlTemplate>
-                                        <Image Source="/Resources/edit-solid.png" />
-                                    </ControlTemplate>
-                                </Button.Template>
-                            </Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Image Source="/Resources/edit-solid.png" />
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
 
-            </DataGrid.Columns>
-        </DataGrid>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
 
         <Grid Grid.Row="1">
+
             <Button
                 x:Name="AddUser"
-                Width="150px"
-                Height="50px"
+                Margin="10px"
                 Background="#eb651b"
                 Click="AddUser_Click"
-                Cursor="Hand"
                 Foreground="White"
+                Cursor="Hand"
                 Initialized="Button_Initialized"
                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
-                <TextBlock>Ajouter un utilisateur</TextBlock>
+                <TextBlock Margin="3px" FontSize="18">Ajouter un utilisateur</TextBlock>
             </Button>
         </Grid>
     </Grid>

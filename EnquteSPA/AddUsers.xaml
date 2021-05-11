@@ -48,7 +48,6 @@
         </StackPanel>
         <Grid Grid.Row="2" Margin="20px">
             <Button
-                Width="100px"
                 Background="#eb651b"
                 Click="Button_Click_1"
                 Cursor="Hand"
