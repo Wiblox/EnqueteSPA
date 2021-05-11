@@ -51,7 +51,7 @@ namespace EnquteSPA
             {
                 Directory.CreateDirectory("numeroEnquete/" + idEnquete);
                 File.Copy(v, "numeroEnquete/" + idEnquete + "/" + System.IO.Path.GetFileName(v), true);
-                Document doc = new Document(idEnquete, System.IO.Path.GetExtension(v), "numeroEnquete/" + idEnquete + "/" + System.IO.Path.GetFileName(v));
+                Document doc = new Document(idEnquete, /*System.IO.Path.GetExtension(v),*/ "numeroEnquete/" + idEnquete + "/" + System.IO.Path.GetFileName(v));
 
                 db.Document.Add(doc);
                 db.SaveChanges();

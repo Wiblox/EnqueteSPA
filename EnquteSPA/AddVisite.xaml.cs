@@ -26,7 +26,7 @@ namespace EnquteSPA
             this.enquete = enquete;
 
             using var db = new Context();
-            XAccompagnant.ItemsSource = db.SpaPersonne.Where(v => v.Etat == true && v.IdSpaPersonne != enquete.IdEnqueteur).ToList();
+            XAccompagnant.ItemsSource = db.SpaPersonne.Where(v => v.Etat == true && v.IdSpaPersonne != enquete.IdEnqueteur && v.IsEnqueteur==true).ToList();
 
             if (this.visite != null)
             {

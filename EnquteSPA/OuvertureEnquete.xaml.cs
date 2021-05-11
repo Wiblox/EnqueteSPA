@@ -29,10 +29,31 @@ namespace EnquteSPA
             XObjet.Text = en.Objet;
             XRace.Text = en.Race;
             XDateDepot.SelectedDate = en.DateDepot;
-            if (en.Statut == 3) { toggle.IsOn = true; }
+            if (en.Statut == 3) { toggle.IsOn = true;
+
+
+                disable(false);
+
+
+            }
             else { toggle.IsOn = false; }
             if (en.Statut == 1) { toggle.IsEnabled = false; }
             Title = "Enquête : " + en.NoEnquete;
+        }
+        public void disable(bool statut)
+        {
+            if (Static.utilisateurCourant?.Admin == false)
+            {
+
+                toggle.IsEnabled = statut;
+            }
+            XObjet.IsEnabled = statut;
+            XRace.IsEnabled = statut;
+            Button_AddVisite.IsEnabled = statut;
+            buttonds.IsEnabled = statut;
+            fsdfsdf.IsEnabled = statut;
+            XDateDepot.IsEnabled = statut;
+
         }
 
         private void ListeVisites(object sender, EventArgs e)
@@ -50,9 +71,9 @@ namespace EnquteSPA
         private void AjouterDocument(object sender, RoutedEventArgs e)
         {
             AddDocument add = new AddDocument(idenquete);
-            add.ShowDialog();
             var el = (sender as FrameworkElement);
             add.Owner = Window.GetWindow(el);
+            add.ShowDialog();
             using var db = new Context();
             XGridDocument.ItemsSource = db.Document.Where(v => v.NoEnquete == idenquete).ToList();
         }
@@ -96,7 +117,7 @@ namespace EnquteSPA
             Button fdv = (Button)sender;
             using var db = new Context();
             Visite visite = db.Visite.Find(fdv.CommandParameter);
-            this.ShowMessageAsync($"Enquête n°{en.NoEnquete} - Visite du {visite.DateVisite.ToString("dd/MM/yyyy")}", visite.Rapport);
+            this.ShowMessageAsync($"Enquête n°{en.NoEnquete} - Visite du {visite.DateVisite:dd/MM/yyyy}", visite.Rapport);
         }
 
         private void SendMail(object sender, RoutedEventArgs e)
@@ -116,9 +137,11 @@ namespace EnquteSPA
             if (sdfsender.IsOn)
             {
                 te.Statut = 3;
+                disable(false);
             }
             else
             {
+                disable(true);
                 if (te.IdEnqueteur == null)
                 {
                     te.Statut = 1;
