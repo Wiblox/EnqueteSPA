@@ -69,6 +69,15 @@ namespace EnquteSPA.bo
             };
             context.Visite.AddRange(visites);
 
+
+            // ETAPE 6 : Génération d'un compte admin
+            IList<Compte> comptes = new List<Compte>
+            {
+                 new Compte("admin@gmail.com", "azerty123", true)
+            };
+            context.Compte.AddRange(comptes);
+
+
             base.Seed(context);
         }
 

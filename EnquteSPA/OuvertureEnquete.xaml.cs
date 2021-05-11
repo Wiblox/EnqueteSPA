@@ -29,7 +29,9 @@ namespace EnquteSPA
             XObjet.Text = en.Objet;
             XRace.Text = en.Race;
             XDateDepot.SelectedDate = en.DateDepot;
-            if (en.Statut == 3) { toggle.IsOn = true;
+            if (en.Statut == 3)
+            {
+                toggle.IsOn = true;
 
 
                 disable(false);
@@ -82,9 +84,9 @@ namespace EnquteSPA
         {
             //open document
             Button fdv = (Button)sender;
-           
+
             string opeen = Directory.GetCurrentDirectory() + "\\" + ((string)fdv.CommandParameter).Replace('/', '\\');
-            Debug.WriteLine(Directory.GetCurrentDirectory() + "\\" + ((string)fdv.CommandParameter).Replace('/','\\' ));
+            Debug.WriteLine(Directory.GetCurrentDirectory() + "\\" + ((string)fdv.CommandParameter).Replace('/', '\\'));
 
             Process photoViewer = new Process();
             photoViewer.StartInfo.FileName = @"explorer.exe";
@@ -109,7 +111,7 @@ namespace EnquteSPA
             av.Owner = Window.GetWindow(el);
             av.ShowDialog();
             using var db = new Context();
-            XGridVisite.ItemsSource = db.Visite.Where(c => c.IdEnquete== idenquete).ToList();
+            XGridVisite.ItemsSource = db.Visite.Where(c => c.IdEnquete == idenquete).ToList();
         }
 
         private void Button_Visite_Rapport_Click(object sender, RoutedEventArgs e)
@@ -122,18 +124,33 @@ namespace EnquteSPA
 
         private void SendMail(object sender, RoutedEventArgs e)
         {
-            String destinataire = "test@gmail.com";
-            String sujet = "Affectation de l'enquête 57/21/05/001";
-            String corps = "Bonjour Michel, %0A%0AL'enquête 57/21/05/001 saisie le 09/05/2020 vous a été affectée. %0ACelle-ci a pour objet \"Refuge\" et concerne les espèces suivantes : Cochons, Chiens.%0ASon motif : \"Maltraitance de cochons\".%0A%0APlaignant%0AL214%0AMail : l214@gmail.com%0AAdresse : 4 rue du soleil 67204 Achenheim%0A%0AInfracteur%0ALes Mousquetaires%0AMail : lesmousquetaires@mail.com%0AAdresse : 18 rue Taison 57000 Metz";
-            System.Diagnostics.Process.Start(new ProcessStartInfo("mailto:" + destinataire + "?subject=" + sujet + "&body=" + corps + "") { UseShellExecute = true });
+            if (en.IdEnqueteur == null)
+            {
 
+                //ERREUR
+            }
+            else
+            {
+                using var db = new Context();
+
+
+                var infracteur = db.Personne.Find(en.IdInfracteur);
+                var Plaignant = db.Personne.Find(en.IdPlaignant);
+                String destinataire = db.SpaPersonne.Find(en.IdEnqueteur).Mail;
+                String sujet = "Affectation de l'enquête " + en.NoEnquete;
+                String corps = "Bonjour " + db.SpaPersonne.Find(en.IdEnqueteur).Nom+" " + db.SpaPersonne.Find(en.IdEnqueteur).Prenom + ", %0A%0AL'enquête " + en.NoEnquete + " saisie le " + en.DateDepot + " vous a été affectée. %0ACelle-ci a pour objet \"" + en.Objet + "\" et concerne les espèces suivantes : " + en.Race + ".%0ASon motif : \"" + en.Motif + "\".%0A%0AInfracteur : %0A" + infracteur+ "%0A%0APlaignant : %0A" + Plaignant;
+                System.Diagnostics.Process.Start(new ProcessStartInfo("mailto:" + destinataire + "?subject=" + sujet + "&body=" + corps + "") { UseShellExecute = true });
+            }
         }
 
         private void StatutEnquete(object sender, RoutedEventArgs e)
         {
             using var db = new Context();
-           var te= db.Enquete.Find(en.IdEnquete);
+            var te = db.Enquete.Find(en.IdEnquete);
             ToggleSwitch sdfsender = (ToggleSwitch)sender;
+
+            var ds = this.ShowMessageAsync("Validez Statut Enquete", "Vous allez bientôt quitter l'application.", MessageDialogStyle.AffirmativeAndNegative);
+
             if (sdfsender.IsOn)
             {
                 te.Statut = 3;
@@ -163,7 +180,7 @@ namespace EnquteSPA
         {
             if (value == null) return null;
             string file = ((string)value).Split('/').Last();
-            string ext = '.'+file.Split('.').Last();
+            string ext = '.' + file.Split('.').Last();
             if (file.Length - ext.Length < 45)
                 return file;
             return $"{file[0..40]}[...]{ext}";
@@ -180,7 +197,7 @@ namespace EnquteSPA
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (value == null) return null;
-            switch(((string)value).ToLower())
+            switch (((string)value).ToLower())
             {
                 case ".jpg":
                 case ".jpeg":
@@ -207,7 +224,7 @@ namespace EnquteSPA
             return value;
         }
     }
-    
+
     public class VisiteAccompagnantConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -223,7 +240,7 @@ namespace EnquteSPA
             return value;
         }
     }
-    
+
     public class VisiteRapportConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

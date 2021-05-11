@@ -29,5 +29,10 @@ namespace EnquteSPA
         public string Rue { get; set; } 
         
         public string Numero { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Denomination}%0A{Mail}%0A{Numero} {Rue} {Ville}";
+        }
     }
 }

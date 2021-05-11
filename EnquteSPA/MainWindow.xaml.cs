@@ -19,9 +19,6 @@ namespace EnquteSPA
             //AddDocument doc = new AddDocument("ds");
             //doc.ShowDialog();
 
-    
-
-            init();
             login frm = new login();
             frm.ShowDialog();
             if ((bool)frm.DialogResult)
@@ -39,16 +36,6 @@ namespace EnquteSPA
             {
                 close = true;
                 Close();
-            }
-        }
-
-        private void init()
-        {
-            using var db = new Context();
-            //On initialise un admin
-            if (db.Compte.ToList().Count == 0)
-            {
-                new Compte("admin@gmail.com", "azerty123", true);
             }
         }
 
