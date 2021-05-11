@@ -190,7 +190,6 @@
                     <DataGrid.Columns>
 
                         <DataGridTextColumn Binding="{Binding Path=PathDoc, Converter={StaticResource DocumentPathConverter}}" Header="Nom Fichier" />
-                        <DataGridTextColumn Binding="{Binding Path=typeDocument, Converter={StaticResource DocumentTypeConverter}}" Header="Type Fichier" />
 
                         <DataGridTemplateColumn Header="Ouvrir">
 
