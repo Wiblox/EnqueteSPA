@@ -56,7 +56,7 @@ namespace EnquteSPA.bo
             // ETAPE 4 : Génération des Documents
             IList<Document> documents = new List<Document>
             {
-                new Document(2, "numeroEnquete/1/pikachu.png")
+                new Document(2, "numeroEnquete/2/pikachu.png")
             };
             context.Document.AddRange(documents);
 
