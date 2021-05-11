@@ -31,6 +31,7 @@ namespace EnquteSPA
             XDateDepot.SelectedDate = en.DateDepot;
             if (en.Statut == 3) { toggle.IsOn = true; }
             else { toggle.IsOn = false; }
+            if (en.Statut == 1) { toggle.IsEnabled = false; }
             Title = "Enquête : " + en.NoEnquete;
 
         }
@@ -115,7 +116,15 @@ namespace EnquteSPA
             }
             else
             {
-                te.Statut = 2;
+                if (te.IdEnqueteur == null)
+                {
+                    te.Statut = 1;
+
+                }
+                else
+                {
+                    te.Statut = 2;
+                }
             }
             Debug.WriteLine("Staut = " + te.Statut);
             db.SaveChanges();
