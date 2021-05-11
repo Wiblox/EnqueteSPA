@@ -148,17 +148,12 @@
 
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button
-                                        x:Name="Button_Visite_Rapport"
-                                        Margin="4px"
-                                        Background="#eb651b"
-                                        Click="Button_Visite_Rapport_Click"
-                                        CommandParameter="{Binding IdVisite}"
-                                        Cursor="Hand"
-                                        Foreground="White"
-                                        Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}"
-                                        Visibility="{Binding Path=Rapport, Converter={StaticResource VisiteRapportConverter}}">
-                                        <TextBlock>Afficher</TextBlock>
+                                    <Button x:Name="Button_Visite_Rapport" Margin="5" Height="25" Width="25" Click="Button_Visite_Rapport_Click" Cursor="Hand"  CommandParameter="{Binding IdVisite}" Visibility="{Binding Path=Rapport, Converter={StaticResource VisiteRapportConverter}}">
+                                        <Button.Template>
+                                            <ControlTemplate>
+                                                <Image Source="/Resources/search-solid.png"/>
+                                            </ControlTemplate>
+                                        </Button.Template>
                                     </Button>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -196,16 +191,12 @@
 
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button
-                                        Margin="4px"
-                                        Background="#eb651b"
-                                        Click="OuvrirDocument"
-                                        CommandParameter="{Binding PathDoc}"
-                                        Cursor="Hand"
-                                        Foreground="White"
-                                        Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
-
-                                        <TextBlock>Ouvrir</TextBlock>
+                                    <Button Height="25" Width="25" Margin="5" Click="OuvrirDocument" Cursor="Hand" CommandParameter="{Binding PathDoc}">
+                                        <Button.Template>
+                                            <ControlTemplate>
+                                                <Image Source="/Resources/external-link-alt-solid.png"/>
+                                            </ControlTemplate>
+                                        </Button.Template>
                                     </Button>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -214,16 +205,12 @@
 
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button
-                                        Margin="4px"
-                                        Background="#eb651b"
-                                        Click="SupprimerDocument"
-                                        CommandParameter="{Binding IdDocument}"
-                                        Cursor="Hand"
-                                        Foreground="White"
-                                        Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
-
-                                        <TextBlock>Supprimer</TextBlock>
+                                    <Button Height="25" Width="25" Margin="5" Click="SupprimerDocument" Cursor="Hand" CommandParameter="{Binding IdDocument}">
+                                        <Button.Template>
+                                            <ControlTemplate>
+                                                <Image Source="/Resources/trash-alt-solid.png"/>
+                                            </ControlTemplate>
+                                        </Button.Template>
                                     </Button>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>

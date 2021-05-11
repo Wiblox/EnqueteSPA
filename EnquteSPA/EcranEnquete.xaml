@@ -51,7 +51,7 @@
                     <DataGridTemplateColumn Header="Modification">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Height="25" Width="25" Click="EditEnquete" Cursor="Hand" CommandParameter="{Binding NoEnquete}">
+                                <Button Height="25" Width="25" Margin="5" Click="EditEnquete" Cursor="Hand" CommandParameter="{Binding NoEnquete}">
                                     <Button.Template>
                                         <ControlTemplate>
                                             <Image Source="/Resources/edit-solid.png"/>
@@ -65,7 +65,7 @@
                     <DataGridTemplateColumn Header="Ouverture">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Height="25" Width="25" Click="OuvrirEnquete" Cursor="Hand" CommandParameter="{Binding IdEnquete}">
+                                <Button Height="25" Width="25" Margin="5" Click="OuvrirEnquete" Cursor="Hand" CommandParameter="{Binding IdEnquete}">
                                     <Button.Template>
                                         <ControlTemplate>
                                             <Image Source="/Resources/external-link-alt-solid.png"/>
