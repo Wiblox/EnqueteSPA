@@ -18,7 +18,6 @@ namespace EnquteSPA.bo
                 new SpaPersonne("", "Luigi", "luigi@gmail.com", "Nantes", "Boulevard René Coty", "10", false, true, true),
                 new SpaPersonne("", "Mario", "mario@gmail.com", "Nantes", "Boulevard René Coty", "10", false, false, true)
             };
-
             context.SpaPersonne.AddRange(spaPersonnes);
 
 
@@ -38,7 +37,6 @@ namespace EnquteSPA.bo
                 new Personne("PETA France", "petafrance@mail.com", "75008 Paris", "Place de la Madeleine", "6"),
                 new Personne("Nintendo", "nintendo@mail.com", "95031 Cergy", "Boulevard de l'Oise", "6")
             };
-
             context.Personne.AddRange(personnes);
 
 
@@ -52,8 +50,24 @@ namespace EnquteSPA.bo
                 new Enquete("57/21/05/001", "refuge", "Cochons", "57", DateTime.Now, 2, 1, "Maltraitance cochons.", 4, (int)modele.StatutEnquete.EN_COURS),
                 new Enquete("75/21/05/001", "Paris", "NAC", "75", DateTime.Now, 4, 3, "Maltraitance NAC.", 1, (int)modele.StatutEnquete.EN_COURS),
             };
-
             context.Enquete.AddRange(enquetes);
+
+
+            // ETAPE 4 : Génération des Documents
+            IList<Document> documents = new List<Document>
+            {
+                new Document(2, "numeroEnquete/1/pikachu.png")
+            };
+            context.Document.AddRange(documents);
+
+
+            // ETAPE 5 : Génération des Visites
+            IList<Visite> visites = new List<Visite>
+            {
+                new Visite(2, "Ceci est un rapport.", new DateTime(2021, 4, 5, 0, 0, 0), false, 4),
+                new Visite(2, null, new DateTime(2021, 11, 5, 0, 0, 0), true, 4)
+            };
+            context.Visite.AddRange(visites);
 
             base.Seed(context);
         }
