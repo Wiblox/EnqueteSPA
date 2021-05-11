@@ -19,42 +19,46 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <StackPanel
+        <Grid
             Grid.Row="0"
-            Margin="10px"
-            Orientation="Horizontal">
+            Margin="10px">
 
-            <Label VerticalAlignment="Center">Adresse email du compte :</Label>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" VerticalAlignment="Center">Adresse email :</Label>
             <TextBox
+                Grid.Column="1"
                 x:Name="email"
-                Width="100px"
                 VerticalAlignment="Center" />
-        </StackPanel>
-        <StackPanel
+        </Grid>
+        <Grid
             Grid.Row="1"
-            Margin="10px"
-            Orientation="Horizontal">
-            <Label VerticalAlignment="Center">Mot de passe du compte :</Label>
-            <TextBox
+            Margin="10px">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" VerticalAlignment="Center">Mot de passe :</Label>
+            <PasswordBox
                 x:Name="password"
-                Width="100px"
+                Grid.Column="1"
                 VerticalAlignment="Center" />
-            <Button
-                Height="20px"
-                Click="Button_Click"
-                Cursor="Hand">
-                Générer mot de passe
-            </Button>
-        </StackPanel>
-        <Grid Grid.Row="2" Margin="20px">
+        </Grid>
+        <Grid Grid.Row="2">
             <Button
                 Background="#eb651b"
                 Click="Button_Click_1"
                 Cursor="Hand"
                 Foreground="White"
+                Margin="10px"
                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
 
-                <TextBlock x:Name="button">Crée le compte</TextBlock>
+                <TextBlock x:Name="button" >Créer le compte</TextBlock>
             </Button>
         </Grid>
     </Grid>

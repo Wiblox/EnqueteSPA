@@ -24,7 +24,7 @@ namespace EnquteSPA
             InitializeComponent();
             email.Text = compte.Mail;
             email.IsEnabled = false;
-            button.Text = "Changez le mot de passe";
+            button.Text = "Changer le mot de passe";
         }
 
         //On genere un mot de passa aleatoire
@@ -56,20 +56,21 @@ namespace EnquteSPA
                 verification = false;
                 erreur += "Email incorect \n";
             }
-            if (password.Text.Length == 0)
+
+            if (password.Password.Length == 0)
             {
                 erreur += "Mot de passe incorect ";
                 verification = false;
             }
             if (verification)
             {if(newcompte) { 
-                new Compte(email.Text, password.Text, false);
+                new Compte(email.Text, password.Password, false);
                 }
                 else
                 {
                     using var db = new Context();
                     var compte =db.Compte.Find(comptesd.IdCompte);
-                    compte.MotDePasse = password.Text;
+                    compte.MotDePasse = password.Password;
                     db.SaveChanges();
 
                 }
