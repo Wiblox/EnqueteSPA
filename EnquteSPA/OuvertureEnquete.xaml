@@ -110,6 +110,7 @@
         </Grid>
 
         <Button
+            x:Name="fsdfsdf"
             Grid.Row="2"
             Background="#eb651b"
             Click="SendMail"
@@ -230,6 +231,7 @@
                     </DataGrid.Columns>
                 </DataGrid>
                 <Button
+                    x:Name="buttonds"
                     Grid.Row="1"
                     Margin="10px"
                     Background="#eb651b"
