@@ -23,19 +23,19 @@
             Height="56"
             HorizontalAlignment="Right"
             VerticalAlignment="Top">
-            <StackPanel Margin="8" Orientation="Horizontal">
+            <StackPanel Margin="10" Orientation="Horizontal">
 
                 <TextBlock
                     x:Name="LoginName"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Bottom"
-                    FontSize="25"
+                    FontSize="26"
                     Foreground="Gray" />
 
 
 
                 <Button
-                    Margin="20,10,0,0"
+                    Margin="20,6,0,0"
                     Click="Deconnexion"
                     Cursor="Hand">
                     <Button.Template>
@@ -67,23 +67,17 @@
                     </Grid.ColumnDefinitions>
                 </Grid>
             </TabItem>
-            <TabItem
-                VerticalAlignment="Center"
-                Header="Accueil">
+            <TabItem VerticalAlignment="Center" Header="Accueil">
                 <Grid Background="#F1F3F4">
                     <local:Index />
                 </Grid>
             </TabItem>
-            <TabItem
-                VerticalAlignment="Center"
-                Header="Enquêtes">
+            <TabItem VerticalAlignment="Center" Header="Enquêtes">
                 <Grid Background="#F1F3F4">
                     <local:EcranEnquete />
                 </Grid>
             </TabItem>
-            <TabItem
-                VerticalAlignment="Center"
-                Header="Personnel">
+            <TabItem VerticalAlignment="Center" Header="Personnel">
                 <Grid Background="#F1F3F4">
                     <local:EcranEnqueteur />
                 </Grid>
