@@ -27,6 +27,8 @@ namespace EnquteSPA
         private void Button_AddEnqueteur(object sender, RoutedEventArgs e)
         {
             AddSpaPersonne fenetre = new AddSpaPersonne();
+            var el = (sender as FrameworkElement);
+            fenetre.Owner = Window.GetWindow(el);
             fenetre.ShowDialog();
             using var db = new Context();
             data.ItemsSource = db.SpaPersonne.ToList();
@@ -35,6 +37,8 @@ namespace EnquteSPA
         private void Button_Localisation(object sender, RoutedEventArgs e)
         {
             LocateEnqueteur locate = new LocateEnqueteur();
+            var el = (sender as FrameworkElement);
+            locate.Owner = Window.GetWindow(el);
             locate.ShowDialog();
         }
 
@@ -44,6 +48,8 @@ namespace EnquteSPA
             using var db = new Context();
             var modifSPA = db.SpaPersonne.Find(fdv.CommandParameter);
             AddSpaPersonne newx = new AddSpaPersonne(modifSPA);
+            var el = (sender as FrameworkElement);
+            newx.Owner = Window.GetWindow(el);
             newx.ShowDialog();
             db.SaveChanges();
             data.ItemsSource = db.SpaPersonne.ToList();

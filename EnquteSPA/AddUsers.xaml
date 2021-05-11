@@ -10,7 +10,8 @@
     Width="411"
     Height="225"
     ResizeMode="NoResize"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />

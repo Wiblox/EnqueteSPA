@@ -60,6 +60,8 @@ namespace EnquteSPA
         private void AddUser_Click(object sender, RoutedEventArgs e)
         {
             AddUsers frm = new AddUsers();
+            var el = (sender as FrameworkElement);
+            frm.Owner = Window.GetWindow(el);
             frm.ShowDialog();
         }
     }
