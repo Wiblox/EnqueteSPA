@@ -63,7 +63,8 @@
                     Padding="5px"
                     HorizontalAlignment="Center"
                     Content="Enquêteur"
-                    IsChecked="True" />
+                    IsChecked="True"
+                    Unchecked="XEnqueteur_Unchecked" />
                 <CheckBox
                     x:Name="XEtat"
                     Margin="50,0,0,0"
@@ -71,7 +72,8 @@
                     HorizontalAlignment="Center"
                     Content="Disponible"
                     IsChecked="True"
-                    Visibility="Collapsed" />
+                    Visibility="Collapsed"
+                    Unchecked="XEtat_Unchecked" />
             </DockPanel>
         </WrapPanel>
         <Grid Grid.Row="1" Margin="10px">

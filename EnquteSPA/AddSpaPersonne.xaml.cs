@@ -2,6 +2,7 @@
 using EnquteSPA.modele;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -93,6 +94,35 @@ namespace EnquteSPA
         {
             XPrenom.Text = Static.FirstLetterToUpper(XPrenom.Text);
             XPrenom.SelectionStart = XPrenom.Text.Length;
+        }
+
+        private async void XEtat_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (spaPersonne != null && XEnqueteur.IsChecked == true)
+            {
+                using var db = new Context();
+                int nb = db.Enquete.Where(v => v.IdEnqueteur == spaPersonne.IdSpaPersonne && v.Statut < 3).Count();
+                if (nb > 0)
+                {
+                    var res = await this.ShowMessageAsync("Attention !", $"Cet enquêteur est associé à {nb} enquête{(nb < 2 ? "" : "s")} !", MessageDialogStyle.AffirmativeAndNegative);
+                    if (res == MessageDialogResult.Negative)
+                        XEtat.IsChecked = true;
+                }
+            }
+        }
+
+        private void XEnqueteur_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (spaPersonne != null)
+            {
+                using var db = new Context();
+                int nb = db.Enquete.Where(v => v.IdEnqueteur == spaPersonne.IdSpaPersonne && v.Statut < 3).Count();
+                if (nb > 0)
+                {
+                    this.ShowMessageAsync("Attention !", $"Cet enquêteur est associé à {nb} enquête{(nb < 2 ? "" : "s")} !\nVous devez {(nb < 2 ? "la" : "les")} réattribuer avant de\ndésélectionner \"Enquêteur\".");
+                    XEnqueteur.IsChecked = true;
+                }
+            }
         }
     }
 }
