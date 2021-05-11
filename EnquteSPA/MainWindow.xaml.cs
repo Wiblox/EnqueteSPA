@@ -28,7 +28,6 @@ namespace EnquteSPA
                 LoginName.Text = Static.utilisateurCourant.Mail;
                 if (Static.utilisateurCourant?.Admin == false)
                 {
-
                     users.Visibility = Visibility.Hidden;
                 }
             }

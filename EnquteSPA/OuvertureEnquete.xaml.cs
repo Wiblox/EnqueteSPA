@@ -32,11 +32,7 @@ namespace EnquteSPA
             if (en.Statut == 3)
             {
                 toggle.IsOn = true;
-
-
                 disable(false);
-
-
             }
             else { toggle.IsOn = false; }
             if (en.Statut == 1) { toggle.IsEnabled = false; }
@@ -46,7 +42,6 @@ namespace EnquteSPA
         {
             if (Static.utilisateurCourant?.Admin == false)
             {
-
                 toggle.IsEnabled = statut;
             }
             XObjet.IsEnabled = statut;
@@ -55,7 +50,6 @@ namespace EnquteSPA
             buttonds.IsEnabled = statut;
             fsdfsdf.IsEnabled = statut;
             XDateDepot.IsEnabled = statut;
-
         }
 
         private void ListeVisites(object sender, EventArgs e)
@@ -143,31 +137,27 @@ namespace EnquteSPA
             }
         }
 
-        private void StatutEnquete(object sender, RoutedEventArgs e)
+        private async void StatutEnquete(object sender, RoutedEventArgs e)
         {
             using var db = new Context();
             var te = db.Enquete.Find(en.IdEnquete);
             ToggleSwitch sdfsender = (ToggleSwitch)sender;
-
-            var ds = this.ShowMessageAsync("Validez Statut Enquete", "Vous allez bientôt quitter l'application.", MessageDialogStyle.AffirmativeAndNegative);
+            //var res = ( && ((en.Statut == 3 && toggle.IsOn == false) || (en.Statut < 3 && toggle.IsOn == true)))
+            //    ? await this.ShowMessageAsync("Changement statut enquête", "Êtes-vous sûr de vouloir effectuer cette modification ?", MessageDialogStyle.AffirmativeAndNegative)
+            //    : MessageDialogResult.Negative;
 
             if (sdfsender.IsOn)
             {
-                te.Statut = 3;
+                te.Statut = 3;  
                 disable(false);
             }
             else
             {
                 disable(true);
                 if (te.IdEnqueteur == null)
-                {
                     te.Statut = 1;
-
-                }
                 else
-                {
                     te.Statut = 2;
-                }
             }
             Debug.WriteLine("Staut = " + te.Statut);
             db.SaveChanges();

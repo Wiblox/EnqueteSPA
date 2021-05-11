@@ -99,12 +99,13 @@
 
                 <Label Grid.Column="0" Content="Statut Enquête :" />
 
-                <mah:ToggleSwitch Grid.Column="1"
-                                  VerticalAlignment="Top"
-                x:Name="toggle"
-                OffContent="En cours"
-                OnContent="Terminé"
-                Toggled="StatutEnquete" />
+                <mah:ToggleSwitch 
+                    Grid.Column="1"
+                    VerticalAlignment="Top"
+                    x:Name="toggle"
+                    OffContent="En cours"
+                    OnContent="Terminé"
+                    Toggled="StatutEnquete" />
             </Grid>
             
         </Grid>

@@ -73,7 +73,8 @@ namespace EnquteSPA.bo
             // ETAPE 6 : Génération d'un compte admin
             IList<Compte> comptes = new List<Compte>
             {
-                 new Compte("admin@gmail.com", "azerty123", true)
+                 new Compte("admin@gmail.com", "azerty123", true),
+                 new Compte("aaa@gmail.com", "aaa", false)
             };
             context.Compte.AddRange(comptes);
 
