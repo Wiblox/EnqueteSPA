@@ -1,6 +1,7 @@
 ﻿using EnquteSPA.bo;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -32,14 +33,16 @@ namespace EnquteSPA
         }
         void ShowHideDetails(object sender, RoutedEventArgs e)
         {
-            for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
-                if (vis is DataGridRow)
-                {
-                    var row = (DataGridRow)vis;
-                    row.DetailsVisibility =
-                    row.DetailsVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-                    break;
-                }
+            Debug.WriteLine(" sdfd de f");
+            Button fdv = (Button)sender;
+            using var db = new Context();
+            Debug.WriteLine(fdv.CommandParameter);
+            
+            Compte compte = db.Compte.Find(fdv.CommandParameter);
+            AddUsers addEnquete = new AddUsers(compte);
+            addEnquete.ShowDialog();
+            db.SaveChanges();
+            data.ItemsSource = db.Compte.ToList();
         }
         private void data_Initialized(object sender, EventArgs e)
         {
@@ -61,6 +64,23 @@ namespace EnquteSPA
         {
             AddUsers frm = new AddUsers();
             frm.ShowDialog();
+            data.ItemsSource = db.Compte.ToList();
+
+        }
+
+        private void Button_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine(" sdfd de f");
+            Button fdv = (Button)sender;
+            using var db = new Context();
+            Debug.WriteLine(fdv.CommandParameter);
+
+            Compte compte = db.Compte.Find(fdv.CommandParameter);
+            AddUsers addEnquete = new AddUsers(compte);
+            addEnquete.ShowDialog();
+            db.SaveChanges();
+            data.ItemsSource = db.Compte.ToList();
+
         }
     }
 }

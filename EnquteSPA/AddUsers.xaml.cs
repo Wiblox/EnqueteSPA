@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls;
+﻿using EnquteSPA.bo;
+using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System.Windows;
 
@@ -9,9 +10,21 @@ namespace EnquteSPA
     /// </summary>
     public partial class AddUsers : MetroWindow
     {
+        bool newcompte;
+        Compte comptesd;
         public AddUsers()
         {
+            newcompte = true;
             InitializeComponent();
+        }
+        public AddUsers(Compte compte)
+        {
+            comptesd = compte;
+               newcompte = false;
+            InitializeComponent();
+            email.Text = compte.Mail;
+            email.IsEnabled = false;
+            button.Text = "Changez le mot de passe";
         }
 
         //On genere un mot de passa aleatoire
@@ -49,8 +62,17 @@ namespace EnquteSPA
                 verification = false;
             }
             if (verification)
-            {
+            {if(newcompte) { 
                 new Compte(email.Text, password.Text, false);
+                }
+                else
+                {
+                    using var db = new Context();
+                    var compte =db.Compte.Find(comptesd.IdCompte);
+                    compte.MotDePasse = password.Text;
+                    db.SaveChanges();
+
+                }
                 Close();
             }
             else

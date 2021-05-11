@@ -38,10 +38,15 @@
                 <DataGridTemplateColumn Header="Modification">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Height="25" Width="25" Click="ShowHideDetails" Cursor="Hand">
+                            <Button
+                                Width="25"
+                                Height="25"
+                                Click="ShowHideDetails"
+                                CommandParameter="{Binding IdCompte}"
+                                Cursor="Hand" GotFocus="Button_GotFocus">
                                 <Button.Template>
                                     <ControlTemplate>
-                                        <Image Source="/Resources/edit-solid.png"/>
+                                        <Image Source="/Resources/edit-solid.png" />
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
@@ -59,9 +64,9 @@
                 Height="50px"
                 Background="#eb651b"
                 Click="AddUser_Click"
+                Cursor="Hand"
                 Foreground="White"
                 Initialized="Button_Initialized"
-                Cursor="Hand"
                 Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
                 <TextBlock>Ajouter un utilisateur</TextBlock>
             </Button>
