@@ -29,10 +29,31 @@ namespace EnquteSPA
             XObjet.Text = en.Objet;
             XRace.Text = en.Race;
             XDateDepot.SelectedDate = en.DateDepot;
-            if (en.Statut == 3) { toggle.IsOn = true; }
+            if (en.Statut == 3) { toggle.IsOn = true;
+
+
+                disable(false);
+
+
+            }
             else { toggle.IsOn = false; }
             if (en.Statut == 1) { toggle.IsEnabled = false; }
             Title = "Enquête : " + en.NoEnquete;
+        }
+        public void disable(bool statut)
+        {
+            if (Static.utilisateurCourant?.Admin == false)
+            {
+
+                toggle.IsEnabled = statut;
+            }
+            XObjet.IsEnabled = statut;
+            XRace.IsEnabled = statut;
+            Button_AddVisite.IsEnabled = statut;
+            buttonds.IsEnabled = statut;
+            fsdfsdf.IsEnabled = statut;
+            XDateDepot.IsEnabled = statut;
+
         }
 
         private void ListeVisites(object sender, EventArgs e)
@@ -116,9 +137,11 @@ namespace EnquteSPA
             if (sdfsender.IsOn)
             {
                 te.Statut = 3;
+                disable(false);
             }
             else
             {
+                disable(true);
                 if (te.IdEnqueteur == null)
                 {
                     te.Statut = 1;
