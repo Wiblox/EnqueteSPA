@@ -138,7 +138,7 @@ namespace EnquteSPA
                 var Plaignant = db.Personne.Find(en.IdPlaignant);
                 String destinataire = db.SpaPersonne.Find(en.IdEnqueteur).Mail;
                 String sujet = "Affectation de l'enquête " + en.NoEnquete;
-                String corps = "Bonjour " + db.SpaPersonne.Find(en.IdEnqueteur).Nom+" " + db.SpaPersonne.Find(en.IdEnqueteur).Prenom + ", %0A%0AL'enquête " + en.NoEnquete + " saisie le " + en.DateDepot + " vous a été affectée. %0ACelle-ci a pour objet \"" + en.Objet + "\" et concerne les espèces suivantes : " + en.Race + ".%0ASon motif : \"" + en.Motif + "\".%0A%0A Infracteur : %0A" + infracteur+ "%0A Plaignant : %0A" + Plaignant;
+                String corps = "Bonjour " + db.SpaPersonne.Find(en.IdEnqueteur).Nom+" " + db.SpaPersonne.Find(en.IdEnqueteur).Prenom + ", %0A%0AL'enquête " + en.NoEnquete + " saisie le " + en.DateDepot + " vous a été affectée. %0ACelle-ci a pour objet \"" + en.Objet + "\" et concerne les espèces suivantes : " + en.Race + ".%0ASon motif : \"" + en.Motif + "\".%0A%0AInfracteur : %0A" + infracteur+ "%0A%0APlaignant : %0A" + Plaignant;
                 System.Diagnostics.Process.Start(new ProcessStartInfo("mailto:" + destinataire + "?subject=" + sujet + "&body=" + corps + "") { UseShellExecute = true });
             }
         }
