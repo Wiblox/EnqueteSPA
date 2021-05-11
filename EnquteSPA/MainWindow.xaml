@@ -10,7 +10,6 @@
     Width="1280"
     Height="720"
     ShowCloseButton="False"
-    ShowInTaskbar="False"
     ShowMaxRestoreButton="False"
     ShowMinButton="False"
     ShowTitleBar="False"
