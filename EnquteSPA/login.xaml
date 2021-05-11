@@ -16,10 +16,8 @@
         <Grid.Background>
             <VisualBrush>
                 <VisualBrush.Visual>
-                    <Image Source="https://www.fichemetier.fr/wp-content/uploads/2015/04/travailler-avec-animaux.jpg">
-                        <Image.BitmapEffect>
-                            <BlurBitmapEffect KernelType="Gaussian" Radius="15" />
-                        </Image.BitmapEffect>
+                    <Image 
+                        Source="/Resources/travailler-avec-animaux.jpg">
                     </Image>
                 </VisualBrush.Visual>
             </VisualBrush>

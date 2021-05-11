@@ -13,6 +13,7 @@
     <None Remove="Resources\external-link-alt-solid.png" />
     <None Remove="Resources\logo.png" />
     <None Remove="Resources\sign-out-alt-solid.png" />
+    <None Remove="Resources\travailler-avec-animaux.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,6 +49,7 @@
     <Resource Include="Resources\edit-solid.png" />
     <Resource Include="Resources\external-link-alt-solid.png" />
     <Resource Include="Resources\sign-out-alt-solid.png" />
+    <Resource Include="Resources\travailler-avec-animaux.jpg" />
   </ItemGroup>
 
 </Project>

@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace EnquteSPA.bo
 {
-    class ContextDbInitializer : DropCreateDatabaseAlways<Context>
+    class ContextDbInitializer : CreateDatabaseIfNotExists<Context>
     {
         protected override void Seed(Context context)
         {
