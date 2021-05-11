@@ -29,6 +29,8 @@ namespace EnquteSPA
         private void CreateEnquete(object sender, RoutedEventArgs e)
         {
             AddEnquete frm = new AddEnquete();
+            var el = (sender as FrameworkElement);
+            frm.Owner = Window.GetWindow(el);
             frm.ShowDialog();
             using var db = new Context();
             db.SaveChanges();
@@ -41,6 +43,8 @@ namespace EnquteSPA
             using var db = new Context();
             Enquete editEnquete = db.Enquete.Where(v => v.NoEnquete == (string)fdv.CommandParameter).First();
             AddEnquete addEnquete = new AddEnquete(editEnquete);
+            var el = (sender as FrameworkElement);
+            addEnquete.Owner = Window.GetWindow(el);
             addEnquete.ShowDialog();
             db.SaveChanges();
             data.ItemsSource = db.Enquete.ToList();

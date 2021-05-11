@@ -14,9 +14,8 @@
     ShowMinButton="False"
     ShowTitleBar="False"
     WindowStyle="None"
-    mc:Ignorable="d">
-    <mah:MetroWindow.Resources />
-
+    mc:Ignorable="d"
+    WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid
             Height="56"

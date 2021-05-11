@@ -39,7 +39,6 @@ namespace EnquteSPA
             else { toggle.IsOn = false; }
             if (en.Statut == 1) { toggle.IsEnabled = false; }
             Title = "Enquête : " + en.NoEnquete;
-
         }
         public void disable(bool statut)
         {
@@ -73,6 +72,8 @@ namespace EnquteSPA
         {
             AddDocument add = new AddDocument(idenquete);
             add.ShowDialog();
+            var el = (sender as FrameworkElement);
+            add.Owner = Window.GetWindow(el);
             using var db = new Context();
             XGridDocument.ItemsSource = db.Document.Where(v => v.NoEnquete == idenquete).ToList();
         }
@@ -104,6 +105,8 @@ namespace EnquteSPA
         private void Button_AddVisite_Click(object sender, RoutedEventArgs e)
         {
             AddVisite av = new AddVisite(en);
+            var el = (sender as FrameworkElement);
+            av.Owner = Window.GetWindow(el);
             av.ShowDialog();
             using var db = new Context();
             XGridVisite.ItemsSource = db.Visite.Where(c => c.IdEnquete== idenquete).ToList();

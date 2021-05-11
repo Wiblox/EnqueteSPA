@@ -65,6 +65,8 @@ namespace EnquteSPA
             using var db = new Context();
 
             AddUsers frm = new AddUsers();
+            var el = (sender as FrameworkElement);
+            frm.Owner = Window.GetWindow(el);
             frm.ShowDialog();
             data.ItemsSource = db.Compte.ToList();
 
