@@ -148,6 +148,9 @@ namespace EnquteSPA
             using var db = new Context();
             var te = db.Enquete.Find(en.IdEnquete);
             ToggleSwitch sdfsender = (ToggleSwitch)sender;
+
+            var ds = this.ShowMessageAsync("Validez Statut Enquete", "Vous allez bientôt quitter l'application.", MessageDialogStyle.AffirmativeAndNegative);
+
             if (sdfsender.IsOn)
             {
                 te.Statut = 3;
