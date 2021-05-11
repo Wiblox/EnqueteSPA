@@ -9,7 +9,9 @@
     Title="Login"
     Width="800"
     Height="450"
+    ResizeMode="NoResize"
     ShowTitleBar="False"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
 
@@ -56,7 +58,10 @@
                                 Foreground="White">
                                 Email :
                             </Label>
-                            <TextBox x:Name="XUser" Width="160px" KeyDown="XUser_KeyDown" />
+                            <TextBox
+                                x:Name="XUser"
+                                Width="160px"
+                                KeyDown="XUser_KeyDown" />
                         </WrapPanel>
                         <WrapPanel
                             Grid.Row="2"
@@ -68,7 +73,10 @@
                                 Foreground="White">
                                 Mot de passe :
                             </Label>
-                            <PasswordBox x:Name="XPassword" Width="160px" KeyDown="XPassword_KeyDown" />
+                            <PasswordBox
+                                x:Name="XPassword"
+                                Width="160px"
+                                KeyDown="XPassword_KeyDown" />
                         </WrapPanel>
                         <WrapPanel
                             Grid.Row="3"
