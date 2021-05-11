@@ -9,7 +9,12 @@
     Title="Suivi Enquete SPA"
     Width="1280"
     Height="720"
+    ShowCloseButton="False"
+    ShowInTaskbar="False"
+    ShowMaxRestoreButton="False"
+    ShowMinButton="False"
     ShowTitleBar="False"
+    WindowStyle="None"
     mc:Ignorable="d">
     <mah:MetroWindow.Resources />
 
