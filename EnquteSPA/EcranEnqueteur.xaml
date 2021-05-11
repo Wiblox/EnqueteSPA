@@ -54,7 +54,7 @@
                     <DataGridTemplateColumn Header="Modification">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Height="25" Width="25" Click="Button_EditEnqueteur" Cursor="Hand" CommandParameter="{Binding IdSpaPersonne}">
+                                <Button Height="25" Width="25" Margin="5" Click="Button_EditEnqueteur" Cursor="Hand" CommandParameter="{Binding IdSpaPersonne}">
                                     <Button.Template>
                                         <ControlTemplate>
                                             <Image Source="/Resources/edit-solid.png"/>
