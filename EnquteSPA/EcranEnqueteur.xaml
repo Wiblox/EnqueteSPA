@@ -10,6 +10,7 @@
     mc:Ignorable="d" IsVisibleChanged="UserControl_IsVisibleChanged">
     <UserControl.Resources>
         <local:FonctionConverter x:Key="FonctionConverter" />
+        <local:PersonneConverter2 x:Key="PersonneConverter2" />
     </UserControl.Resources>
     <Grid Background="#F1F3F4">
         <Grid.RowDefinitions>
@@ -28,9 +29,10 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Personne">
                         <DataGridTextColumn.Binding>
-                            <MultiBinding StringFormat="{}{0} {1}">
-                                <Binding Path="Nom" />
-                                <Binding Path="Prenom" />
+                            <MultiBinding
+                                Converter="{StaticResource PersonneConverter2}">
+                                <Binding Path="Nom"/>
+                                <Binding Path="Prenom"/>
                             </MultiBinding>
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>

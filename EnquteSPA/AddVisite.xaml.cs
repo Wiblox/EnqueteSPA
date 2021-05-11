@@ -5,6 +5,7 @@ using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Linq;
 using System.Windows;
+using System.Windows.Data;
 
 namespace EnquteSPA
 {
@@ -79,6 +80,18 @@ namespace EnquteSPA
                 db.SaveChanges();
                 Close();
             }
+        }
+    }
+    public class TrimConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return (bool)value ? "Salarié" : "Bénévole";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return value;
         }
     }
 }

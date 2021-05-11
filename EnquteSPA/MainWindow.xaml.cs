@@ -55,12 +55,7 @@ namespace EnquteSPA
         protected override async void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             if (!close)
-            {
-                e.Cancel = true;
-                await this.ShowMessageAsync("Déconnexion", "Vous allez bientôt quitter l'application.");
-                e.Cancel = false;
-                Application.Current.Shutdown();
-            }
+                Deconnexion(null, null);
         }
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -69,8 +64,9 @@ namespace EnquteSPA
 
         private async void Deconnexion(object sender, RoutedEventArgs e)
         {
-            await this.ShowMessageAsync("Déconnexion", "Vous allez bientôt quitter l'application.");
-            Application.Current.Shutdown();
+            var res = await this.ShowMessageAsync("Déconnexion", "Vous allez bientôt quitter l'application.", MessageDialogStyle.AffirmativeAndNegative);
+            if (res == MessageDialogResult.Affirmative)
+                Application.Current.Shutdown();
         }
     }
 }

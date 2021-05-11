@@ -114,7 +114,7 @@ namespace EnquteSPA
             if (value == null) return "--";
             using var db = new Context();
             SpaPersonne p = db.SpaPersonne.Find((int)value);
-            return $"{p.Nom} {p.Prenom}";
+            return $"{p.Nom} {p.Prenom}".Trim();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

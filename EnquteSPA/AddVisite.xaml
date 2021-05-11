@@ -12,6 +12,9 @@
     SizeToContent="WidthAndHeight"
     mc:Ignorable="d"
     WindowStartupLocation="CenterOwner">
+    <Window.Resources>
+        <local:TrimConverter x:Key="TrimConverter" />
+    </Window.Resources>
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -31,7 +34,7 @@
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>
-                            <Run Text="{Binding Nom}" />
+                            <Run Text="{Binding Nom}"  />
                             <Run Text="{Binding Prenom}" />
                         </TextBlock>
                     </DataTemplate>
