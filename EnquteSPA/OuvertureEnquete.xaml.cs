@@ -18,6 +18,7 @@ namespace EnquteSPA
     {
         int idenquete;
         Enquete en;
+        bool sstatut;
         public OuvertureEnquete(int id)
         {
             idenquete = id;
@@ -34,22 +35,19 @@ namespace EnquteSPA
                 toggle.IsOn = true;
                 disable(false);
             }
-            else { toggle.IsOn = false; }
             if (en.Statut == 1) { toggle.IsEnabled = false; }
             Title = "Enquête : " + en.NoEnquete;
         }
         public void disable(bool statut)
         {
+            sstatut = statut;
             if (Static.utilisateurCourant?.Admin == false)
             {
                 toggle.IsEnabled = statut;
             }
-            XObjet.IsEnabled = statut;
-            XRace.IsEnabled = statut;
             Button_AddVisite.IsEnabled = statut;
             buttonds.IsEnabled = statut;
             fsdfsdf.IsEnabled = statut;
-            XDateDepot.IsEnabled = statut;
         }
 
         private void ListeVisites(object sender, EventArgs e)
@@ -90,12 +88,15 @@ namespace EnquteSPA
 
         private void SupprimerDocument(object sender, RoutedEventArgs e)
         {
-            Button fdv = (Button)sender;
-            using var db = new Context();
-            Document doc = db.Document.Find(fdv.CommandParameter);
-            db.Document.Remove(doc);
-            db.SaveChanges();
-            XGridDocument.ItemsSource = db.Document.Where(v => v.NoEnquete == idenquete).ToList();
+            if(sstatut)
+            {
+                Button fdv = (Button)sender;
+                using var db = new Context();
+                Document doc = db.Document.Find(fdv.CommandParameter);
+                db.Document.Remove(doc);
+                db.SaveChanges();
+                XGridDocument.ItemsSource = db.Document.Where(v => v.NoEnquete == idenquete).ToList();
+            }
         }
 
         private void Button_AddVisite_Click(object sender, RoutedEventArgs e)
@@ -142,9 +143,14 @@ namespace EnquteSPA
             using var db = new Context();
             var te = db.Enquete.Find(en.IdEnquete);
             ToggleSwitch sdfsender = (ToggleSwitch)sender;
-            //var res = ( && ((en.Statut == 3 && toggle.IsOn == false) || (en.Statut < 3 && toggle.IsOn == true)))
-            //    ? await this.ShowMessageAsync("Changement statut enquête", "Êtes-vous sûr de vouloir effectuer cette modification ?", MessageDialogStyle.AffirmativeAndNegative)
-            //    : MessageDialogResult.Negative;
+            if(en.Statut < 3 && toggle.IsOn)
+            {
+                var res = await this.ShowMessageAsync("Changement statut enquête", "Êtes-vous sûr de vouloir effectuer cette modification ?", MessageDialogStyle.AffirmativeAndNegative);
+                if (res == MessageDialogResult.Negative)
+                {
+                    toggle.IsOn = false;
+                }
+            }
 
             if (sdfsender.IsOn)
             {
@@ -159,6 +165,7 @@ namespace EnquteSPA
                 else
                     te.Statut = 2;
             }
+            
             Debug.WriteLine("Staut = " + te.Statut);
             db.SaveChanges();
         }

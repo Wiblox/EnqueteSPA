@@ -88,6 +88,7 @@
             <TextBlock  Grid.Column="1"
                     x:Name="XMotif"
                     Width="700"
+                        IsEnabled="False"
                      />
             </StackPanel>
 
@@ -105,7 +106,8 @@
                     x:Name="toggle"
                     OffContent="En cours"
                     OnContent="Terminé"
-                    Toggled="StatutEnquete" />
+                    Toggled="StatutEnquete" 
+                    IsOn="False"/>
             </Grid>
             
         </Grid>
@@ -205,7 +207,13 @@
 
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Height="25" Width="25" Margin="5" Click="SupprimerDocument" Cursor="Hand" CommandParameter="{Binding IdDocument}">
+                                    <Button 
+                                        Height="25" 
+                                        Width="25" 
+                                        Margin="5"
+                                        Click="SupprimerDocument"
+                                        Cursor="Hand" 
+                                        CommandParameter="{Binding IdDocument}">
                                         <Button.Template>
                                             <ControlTemplate>
                                                 <Image Source="/Resources/trash-alt-solid.png"/>
