@@ -62,6 +62,8 @@ namespace EnquteSPA
 
         private void AddUser_Click(object sender, RoutedEventArgs e)
         {
+            using var db = new Context();
+
             AddUsers frm = new AddUsers();
             frm.ShowDialog();
             data.ItemsSource = db.Compte.ToList();
