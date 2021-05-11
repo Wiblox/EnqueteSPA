@@ -149,7 +149,7 @@
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button
+                <Button x:Name="buttonds"
                     Grid.Row="1"
                     Background="#eb651b"
                     Click="AjouterDocument"
@@ -163,7 +163,7 @@
 
 
 
-        <Button
+        <Button x:Name="fsdfsdf"
             Grid.Row="3"
             Background="#eb651b"
             Click="SendMail"
