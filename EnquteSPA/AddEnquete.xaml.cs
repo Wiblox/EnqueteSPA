@@ -248,14 +248,15 @@ namespace EnquteSPA
             return db.SpaPersonne.Where(v => v.IsEnqueteur == true).Where(v => v.Etat == true).ToList();
         }
 
-        private void XEnqueteur_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        private void XEnqueteur_DropDownOpened(object sender, EventArgs e)
         {
             erreur.ResetMsgRetour();
+            erreur.TestNonVide(XInfracteurNumero.Text, "Nom du plaignant");
             erreur.TestNonVide(XInfracteurNumero.Text, "Nom du plaignant");
             erreur.TestNonVide(XInfracteurRue.Text, "Nom du plaignant");
             erreur.TestNonVide(XInfracteurVille.Text, "Nom du plaignant");
 
-
+            var sddf = XEnqueteur.SelectedItem;
             if (erreur.IsSafe())
             {
                 XEnqueteur.ItemsSource = listTrier(localisation(XInfracteurNumero.Text + " " + XInfracteurRue.Text + " " + XInfracteurVille.Text));
@@ -266,7 +267,12 @@ namespace EnquteSPA
             {
                 XEnqueteur.ItemsSource = listTrier();
             }
+
+             XEnqueteur.SelectedItem= sddf;
+
         }
+
+
 
 
     }

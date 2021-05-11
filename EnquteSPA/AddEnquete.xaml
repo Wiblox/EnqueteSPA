@@ -60,8 +60,8 @@
                 <ComboBox
                     x:Name="XEnqueteur"
                     Width="150"
+                    DropDownOpened="XEnqueteur_DropDownOpened"
                     Initialized="ListeEnqueteurs"
-                    MouseEnter="XEnqueteur_MouseEnter"
                     SelectedValuePath="IdSpaPersonne">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
@@ -158,8 +158,8 @@
             Margin="0,5"
             Background="#eb651b"
             Click="ClickBtnValider"
-            Foreground="White"
             Cursor="Hand"
+            Foreground="White"
             Style="{StaticResource MahApps.Styles.Button.MetroWindow.Base}">
             <TextBlock>Valider</TextBlock>
         </Button>
