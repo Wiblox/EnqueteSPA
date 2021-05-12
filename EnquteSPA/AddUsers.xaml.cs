@@ -25,6 +25,7 @@ namespace EnquteSPA
             email.Text = compte.Mail;
             email.IsEnabled = false;
             button.Text = "Changer le mot de passe";
+            Title = "Modification de compte";
         }
 
         //On genere un mot de passa aleatoire
@@ -78,7 +79,10 @@ namespace EnquteSPA
             }
             else
             {
-                this.ShowMessageAsync("Erreur création de compte", erreur);
+                if(newcompte)
+                    this.ShowMessageAsync("Erreur création de compte.", erreur);
+                else
+                    this.ShowMessageAsync("Erreur modification de compte.", erreur);
             }
         }
     }

@@ -31,19 +31,6 @@ namespace EnquteSPA
             using var db = new Context();
             data.ItemsSource = db.Compte.ToList();
         }
-        void ShowHideDetails(object sender, RoutedEventArgs e)
-        {
-            Debug.WriteLine(" sdfd de f");
-            Button fdv = (Button)sender;
-            using var db = new Context();
-            Debug.WriteLine(fdv.CommandParameter);
-            
-            Compte compte = db.Compte.Find(fdv.CommandParameter);
-            AddUsers addEnquete = new AddUsers(compte);
-            addEnquete.ShowDialog();
-            db.SaveChanges();
-            data.ItemsSource = db.Compte.ToList();
-        }
         private void data_Initialized(object sender, EventArgs e)
         {
             data_Initialized();
@@ -74,17 +61,15 @@ namespace EnquteSPA
 
         private void Button_GotFocus(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine(" sdfd de f");
             Button fdv = (Button)sender;
             using var db = new Context();
-            Debug.WriteLine(fdv.CommandParameter);
-
             Compte compte = db.Compte.Find(fdv.CommandParameter);
             AddUsers addEnquete = new AddUsers(compte);
+            var el = (sender as FrameworkElement);
+            addEnquete.Owner = Window.GetWindow(el);
             addEnquete.ShowDialog();
             db.SaveChanges();
             data.ItemsSource = db.Compte.ToList();
-
         }
     }
 }

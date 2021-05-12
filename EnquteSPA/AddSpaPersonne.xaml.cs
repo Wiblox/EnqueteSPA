@@ -102,7 +102,7 @@ namespace EnquteSPA
             {
                 using var db = new Context();
                 int nb = db.Enquete.Where(v => v.IdEnqueteur == spaPersonne.IdSpaPersonne && v.Statut < 3).Count();
-                if (nb > 0)
+                if (nb > 0 && spaPersonne.Etat == true)
                 {
                     var res = await this.ShowMessageAsync("Attention !", $"Cet enquêteur est associé à {nb} enquête{(nb < 2 ? "" : "s")} !", MessageDialogStyle.AffirmativeAndNegative);
                     if (res == MessageDialogResult.Negative)

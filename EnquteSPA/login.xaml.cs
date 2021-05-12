@@ -21,9 +21,6 @@ namespace EnquteSPA
             Static.utilisateur = false;
             erreur = new Erreur();
             XUser.Focus();
-
-            XUser.Text = "admin@gmail.com";
-            XPassword.Password = "azerty123";
         }
 
         private bool VerifChamps()
