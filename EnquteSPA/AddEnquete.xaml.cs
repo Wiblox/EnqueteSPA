@@ -83,7 +83,7 @@ namespace EnquteSPA
                 string id = "<ID>";
                 string depTxt = XDepartement.Text;
                 if (depTxt.Length == 0) depTxt = "<DEP>";
-                string numEnqueteWithoutID = $"{depTxt}/{DateTime.Now.ToString("yy/MM")}";
+                string numEnqueteWithoutID = $"{depTxt}/{((DateTime)XDateDepot.SelectedDate).ToString("yy/MM")}";
                 if (XDepartement.Text.Length > 0)
                 {
                     using var db = new Context();
@@ -246,6 +246,17 @@ namespace EnquteSPA
             using var db = new Context();
 
             return db.SpaPersonne.Where(v => v.IsEnqueteur == true).Where(v => v.Etat == true).ToList();
+        }
+
+        private void XDateDepot_CalendarClosed(object sender, RoutedEventArgs e)
+        {
+            GenTxtNumEnquete();
+        }
+
+        private void XDateDepot_LostFocus(object sender, RoutedEventArgs e)
+        {
+            GenTxtNumEnquete();
+
         }
 
         private void XEnqueteur_DropDownOpened(object sender, EventArgs e)

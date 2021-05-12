@@ -83,13 +83,21 @@
                 
             </Grid>-->
 
-            <StackPanel Orientation="Horizontal">
-                <Label Grid.Column="0" Content="Motif :" />
-            <TextBlock  Grid.Column="1"
+            <StackPanel
+                Grid.Row="0"
+                Grid.Column="0">
+                <Label Content="Motif :" />
+                <TextBox
                     x:Name="XMotif"
-                    Width="700"
-                        IsEnabled="False"
-                     />
+                    Width="Auto"
+                    MinHeight="50"
+                    MaxHeight="75"
+                    Margin="10,0"
+                    AcceptsReturn="True"
+                    IsReadOnly="True"
+                    TextWrapping="Wrap"
+                    VerticalScrollBarVisibility="Visible"
+                    />
             </StackPanel>
 
             <Grid Grid.Column="1" Margin="10">
@@ -188,6 +196,8 @@
                     <DataGrid.Columns>
 
                         <DataGridTextColumn Binding="{Binding Path=PathDoc, Converter={StaticResource DocumentPathConverter}}" Header="Nom Fichier" />
+
+                        <DataGridTextColumn Binding="{Binding Path=PathDoc, Converter={StaticResource DocumentTypeConverter}}" Header="Type Fichier" />
 
                         <DataGridTemplateColumn Header="Ouvrir">
 

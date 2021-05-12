@@ -88,7 +88,7 @@ namespace EnquteSPA
 
         private void SupprimerDocument(object sender, RoutedEventArgs e)
         {
-            if(sstatut)
+            if(toggle.IsOn == false)
             {
                 Button fdv = (Button)sender;
                 using var db = new Context();
@@ -194,7 +194,9 @@ namespace EnquteSPA
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (value == null) return null;
-            switch (((string)value).ToLower())
+            string file = ((string)value).Split('/').Last();
+            string ext = '.' + file.Split('.').Last();
+            switch (ext.ToLower())
             {
                 case ".jpg":
                 case ".jpeg":
@@ -213,7 +215,7 @@ namespace EnquteSPA
                 case ".ogg":
                     return "Audio";
             }
-            return value;
+            return ext;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

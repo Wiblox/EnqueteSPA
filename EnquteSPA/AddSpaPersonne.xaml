@@ -64,7 +64,7 @@
                     HorizontalAlignment="Center"
                     Content="Enquêteur"
                     IsChecked="True"
-                    Unchecked="XEnqueteur_Unchecked" />
+                    Unchecked="XEnqueteur_Unchecked" Click="XEnqueteur_Click" />
                 <CheckBox
                     x:Name="XEtat"
                     Margin="50,0,0,0"
@@ -73,7 +73,7 @@
                     Content="Disponible"
                     IsChecked="True"
                     Visibility="Collapsed"
-                    Unchecked="XEtat_Unchecked" />
+                    Unchecked="XEtat_Unchecked" Click="XEtat_Click" />
             </DockPanel>
         </WrapPanel>
         <Grid Grid.Row="1" Margin="10px">

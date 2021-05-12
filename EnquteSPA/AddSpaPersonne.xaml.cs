@@ -98,17 +98,7 @@ namespace EnquteSPA
 
         private async void XEtat_Unchecked(object sender, RoutedEventArgs e)
         {
-            if (spaPersonne != null && XEnqueteur.IsChecked == true)
-            {
-                using var db = new Context();
-                int nb = db.Enquete.Where(v => v.IdEnqueteur == spaPersonne.IdSpaPersonne && v.Statut < 3).Count();
-                if (nb > 0 && spaPersonne.Etat == true)
-                {
-                    var res = await this.ShowMessageAsync("Attention !", $"Cet enquêteur est associé à {nb} enquête{(nb < 2 ? "" : "s")} !", MessageDialogStyle.AffirmativeAndNegative);
-                    if (res == MessageDialogResult.Negative)
-                        XEtat.IsChecked = true;
-                }
-            }
+
         }
 
         private void XEnqueteur_Unchecked(object sender, RoutedEventArgs e)
@@ -121,6 +111,26 @@ namespace EnquteSPA
                 {
                     this.ShowMessageAsync("Attention !", $"Cet enquêteur est associé à {nb} enquête{(nb < 2 ? "" : "s")} !\nVous devez {(nb < 2 ? "la" : "les")} réattribuer avant de\ndésélectionner \"Enquêteur\".");
                     XEnqueteur.IsChecked = true;
+                }
+            }
+        }
+
+        private void XEnqueteur_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private async void XEtat_Click(object sender, RoutedEventArgs e)
+        {
+            if (spaPersonne != null && XEtat.IsChecked == false && XEnqueteur.IsChecked == true)
+            {
+                using var db = new Context();
+                int nb = db.Enquete.Where(v => v.IdEnqueteur == spaPersonne.IdSpaPersonne && v.Statut < 3).Count();
+                if (nb > 0)
+                {
+                    var res = await this.ShowMessageAsync("Attention !", $"Cet enquêteur est associé à {nb} enquête{(nb < 2 ? "" : "s")} !", MessageDialogStyle.AffirmativeAndNegative);
+                    if (res == MessageDialogResult.Negative)
+                        XEtat.IsChecked = true;
                 }
             }
         }

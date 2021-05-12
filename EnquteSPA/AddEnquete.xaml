@@ -36,7 +36,9 @@
                 <DatePicker
                     x:Name="XDateDepot"
                     Width="100"
-                    VerticalAlignment="Top" />
+                    VerticalAlignment="Top"
+                    CalendarClosed="XDateDepot_CalendarClosed"
+                    LostFocus="XDateDepot_LostFocus" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Objet :" />
